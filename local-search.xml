@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Operating System Notes</title>
+    <link href="/2022/05/20/Operating-System-Notes/"/>
+    <url>/2022/05/20/Operating-System-Notes/</url>
+    
+    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。打算先学完南大的操作系统课在看UCB的课程</p><span id="more"></span><h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><ul><li>Def: A body of software, responsible for making it easy to run programs, allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that.</li><li>将多个程序载入内存，CPU在programs之间切换</li><li>操作系统服务于<strong>程序&#x3D;状态机</strong></li><li>操作系统提供的服务： 对象+API</li><li>如何实现操作系统： C程序</li><li>工具： man vs tldr</li></ul><h1 id="什么是程序和编译器"><a href="#什么是程序和编译器" class="headerlink" title="什么是程序和编译器"></a>什么是程序和编译器</h1><h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Operating System</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CS61b-Intro</title>
     <link href="/2022/05/18/CS61b-Intro/"/>
     <url>/2022/05/18/CS61b-Intro/</url>
