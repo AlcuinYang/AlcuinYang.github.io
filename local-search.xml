@@ -11,6 +11,12 @@
     <content type="html"><![CDATA[<h1 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h1><h2 id="用户切换"><a href="#用户切换" class="headerlink" title="用户切换"></a>用户切换</h2><p>切到root <code>$ su</code><br>且会用户：<code>$ exit</code>  </p>]]></content>
     
     
+    <categories>
+      
+      <category>tools</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -30,6 +36,12 @@
     <content type="html"><![CDATA[<h1 id="Virtualbox-安装CentOS"><a href="#Virtualbox-安装CentOS" class="headerlink" title="Virtualbox 安装CentOS"></a>Virtualbox 安装CentOS</h1><h2 id="下载CentOS"><a href="#下载CentOS" class="headerlink" title="下载CentOS"></a>下载CentOS</h2><p><a href="https://www.centos.org/centos-linux/">CentOS官网</a><br>选择x86的就可以，然后挑一个镜像<br><img src="/img/CentOSmirror.png" alt="镜像"><br>居然有小破邮的镜像，支持一下学校吧。</p><h1 id="安装虚拟机踩过的坑"><a href="#安装虚拟机踩过的坑" class="headerlink" title="安装虚拟机踩过的坑"></a>安装虚拟机踩过的坑</h1><h2 id="卡顿"><a href="#卡顿" class="headerlink" title="卡顿"></a>卡顿</h2><p>虚拟机</p><h2 id="网络连接方式"><a href="#网络连接方式" class="headerlink" title="网络连接方式"></a>网络连接方式</h2><p>virtualbox默认的是NAT模式，也就是网络地址转换。这种连接方式可以上网，但是不能让主机和虚拟机之间通讯，ping不了，ssh也连接不了。<br>为了让主机和虚拟机互通，只能切换成桥接模式，也能ping通了。但是这样会没有网。  </p><h3 id="桥接模式联网"><a href="#桥接模式联网" class="headerlink" title="桥接模式联网"></a>桥接模式联网</h3>]]></content>
     
     
+    <categories>
+      
+      <category>tools</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -48,6 +60,12 @@
     
     <content type="html"><![CDATA[<p>Introduction of gdb </p><span id="more"></span><h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><p>gdb是一个linux 下的调试工具，虽然说可以用XCODE等ide进行调试，但是因为在学OS，到时候可能不太好用？ 所以就学一下gdb  </p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>homebrew 是个好东西</p>]]></content>
     
+    
+    <categories>
+      
+      <category>tools</category>
+      
+    </categories>
     
     
     <tags>
@@ -86,6 +104,12 @@
     
     <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。看的是UCB的<a href="https://www.youtube.com/watch?v=pPzVV2kkGHc">CS162</a><br>配合的书是经典大黑书和操作系统导论<br>操作系统学起来比较累的原因是要自己写lab，太抽象了， 没有老师push的话可能自发力不足，努努力克服吧。<br>zzx建议慢慢读慢慢看，那就一天一节试试看，看完课就写lab，可能比较慢，但是要写啊。<br>May 22,2022</p><span id="more"></span>]]></content>
     
+    
+    <categories>
+      
+      <category>Operating System</category>
+      
+    </categories>
     
     
     <tags>
@@ -128,12 +152,12 @@
     <link href="/2022/05/18/markdown/"/>
     <url>/2022/05/18/markdown/</url>
     
-    <content type="html"><![CDATA[<p>Markdown related to writing blog</p><span id="more"></span><h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p>虽然不是头一次用markdown了，但是还是记录一下一些markdown的语法吧，已经忘的差不多了</p><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight clean"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs clean"># 一级 <br>## 二级<br>### 三级<br>#### 四级<br>...<br></code></pre></td></tr></table></figure><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">***</span><br><span class="hljs-bullet"></span>效果如下面的线<br></code></pre></td></tr></table></figure><hr><h2 id="常用标识"><a href="#常用标识" class="headerlink" title="常用标识"></a>常用标识</h2><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><p><em>斜体</em>  <code>*斜体*</code>  <br></p><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><p><strong>粗体</strong> <code> **粗体**</code> <br></p><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p><code>行内代码块</code> `行内代码块` <br></p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">代码块<br><br></code></pre></td></tr></table></figure><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>[]里写文字，()里写地址 <br></p><p>自动链接<br>&lt;&gt;里面写邮箱或者地址</p><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无需列表"><a href="#无需列表" class="headerlink" title="无需列表"></a>无需列表</h3><p>直接使用 -,*</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">* </span>列表1<br><span class="hljs-bullet">- </span>列表2<br></code></pre></td></tr></table></figure><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol><li><ol start="2"><li><ol start="3"><li><h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2>![图片Alt](图片地址 “图片Title”)<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2>不管是哪种方式，第一行为表头，第二行分隔表头和主体部分，第三行开始每一行为一个表格行。<br>列于列之间用管道符|隔开。原生方式的表格每一行的两边也要有管道符。<br>第二行还可以为不同的列指定对齐方向。默认为左对齐，在-右边加上:就右对齐。</li></ol></li></ol></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>Markdown related to writing blog</p><span id="more"></span><h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p>虽然不是头一次用markdown了，但是还是记录一下一些markdown的语法吧，已经忘的差不多了</p><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight clean"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs clean"># 一级 <br>## 二级<br>### 三级<br>#### 四级<br>...<br></code></pre></td></tr></table></figure><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">***</span><br><span class="hljs-bullet"></span>效果如下面的线<br></code></pre></td></tr></table></figure><hr><h2 id="常用标识"><a href="#常用标识" class="headerlink" title="常用标识"></a>常用标识</h2><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h3><p><em>斜体</em>  <code>*斜体*</code>  <br></p><h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h3><p><strong>粗体</strong> <code> **粗体**</code> <br></p><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p><code>行内代码块</code> `行内代码块` <br></p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">代码块<br><br></code></pre></td></tr></table></figure><h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p>[]里写文字，()里写地址 <br></p><p>自动链接<br>&lt;&gt;里面写邮箱或者地址</p><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无需列表"><a href="#无需列表" class="headerlink" title="无需列表"></a>无需列表</h3><p>直接使用 -,*</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">* </span>列表1<br><span class="hljs-bullet">- </span>列表2<br></code></pre></td></tr></table></figure><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol><li><ol start="2"><li><ol start="3"><li><h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2>![图片Alt](图片地址 “图片Title”)<br>对fluid主体来说，要把图片放在&#x2F;source&#x2F;img中  <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2>不管是哪种方式，第一行为表头，第二行分隔表头和主体部分，第三行开始每一行为一个表格行。<br>列于列之间用管道符|隔开。原生方式的表格每一行的两边也要有管道符。<br>第二行还可以为不同的列指定对齐方向。默认为左对齐，在-右边加上:就右对齐。</li></ol></li></ol></li></ol>]]></content>
     
     
     <categories>
       
-      <category>blog</category>
+      <category>tools</category>
       
     </categories>
     
