@@ -8,9 +8,15 @@
     <link href="/2022/05/22/linux/"/>
     <url>/2022/05/22/linux/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h1><h2 id="用户切换"><a href="#用户切换" class="headerlink" title="用户切换"></a>用户切换</h2><p>切到root <code>$ su</code><br>且会用户：<code>$ exit</code>  </p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>tool,linux</tag>
+      
+    </tags>
     
   </entry>
   
@@ -21,9 +27,15 @@
     <link href="/2022/05/22/vm/"/>
     <url>/2022/05/22/vm/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="Virtualbox-安装CentOS"><a href="#Virtualbox-安装CentOS" class="headerlink" title="Virtualbox 安装CentOS"></a>Virtualbox 安装CentOS</h1><h2 id="下载CentOS"><a href="#下载CentOS" class="headerlink" title="下载CentOS"></a>下载CentOS</h2><p><a href="https://www.centos.org/centos-linux/">CentOS官网</a><br>选择x86的就可以，然后挑一个镜像<br><img src="/%22/img/CentOSmirror.png%22" alt="镜像"></p><h1 id="安装虚拟机踩过的坑"><a href="#安装虚拟机踩过的坑" class="headerlink" title="安装虚拟机踩过的坑"></a>安装虚拟机踩过的坑</h1><h2 id="卡顿"><a href="#卡顿" class="headerlink" title="卡顿"></a>卡顿</h2><p>虚拟机</p><h2 id="网络连接方式"><a href="#网络连接方式" class="headerlink" title="网络连接方式"></a>网络连接方式</h2><p>virtualbox默认的是NAT模式，也就是网络地址转换。这种连接方式可以上网，但是不能让主机和虚拟机之间通讯，ping不了，ssh也连接不了。<br>为了让主机和虚拟机互通，只能切换成桥接模式，也能ping通了。但是这样会没有网。  </p><h3 id="桥接模式联网"><a href="#桥接模式联网" class="headerlink" title="桥接模式联网"></a>桥接模式联网</h3>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>linux,tool</tag>
+      
+    </tags>
     
   </entry>
   
@@ -72,7 +84,7 @@
     <link href="/2022/05/20/Operating-System-Notes/"/>
     <url>/2022/05/20/Operating-System-Notes/</url>
     
-    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。打算先学完南大的操作系统课在看UCB的课程, 一天看一节吧，看多了也记不住<br>配合的书是经典大黑书</p><span id="more"></span><h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><ul><li>Def: A body of software, responsible for making it easy to run programs, allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that.</li><li>将多个程序载入内存，CPU在programs之间切换</li><li>操作系统服务于<strong>程序&#x3D;状态机</strong></li><li>操作系统提供的服务： 对象+API</li><li>如何实现操作系统： C程序</li><li>工具： man vs tldr</li></ul><h1 id="什么是程序和编译器"><a href="#什么是程序和编译器" class="headerlink" title="什么是程序和编译器"></a>什么是程序和编译器</h1><h2 id="程序也是状态机"><a href="#程序也是状态机" class="headerlink" title="程序也是状态机"></a>程序也是状态机</h2><p>每个语句都是<br></p><h3 id="C程序的状态机模型"><a href="#C程序的状态机模型" class="headerlink" title="C程序的状态机模型"></a>C程序的状态机模型</h3><p>C语言由许多stack frames组成，每个函数的都会创造一个新的sf,每个sf都会有自己的局部变量和PC<br><br>函数调用的返回：把上一层的sf删除<br><br><strong>此处加个图</strong><br>状态 &#x3D; stack frame的列表+ 全局变量<br>初始状态 &#x3D; main，全局变量初始化<br>迁移 &#x3D; 执行top stack frame PC 的语句；PC++<br>函数调用 &#x3D; push frame<br>函数返回 &#x3D; pop frame</p>]]></content>
+    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。看的是UCB的<a href="https://www.youtube.com/watch?v=pPzVV2kkGHc">CS162</a><br>配合的书是经典大黑书和操作系统导论<br>操作系统学起来比较累的原因是要自己写lab，太抽象了， 没有老师push的话可能自发力不足，努努力克服吧。<br>zzx建议慢慢读慢慢看，那就一天一节试试看，看完课就写lab，可能比较慢，但是要写啊。<br>May 22,2022</p><span id="more"></span>]]></content>
     
     
     
@@ -124,38 +136,6 @@
       <category>blog</category>
       
     </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>封校日记</title>
-    <link href="/2022/05/17/Recent/"/>
-    <url>/2022/05/17/Recent/</url>
-    
-    <content type="html"><![CDATA[<h1 id="随便写的小日记"><a href="#随便写的小日记" class="headerlink" title="随便写的小日记"></a>随便写的小日记</h1><h2 id="封校"><a href="#封校" class="headerlink" title="封校"></a>封校</h2><p>没想到北京疫情突然就厉害起来了。放在之前的话50例似乎也不是很大的数字，可能是因为上海的事情太吓人了吧</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Diary</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Recent</title>
-    <link href="/2022/05/17/may-17/"/>
-    <url>/2022/05/17/may-17/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
     
     
   </entry>
