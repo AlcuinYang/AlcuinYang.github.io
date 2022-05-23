@@ -4,11 +4,75 @@
   
   
   <entry>
+    <title>linux</title>
+    <link href="/2022/05/22/linux/"/>
+    <url>/2022/05/22/linux/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vm</title>
+    <link href="/2022/05/22/vm/"/>
+    <url>/2022/05/22/vm/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>gdb</title>
+    <link href="/2022/05/22/gdb/"/>
+    <url>/2022/05/22/gdb/</url>
+    
+    <content type="html"><![CDATA[<p>Introduction of gdb </p><span id="more"></span><h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><p>gdb是一个linux 下的调试工具，虽然说可以用XCODE等ide进行调试，但是因为在学OS，到时候可能不太好用？ 所以就学一下gdb  </p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>homebrew 是个好东西</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>OS, C</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CSAPP</title>
+    <link href="/2022/05/21/CSAPP/"/>
+    <url>/2022/05/21/CSAPP/</url>
+    
+    <content type="html"><![CDATA[<p>在看操作系统的时候发现有些蒙啊，从第二次课开始就听不懂在讲什么了，有些抽象。</p><span id="more"></span>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CSAPP,CS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Operating System Notes</title>
     <link href="/2022/05/20/Operating-System-Notes/"/>
     <url>/2022/05/20/Operating-System-Notes/</url>
     
-    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。打算先学完南大的操作系统课在看UCB的课程</p><span id="more"></span><h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><ul><li>Def: A body of software, responsible for making it easy to run programs, allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that.</li><li>将多个程序载入内存，CPU在programs之间切换</li><li>操作系统服务于<strong>程序&#x3D;状态机</strong></li><li>操作系统提供的服务： 对象+API</li><li>如何实现操作系统： C程序</li><li>工具： man vs tldr</li></ul><h1 id="什么是程序和编译器"><a href="#什么是程序和编译器" class="headerlink" title="什么是程序和编译器"></a>什么是程序和编译器</h1><h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2>]]></content>
+    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。打算先学完南大的操作系统课在看UCB的课程, 一天看一节吧，看多了也记不住<br>配合的书是经典大黑书</p><span id="more"></span><h1 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h1><h2 id="what"><a href="#what" class="headerlink" title="what"></a>what</h2><ul><li>Def: A body of software, responsible for making it easy to run programs, allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that.</li><li>将多个程序载入内存，CPU在programs之间切换</li><li>操作系统服务于<strong>程序&#x3D;状态机</strong></li><li>操作系统提供的服务： 对象+API</li><li>如何实现操作系统： C程序</li><li>工具： man vs tldr</li></ul><h1 id="什么是程序和编译器"><a href="#什么是程序和编译器" class="headerlink" title="什么是程序和编译器"></a>什么是程序和编译器</h1><h2 id="程序也是状态机"><a href="#程序也是状态机" class="headerlink" title="程序也是状态机"></a>程序也是状态机</h2><p>每个语句都是<br></p><h3 id="C程序的状态机模型"><a href="#C程序的状态机模型" class="headerlink" title="C程序的状态机模型"></a>C程序的状态机模型</h3><p>C语言由许多stack frames组成，每个函数的都会创造一个新的sf,每个sf都会有自己的局部变量和PC<br><br>函数调用的返回：把上一层的sf删除<br><br><strong>此处加个图</strong><br>状态 &#x3D; stack frame的列表+ 全局变量<br>初始状态 &#x3D; main，全局变量初始化<br>迁移 &#x3D; 执行top stack frame PC 的语句；PC++<br>函数调用 &#x3D; push frame<br>函数返回 &#x3D; pop frame</p>]]></content>
     
     
     
