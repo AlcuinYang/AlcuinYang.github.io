@@ -4,6 +4,50 @@
   
   
   <entry>
+    <title>链表算法</title>
+    <link href="/2022/07/13/%E9%93%BE%E8%A1%A8/"/>
+    <url>/2022/07/13/%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><h2 id="合并有序链表"><a href="#合并有序链表" class="headerlink" title="合并有序链表"></a>合并有序链表</h2><p><a href="https://leetcode.cn/problems/merge-two-sorted-lists/">题目</a><br>一个很简单的链表题，第一次做老忘记将指针向下一个移动，即<code>p = p.next</code><br>会用到虚拟头节点，可以避免处理空指针的情况，降低代码的复杂性</p><h2 id="合并k个生序链表"><a href="#合并k个生序链表" class="headerlink" title="合并k个生序链表"></a>合并k个生序链表</h2><p><a href="https://leetcode.cn/problems/merge-k-sorted-lists/">题目</a><br>解题思路依然是寻找最小的结点然后连接到dummy上，but因为是k个链表，如果用最朴素的比较方法，会比较的次数较多，时间复杂度高，<strong>所以采用优先级队列</strong>，把链表接电放进去即可获得k个节点里的最小节点. <a href="https://labuladong.gitee.io/algo/2/22/64/">二叉堆</a> 在这里讲的挺好的，可以参考。  </p><h2 id="单链表的倒数第k个节点"><a href="#单链表的倒数第k个节点" class="headerlink" title="单链表的倒数第k个节点"></a>单链表的倒数第k个节点</h2><p><a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">题目</a><br>可以使用双指针fast指针先走k步，然后fast和slow同事走n-k步，slow就指向倒数第k个节点了  </p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 返回链表的倒数第 k 个节点</span><br>ListNode <span class="hljs-title function_">findFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> k)</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-comment">// p1 先走 k 步</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p2</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-comment">// p1 和 p2 同时走 n - k 步</span><br>    <span class="hljs-keyword">while</span> (p1 != <span class="hljs-literal">null</span>) &#123;<br>        p2 = p2.next;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-comment">// p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点</span><br>    <span class="hljs-keyword">return</span> p2;<br>&#125;<br>```  <br>用这个方法+dummy node即可正确删除节点  <br>## 单链表的中点<br>[题目](https:<span class="hljs-comment">//leetcode.cn/problems/middle-of-the-linked-list/)  </span><br>依然快慢指针。这个题与**链表是否包含环** 解法差不多，快指针一次走两步，慢指针一次走一步，当快指针走到头的时候，慢指针正好是中点  <br>```Java<br>ListNode <span class="hljs-title function_">middleNode</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-comment">// 快慢指针初始化指向 head</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> head, fast = head;<br>    <span class="hljs-comment">// 快指针走到末尾时停止</span><br>    <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// 慢指针走一步，快指针走两步  注意循环结束的点</span><br>        slow = slow.next;<br>        fast = fast.next.next;<br>    &#125;<br>    <span class="hljs-comment">// 慢指针指向中点</span><br>    <span class="hljs-keyword">return</span> slow;<br>&#125;<br></code></pre></td></tr></table></figure><p>是否有环&amp;&amp;环的起点</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs Java">ListNode <span class="hljs-title function_">detectCycle</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    ListNode fast, slow;<br>    fast = slow = head;<br>    <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>) &#123;<br>        fast = fast.next.next;<br>        slow = slow.next;<br>        <span class="hljs-keyword">if</span> (fast == slow) <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-comment">// 上面的代码类似 hasCycle 函数</span><br>    <span class="hljs-keyword">if</span> (fast == <span class="hljs-literal">null</span> || fast.next == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-comment">// fast 遇到空指针说明没有环</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 重新指向头结点</span><br>    slow = head;<br>    <span class="hljs-comment">// 快慢指针同步前进，相交点就是环起点</span><br>    <span class="hljs-keyword">while</span> (slow != fast) &#123;<br>        fast = fast.next;<br>        slow = slow.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> slow;<br>&#125;<br></code></pre></td></tr></table></figure><p>fast 一定比 slow 多走了 k 步，这多走的 k 步其实就是 fast 指针在环里转圈圈，所以 k 的值就是环长度的「整数倍」。假设相遇点距环的起点的距离为 m，那么结合上图的 slow 指针，环的起点距头结点 head 的距离为 k - m，也就是说如果从 head 前进 k - m 步就能到达环起点。巧的是，如果从相遇点继续前进 k - m 步，也恰好到达环起点。因为结合上图的 fast 指针，从相遇点开始走k步可以转回到相遇点，那走 k - m 步肯定就走到环起点了：  </p><p><img src="/img/Midcycle1.png" alt="img1"></p><p>fast 一定比 slow 多走了 k 步，这多走的 k 步其实就是 fast 指针在环里转圈圈，所以 k 的值就是环长度的「整数倍」。假设相遇点距环的起点的距离为 m，那么结合上图的 slow 指针，环的起点距头结点 head 的距离为 k - m，也就是说如果从 head 前进 k - m 步就能到达环起点。巧的是，如果从相遇点继续前进 k - m 步，也恰好到达环起点。因为结合上图的 fast 指针，从相遇点开始走k步可以转回到相遇点，那走 k - m 步肯定就走到环起点了<br><img src="/img/Midcycle2.png" alt="img2"></p><h2 id="判断两个链表是否相交"><a href="#判断两个链表是否相交" class="headerlink" title="判断两个链表是否相交"></a>判断两个链表是否相交</h2><p><a href="https://leetcode.cn/problems/intersection-of-two-linked-lists/">相交链表</a><br>用俩指针，分别从AB遍历，当便利完时接上另一个，当两个指针相遇时结束，并且是节点</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Java">ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>    <span class="hljs-comment">// p1 指向 A 链表头结点，p2 指向 B 链表头结点</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> headA, p2 = headB;<br>    <span class="hljs-keyword">while</span> (p1 != p2) &#123;<br>        <span class="hljs-comment">// p1 走一步，如果走到 A 链表末尾，转到 B 链表</span><br>        <span class="hljs-keyword">if</span> (p1 == <span class="hljs-literal">null</span>) p1 = headB;<br>        <span class="hljs-keyword">else</span>            p1 = p1.next;<br>        <span class="hljs-comment">// p2 走一步，如果走到 B 链表末尾，转到 A 链表</span><br>        <span class="hljs-keyword">if</span> (p2 == <span class="hljs-literal">null</span>) p2 = headA;<br>        <span class="hljs-keyword">else</span>            p2 = p2.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p1;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>算法, 优先级队列，链表，双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>dns</title>
+    <link href="/2022/05/24/dns/"/>
+    <url>/2022/05/24/dns/</url>
+    
+    <content type="html"><![CDATA[<p>最近被虚拟机的网络搞的很烦，查资料的时候发现IP，网关，DNS这些东西已经忘的差不多了，所以又找出书和资料来看看</p><span id="more"></span><h1 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DNS任务<br>人们使用时更喜欢使用hostname但是router更喜欢使用IP。DNS其实主要是为了将域名转换为IP地址，也可以把IP转换为域名<br> DNS是：  </p><ul><li>一个由分层的dns服务器实现的分布式数据库。</li><li>一个让主机能够查询分布式数据库的应用层协议<h2 id="DNS服务"><a href="#DNS服务" class="headerlink" title="DNS服务"></a>DNS服务</h2></li><li>域名解析</li><li>主机别名</li><li>邮件服务器别名</li><li>负载分配：可用于冗余的服务器之间进行负载分配。<h2 id="DNS-解析过程"><a href="#DNS-解析过程" class="headerlink" title="DNS 解析过程"></a>DNS 解析过程</h2>当一个用户主机的浏览器（HTTP用户）请求URL时</li></ul><ol><li>同一台用户主机上运行着DNS应用的客户端</li><li>浏览器从URL中抽出主机名，并把主机名传给DNS应用的客户端</li><li>客户端想DNS发送一个包含主机名的请求。<strong>所有的DNS请求和回答报文都是UDP数据报通过端口53发送</strong></li><li>DNS client会收到一个回答报文，包含对应的IP</li><li>一旦浏览器收到了IP，就能够向改IP地址80端口的http服务器发起一个TCP链接</li></ol><h2 id="工作机理"><a href="#工作机理" class="headerlink" title="工作机理"></a>工作机理</h2><p><strong>DNS是分布式数据库的范例</strong>  </p><h3 id="分布式、分层次的数据库"><a href="#分布式、分层次的数据库" class="headerlink" title="分布式、分层次的数据库"></a>分布式、分层次的数据库</h3><p>目的：解决扩展性问题<br><img src="/img/dns.png" alt="层次结构"><br>类型：<br>根DNS服务器：提供TLD服务器的IP地址<br>顶级域（TLD）DNS服务器:例如:com,org,net,edu,gov和国家顶级域如uk,fr,ca。<br>权威DNS服务器</p><h3 id="local-DNS"><a href="#local-DNS" class="headerlink" title="local DNS"></a>local DNS</h3><p>每个ISP都有一台 local dns 。主机和某个ISP链接时，ISP提供一台主机的IP。该主机具有一台或多台local dns server的IP（通过DHCP）。<br>来个简单的例子<br><img src="/img/dns2.png" alt="DNS交互"><br>主机为了获得gaia.cs.umass.edu的IP地址需要进行图里的8次调用！八次！！，如果umass为每个系在增设一个dns服务器的话，将会成为10次。<br>其中用到了的递归查询和迭代查询。<br>递归查询：cse.nyu.edu刀dns.nyu.edu的查询，因为查询是已自己的名义请求dns获得映射。<br>迭代查询： 剩下的三个查询都是迭代查询，因为是把结果返回给dns.nyu.edu<br><strong>因为这样处理的话，实在太麻烦了，会造成所以就提出了DNS缓存的概念</strong></p><h3 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h3><p>原理：在一个请求链中，当某个NDS服务器接收到一个DNS回答，能将映射缓存在本地服务器中</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Computer Network</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DNS, Computer Network</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>linux</title>
     <link href="/2022/05/22/linux/"/>
     <url>/2022/05/22/linux/</url>
@@ -33,7 +77,7 @@
     <link href="/2022/05/22/vm/"/>
     <url>/2022/05/22/vm/</url>
     
-    <content type="html"><![CDATA[<h1 id="Virtualbox-安装CentOS"><a href="#Virtualbox-安装CentOS" class="headerlink" title="Virtualbox 安装CentOS"></a>Virtualbox 安装CentOS</h1><h2 id="下载CentOS"><a href="#下载CentOS" class="headerlink" title="下载CentOS"></a>下载CentOS</h2><p><a href="https://www.centos.org/centos-linux/">CentOS官网</a><br>选择x86的就可以，然后挑一个镜像<br><img src="/img/CentOSmirror.png" alt="镜像"><br>居然有小破邮的镜像，支持一下学校吧。</p><h1 id="安装虚拟机踩过的坑"><a href="#安装虚拟机踩过的坑" class="headerlink" title="安装虚拟机踩过的坑"></a>安装虚拟机踩过的坑</h1><h2 id="卡顿"><a href="#卡顿" class="headerlink" title="卡顿"></a>卡顿</h2><p>虚拟机</p><h2 id="网络连接方式"><a href="#网络连接方式" class="headerlink" title="网络连接方式"></a>网络连接方式</h2><p>virtualbox默认的是NAT模式，也就是网络地址转换。这种连接方式可以上网，但是不能让主机和虚拟机之间通讯，ping不了，ssh也连接不了。<br>为了让主机和虚拟机互通，只能切换成桥接模式，也能ping通了。但是这样会没有网。  </p><h3 id="桥接模式联网"><a href="#桥接模式联网" class="headerlink" title="桥接模式联网"></a>桥接模式联网</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="Virtualbox-安装CentOS"><a href="#Virtualbox-安装CentOS" class="headerlink" title="Virtualbox 安装CentOS"></a>Virtualbox 安装CentOS</h1><h2 id="下载CentOS"><a href="#下载CentOS" class="headerlink" title="下载CentOS"></a>下载CentOS</h2><p><a href="https://www.centos.org/centos-linux/">CentOS官网</a><br>选择x86的就可以，然后挑一个镜像<br><img src="/img/CentOSmirror.png" alt="镜像"><br>居然有小破邮的镜像，支持一下学校吧。<strong>吐槽一下啊，在学校里用校园网下载学校的镜像，虽然速度确实不慢但居然会一直断开链接，需要重新连接好几次</strong></p><h2 id="Virtualbox-创建"><a href="#Virtualbox-创建" class="headerlink" title="Virtualbox 创建"></a>Virtualbox 创建</h2><p>类型选择linux，版本选redhat(64bit)<br><img src="/img/redhat.png" alt="vb"><br>然后就是一路默认，或者根据自己电脑的内存啥的修改一下  </p><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>选择刚刚下载的CentOS的iso文件，然后就开始设着CentOS了</p><h2 id="CentOS设置"><a href="#CentOS设置" class="headerlink" title="CentOS设置"></a>CentOS设置</h2><h1 id="安装虚拟机踩过的坑"><a href="#安装虚拟机踩过的坑" class="headerlink" title="安装虚拟机踩过的坑"></a>安装虚拟机踩过的坑</h1><h2 id="卡顿"><a href="#卡顿" class="headerlink" title="卡顿"></a>卡顿</h2><p>虚拟机</p><h2 id="网络连接方式"><a href="#网络连接方式" class="headerlink" title="网络连接方式"></a>网络连接方式</h2><p>virtualbox默认的是NAT模式，也就是网络地址转换。这种连接方式可以上网，但是不能让主机和虚拟机之间通讯，ping不了，ssh也连接不了。<br>为了让主机和虚拟机互通，只能切换成桥接模式，也能ping通了。但是这样会没有网。  </p><h3 id="桥接模式联网"><a href="#桥接模式联网" class="headerlink" title="桥接模式联网"></a>桥接模式联网</h3>]]></content>
     
     
     <categories>
@@ -86,6 +130,12 @@
     <content type="html"><![CDATA[<p>在看操作系统的时候发现有些蒙啊，从第二次课开始就听不懂在讲什么了，有些抽象。</p><span id="more"></span>]]></content>
     
     
+    <categories>
+      
+      <category>CSAPP</category>
+      
+    </categories>
+    
     
     <tags>
       
@@ -102,7 +152,7 @@
     <link href="/2022/05/20/Operating-System-Notes/"/>
     <url>/2022/05/20/Operating-System-Notes/</url>
     
-    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。看的是UCB的<a href="https://www.youtube.com/watch?v=pPzVV2kkGHc">CS162</a><br>配合的书是经典大黑书和操作系统导论<br>操作系统学起来比较累的原因是要自己写lab，太抽象了， 没有老师push的话可能自发力不足，努努力克服吧。<br>zzx建议慢慢读慢慢看，那就一天一节试试看，看完课就写lab，可能比较慢，但是要写啊。<br>May 22,2022</p><span id="more"></span>]]></content>
+    <content type="html"><![CDATA[<p>本科没有操作系统的课，于是学习一下操作系统。看的是UCB的<a href="https://www.youtube.com/watch?v=pPzVV2kkGHc">CS162</a><br>配合的书是经典大黑书和操作系统导论<br>操作系统学起来比较累的原因是要自己写lab，太抽象了， 没有老师push的话可能自发力不足，努努力克服吧。<br>zzx建议慢慢读慢慢看，那就一天一节试试看，看完课就写lab，可能比较慢，但是要写啊。<br>May 22,2022</p><span id="more"></span><h1 id="操作系统介绍"><a href="#操作系统介绍" class="headerlink" title="操作系统介绍"></a>操作系统介绍</h1><p>一个运行的程序会发生什么呢？<br>执行指令：从内存中fetch指令–&gt;decode–&gt;excute–&gt;下一条指令<br>所以需要一个<strong>操作系统</strong>让程序运行容易，允许程序共享内存，是程序和设备交互，来保证系统易于使用有高效运行。  </p><h2 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h2><p>def： OS将物力资源（CPU、内存、硬盘）转换为更通用、强大的虚拟形式）</p><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>CPU由运算器、控制器、寄存器等器件组成，这些器件烤内部总线项链。</p>]]></content>
     
     
     <categories>
