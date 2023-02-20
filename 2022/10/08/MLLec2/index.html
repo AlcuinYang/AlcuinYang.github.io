@@ -16,24 +16,27 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="First Lec of Machine Learningintro of Module basic of Linearg algebra, calculus, and probability MATLAB&lt;&#x2F;ul&gt; what is ML Induction bias selection: selection of a modeltrain process: optimise  Le">
+    <meta name="description" content="Chapter 3 of Machine Learning. This lecture discuss the loss function, population loss, optimal hard&#x2F; soft predictors, log-loss, cross-entropy loss and cross entropy, entropy and conditional ent">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First lecture of 7CCEMMLE Machine Learning">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/02/17/MLLec1/index.html">
+<meta property="og:title" content="MLLec3">
+<meta property="og:url" content="https://alcuinyang.github.io/2022/10/08/MLLec2/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="First Lec of Machine Learningintro of Module basic of Linearg algebra, calculus, and probability MATLAB&lt;&#x2F;ul&gt; what is ML Induction bias selection: selection of a modeltrain process: optimise  Le">
+<meta property="og:description" content="Chapter 3 of Machine Learning. This lecture discuss the loss function, population loss, optimal hard&#x2F; soft predictors, log-loss, cross-entropy loss and cross entropy, entropy and conditional ent">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://alcuinyang.github.io/img/mllec1.png">
-<meta property="og:image" content="https://alcuinyang.github.io/img/mllec2.png">
-<meta property="article:published_time" content="2023-02-17T17:34:18.000Z">
-<meta property="article:modified_time" content="2023-02-18T14:50:05.914Z">
+<meta property="og:image" content="https://alcuinyang.github.io/img/predictortype.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/loglossplot.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/LLR.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/KLeg.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/normeg.png">
+<meta property="article:published_time" content="2022-10-08T10:31:08.000Z">
+<meta property="article:modified_time" content="2023-02-20T12:02:15.756Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://alcuinyang.github.io/img/mllec1.png">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/predictortype.png">
   
   
   
-  <title>First lecture of 7CCEMMLE Machine Learning - Alcuin&#39;s Blog</title>
+  <title>MLLec3 - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="First lecture of 7CCEMMLE Machine Learning"></span>
+            <span id="subtitle" data-typed-text="MLLec3"></span>
           
         </div>
 
@@ -225,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-17 17:34" pubdate>
-          February 17, 2023 pm
+        <time datetime="2022-10-08 11:31" pubdate>
+          October 8, 2022 am
         </time>
       </span>
     
@@ -237,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          4.3k words
         
       </span>
     
@@ -248,7 +251,7 @@
         
         
         
-          29 mins
+          36 mins
         
       </span>
     
@@ -286,102 +289,160 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">First lecture of 7CCEMMLE Machine Learning</h1>
+            <h1 style="display: none">MLLec3</h1>
             
             
               <div class="markdown-body">
                 
                 <span id="more"></span>
-<p><h1 id="First-Lec-of-Machine-Learning"><a href="#First-Lec-of-Machine-Learning" class="headerlink" title="First Lec of Machine Learning"></a>First Lec of Machine Learning</h1><h2 id="intro-of-Module"><a href="#intro-of-Module" class="headerlink" title="intro of Module"></a>intro of Module</h2><ul></p>
-<p><li>basic of Linearg algebra, calculus, and probability</li></p>
-<p><li>MATLAB</li><br>&lt;/ul&gt;</p>
-<p><h2 id="what-is-ML"><a href="#what-is-ML" class="headerlink" title="what is ML"></a>what is ML</h2><ol></p>
-<p><li>Induction bias selection: selection of a model<br>train process: optimise </li></p>
-<p><li>Learning: based on data, collection typical data to opitimize algorism</li></p>
-<p><li>Inference, control: use the trained machine(a black-box) then generalize<br><img src="/img/mllec1.png" srcset="/img/loading.gif" lazyload alt="ML approach"><br>Integrating domain knowledge into a machine learning approach<h2 id="ML-method"><a href="#ML-method" class="headerlink" title="ML method"></a>ML method</h2></li><br>&lt;/ol&gt;</p>
-<p><ul></p>
-<p><li>supervised learning </li></p>
-<p><li>unsupervised learning </li></p>
-<p><li>reinforcement(强化学习) learning</li><br>&lt;/ul&gt;</p>
-<p><h3 id="supervised-vs-unsupervised-learing"><a href="#supervised-vs-unsupervised-learing" class="headerlink" title="supervised vs unsupervised learing"></a>supervised vs unsupervised learing</h3><p><img src="/img/mllec2.png" srcset="/img/loading.gif" lazyload alt="vs"><br>supervised: classification. Give data to train a model that generalized can give result about data not in dataset<br>unsuervised : cluster </p></p>
-<p><h2 id="When-to-use"><a href="#When-to-use" class="headerlink" title="When to use"></a>When to use</h2><h3 id="Potential-advantages"><a href="#Potential-advantages" class="headerlink" title="Potential advantages"></a>Potential advantages</h3><ul></p>
-<p><li>lower cost and faster development </li></p>
-<p><li>reduced implementation complexity</li><br>&lt;/ul&gt;</p>
-<p><h3 id="potential-disadvantages"><a href="#potential-disadvantages" class="headerlink" title="potential disadvantages"></a>potential disadvantages</h3><ul></p>
-<p><li>suboptimal performance and limited perfomance guarantees</li></p>
-<p><li>limited interpretability</li><br>&lt;/ul&gt;</p>
-<p><h1 id="Basic-Background"><a href="#Basic-Background" class="headerlink" title="Basic Background"></a>Basic Background</h1><ul></p>
-<p><li>refresher on probablity and linear algebra<h2 id="Random-Variables"><a href="#Random-Variables" class="headerlink" title="Random Variables"></a>Random Variables</h2></li>ML</p>
-<p><li>def: a random numberical quantitiesthat takes values in a set </li></p>
-<p><li>Bernoulli variable（二分步）: $x～Bern(q)$，set: $X &#x3D; {0,1}$</li><br>&lt;/ul&gt;</p>
-<p>$p(1) &#x3D; Bern(1|q) &#x3D; Pr[x&#x3D;1] &#x3D; q$   </p>
+<p><p>Chapter 3 of Machine Learning. This lecture discuss the loss function, population loss, optimal hard&#x2F; soft predictors, log-loss, cross-entropy loss and cross entropy, entropy and conditional entropy, KL divergence, and mutual information.</p><br><span id="more"></span></p>
+<p><h1 id="Defining-Inference-推理"><a href="#Defining-Inference-推理" class="headerlink" title="Defining Inference(推理)"></a>Defining Inference(推理)</h1><ul></p>
+<li>In inference problems we got two types variables: <ul>
+<li>input</li>
+<li>output, or target</li>
+
+<li>A model is given by $p(x,t)$</li>
+
+<p><h2 id="Two-kinds-of-inference"><a href="#Two-kinds-of-inference" class="headerlink" title="Two kinds of inference"></a>Two kinds of inference</h2><ul></p>
+<li>detection problems:  takes value in a discrete and finite set</li>
+<li>estimation problems: target is continuous</li>
+
+<p><h3 id="predictor"><a href="#predictor" class="headerlink" title="predictor"></a>predictor</h3><p>two types:</p></p>
 <ul>
-<li>Categorical variable:<ul>
-<li>$x~Cat(q)$ take values in $X &#x3D; {0,1,2,3,\ddots,}$</li>
-<li>$p(k) &#x3D; Cat(k|q) &#x3D; Pr[x&#x3D;k] &#x3D; q_k$</li>
+<li>Hard predictor: specifies a single predicted value $\hat t$ of t for every value of x$&#x3D; x$<ul>
+<li>$\hat t(x)$</li>
+<li>x &#x3D; 0, $\hat{t}&#x3D;0$</li>
+</ul>
+</li>
+<li>soft predictor：specifies a “score” for each possible value of $t$ given  $x&#x3D;x$<ul>
+<li>$q(t|x)$</li>
+<li>when x &#x3D; 0, output distribution (0.8,0.2) 分别为t&#x3D;0或者t&#x3D;1 –&gt; $q(1|0) &#x3D; 0.2$<br>Example:<br><img src="/./img/predictortype.png" srcset="/img/loading.gif" lazyload alt="eg"></li>
 </ul>
 </li>
 </ul>
-<h3 id="decrete-RV"><a href="#decrete-RV" class="headerlink" title="decrete RV"></a>decrete RV</h3><p>categorical rvs are represented using one-hot verctor<br>$x^OH$ os dimension Cx1 with all zeros except for a one in the (k + 1)th position when x &#x3D; k<br>For C&#x3D;4, x &#x3D; 0:<br>$$x^{OH} &#x3D; \begin{bmatrix}<br>  &amp;1\ &amp;0\&amp;0\&amp;0\end{bmatrix}$$<br>  if x &#x3D;2<br>  $$x^{OH} &#x3D; \begin{bmatrix}<br>  &amp;0\ &amp;0\&amp;1\&amp;0\end{bmatrix}$$</p>
-<h3 id="continuous-rv"><a href="#continuous-rv" class="headerlink" title="continuous rv"></a>continuous rv</h3><p>described by pdf. p(x): x~p(x)<br>$p(x)\geq0$and $\int ^{\infin}_{-\infty} p(x)dx &#x3D;1$  </p>
-<p><strong>Gaussian is the most important</strong></p>
-<h4 id="Gaussian"><a href="#Gaussian" class="headerlink" title="Gaussian"></a>Gaussian</h4><p>$$x \sim N(\mu,\sigma^2)&#x3D;\frac{1}{\sqrt{2\pi\sigma^2}}exp(-\frac{(x-\mu)^2}{2\sigma^2}$$<br>$\mu$ is the Expection and $\sigma^2$ is Variance</p>
-<h2 id="Expectation-and-variance"><a href="#Expectation-and-variance" class="headerlink" title="Expectation and variance"></a>Expectation and variance</h2><h3 id="Expectation"><a href="#Expectation" class="headerlink" title="Expectation"></a>Expectation</h3><ul>
-<li>$$E_{x\sim p(x)} [x] &#x3D; \sum_{x \in X} {p(x) \cdot x}$$</li>
-<li>the expectation of function of a dicrete rv is<br>$$E_{x\sim p(x)} [f(x)] &#x3D; \sum_{x \in X} {p(x) \cdot f(x)}$$</li>
-<li>For Categorical<br>$$E_{x\sim Cat(q)} [f(x)] &#x3D; \sum_{x \in X} {q(x) \cdot f(x)}$$</li>
-<li>For continuous rv:</li>
-</ul>
-<p>$$E_{x\sim p(x)} [f(x)] &#x3D; \int_{-\infin}^{\infty} {p(x) \cdot f(x)dx}$$</p>
+<h1 id="Optimal-soft-prediction-or-Bayesian-inference"><a href="#Optimal-soft-prediction-or-Bayesian-inference" class="headerlink" title="Optimal soft prediction, or Bayesian inference"></a>Optimal soft prediction, or Bayesian inference</h1><ul>
+<li><p>A natural choice for the soft predictor $q(t|x)$ of t given $x &#x3D; x$ is the posterior distribution $p(t|x)$.</p>
+</li>
+<li><p>With this choice, the “score” q(t|x) assigned to each value of t is its posterior probability given x &#x3D; x.  </p>
+<h2 id="calculation"><a href="#calculation" class="headerlink" title="calculation"></a>calculation</h2><p>  pmf:</p>
+<table>
+<thead>
+<tr>
+<th>x\t</th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0.45</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.1</td>
+<td>0.4</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Given pmf $p(x,t)$</p>
+</li>
+<li><p>calculate the posterior $p(t|x)$</p>
+<table>
+<thead>
+<tr>
+<th>x\t</th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0.9</td>
+<td>$\frac{0.05}{(0.45+0.05)&#x3D;0.1}$</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.2</td>
+<td>0.8</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>got the Bayesian soft predictor as<br>$$<br>(t|x&#x3D;0) ~ q(t|0) &#x3D; p(t|0) &#x3D; Bern(t|x)<br>$$<br>and<br>$$(t |x&#x3D;1)~q(t|1) &#x3D; p(t|1) &#x3D; Bern(t|0.8)<br>$$</p>
+</li>
+<li><p>conclusion<br>Ifx&#x3D;0,we can offer the hard prediction $\hat{t}(0) &#x3D; 0$ with associated probability of error of 0.1</p>
+<h1 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h1></li>
+<li><p>to measure the quality of hard prediction $\hat t$, we introduce the loss function $L(t,\hat{t})$</p>
+</li>
+<li><p>$L(t,\hat{t}) &#x3D; 0$ if $t &#x3D; \hat{t}$ </p>
+</li>
+<li><p>For estimation, </p>
 <ul>
-<li>For Gaussian</li>
+<li>we use $L_k$ loss for integer $k&gt;0$, def as<br>$$<br>L(t,\hat{t}) &#x3D; L_k(t,\hat{t}) &#x3D; |t-\hat{t}|^k<br>$$<ul>
+<li>k &#x3D; 2 normally</li>
 </ul>
-<p>$$E_{x \sim N(\mu,\sigma^2)} [x] &#x3D; \mu$$<br>$$E_{x \sim N(\mu,\sigma^2)} [x^2] &#x3D; \mu^2+\sigma^2$$</p>
+</li>
+</ul>
+</li>
+<li><p>for detection </p>
 <ul>
-<li>It is linear</li>
+<li>0-1 loss, indicator</li>
 </ul>
-<h3 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h3><p>For Categorical rv $x\sim Cat(q)$:$$<br>$$Var(x) &#x3D; \sum^{C-1}<em>{x&#x3D;0} q_x(x-(\sum^{C-1}</em>{x&#x3D;0}q_x x))^2$$  </p>
-<h2 id="Linear-Algebra"><a href="#Linear-Algebra" class="headerlink" title="Linear Algebra"></a>Linear Algebra</h2><ul>
-<li><p>vector is an ordered collection of scalars.</p>
 </li>
-<li><p>tanspose: $x^T$<br>,from row to column or from column2row.</p>
+</ul>
+<p>$$<br>I(a) &#x3D; \begin{cases}<br>1&amp; \text{if a &#x3D; true }\<br>0&amp; \text{if a &#x3D; false}\<br>\end{cases}<br>$$</p>
+<h1 id="Population-loss"><a href="#Population-loss" class="headerlink" title="Population loss"></a>Population loss</h1><ul>
+<li>for given predictor $\hat{t}(·)$, we define population loss as<br>$$<br>L_p(\hat{t}(·)) :&#x3D; E_{(x,t)～p(x,t)}[L(t,\hat{t})]<br>$$</li>
+<li>it is the average lose over the joint distribution of input and target  </li>
+<li>对loss函数取个平均值</li>
+<li>For detection-error loss</li>
+</ul>
+<p>(:&#x3D;的意思是，左边的东西被定义为右边)  </p>
+<p>for a loss functiom, <strong>optimal hard predictor</strong> minimizes the <strong>population loss</strong>.<br>$$<br>\hat t^* (·) :&#x3D; arg min_{\hat t(·)}{L_p(\hat t(·))} &#x3D; E[l(t,\hat t(x))]<br>$$</p>
+<h2 id="Population-detection-error-loss"><a href="#Population-detection-error-loss" class="headerlink" title="Population detection-error loss"></a>Population detection-error loss</h2><ul>
+<li>def: the prob of detection error.<br>$$<br>Pr_{(x,t)<del>p(x,t)}[t\neq\hat t(x)]&#x3D;1-Pr_{(x,t)</del>p(x,t)}[t&#x3D;\hat t(x)]&#x3D;1-\sum_p(x,\hat t(x))<br>$$</li>
+</ul>
+<h1 id="Optimal-Hard-Predictor"><a href="#Optimal-Hard-Predictor" class="headerlink" title="Optimal Hard Predictor"></a>Optimal Hard Predictor</h1><ul>
+<li><p>def: an optimal hard predictor minimizes the populationloss</p>
+<p>$$<br>\hat{t^\star(·)} :&#x3D; arg\space min_{\hat{t}^(·)}{L_p(\hat t^*(·) )}&#x3D;E_{(x,t)\sim p(x,t)}[l(t,\hat t(x))]<br>$$</p>
 </li>
-<li><p>inner pordx&#96;uct: a measure of <strong>similarity</strong></p>
-</li>
-<li><p>Inner product $x^Ty &#x3D; \sum^L_{i&#x3D;1}x_iy_i$</p>
-</li>
-<li><p><strong>Normalize</strong><br>$$||x||&#x3D;\sqrt{x^Tx}&#x3D;\sqrt{\sum_{i&#x3D;1}^L x_i^2}$$</p>
-</li>
-<li><p>unitary norm of vector $\tilde s&#x3D;\cfrac{x}{||x||}$, $||\tilde{x}||^2 &#x3D; 1$</p>
-</li>
-<li><p>orthogonal: $x^Ty &#x3D; 0$</p>
-</li>
-<li><p>Diagonal matrix: L x L, only diag is 1  </p>
-</li>
-<li><p>$Diag(a)&#x3D;\begin{bmatrix}<br>&amp;a_1 &amp;0 &amp;\cdots &amp;0\<br>&amp;0 &amp;a_2 &amp;\cdots &amp;0 \<br>&amp;\vdots &amp; &amp;\ddots&amp;\vdots\<br>&amp;0 &amp;0 &amp;\cdots &amp;a_L\end{bmatrix}$</p>
-</li>
-<li><p>Outer producet: 2 L x 1 vectors make LxL matrix</p>
-</li>
-<li><p>Symmetric matrix:对称矩阵。$A^T &#x3D; A$</p>
-</li>
-<li><p>Outer product. </p>
-</li>
-<li><p>vector-matrix multiplication: $x^TA &#x3D; (A^Tx)^T$</p>
+</ul>
+<p>means: the “argument” that <strong>minimizes</strong> the function in<br>the brackets, that is, the minimizer of this function.</p>
 <ul>
-<li>positive simi-define:</li>
+<li>for any given loss function l, the optimal predictor can be directly computed from the <strong>posterior distribution</strong><br>$$<br>p(t|x)&#x3D;\frac{p(x,t)}{p(x)}<br>$$<br>也就是说能用optimal soft predictor来获得</li>
 </ul>
-</li>
-<li><p>Eigenvector &amp; Eigenvalue</p>
+<p>$$\hat{t^\star(·)}&#x3D;arg\space min_{\hat t \in{0,1}}E_{t\sim p(t|x)}[l(t,\hat t)]$$</p>
+<h2 id="Optimal-Hard-Prediction-Under-Detection-Error-Loss"><a href="#Optimal-Hard-Prediction-Under-Detection-Error-Loss" class="headerlink" title="Optimal Hard Prediction Under Detection-Error Loss"></a>Optimal Hard Prediction Under Detection-Error Loss</h2><ul>
+<li>the optimal predictor is the maximum of the posterior distribution, i.e.the posterior mode<br>$$<br>\hat{t^\star(x)} &#x3D; arg\space max_{t}p(t|x)<br>$$<br>it is maximum a posterior(MAP)<h2 id="Under-l-2-Loss"><a href="#Under-l-2-Loss" class="headerlink" title="Under $l_2$ Loss"></a>Under $l_2$ Loss</h2></li>
+<li>the optimal hard predictor is the posterior mean, that is, the mean of the posterior distribution</li>
+</ul>
+<h1 id="Cross-Entropy-Loss"><a href="#Cross-Entropy-Loss" class="headerlink" title="Cross-Entropy Loss"></a>Cross-Entropy Loss</h1><p><strong>熵：用来衡量事物的不确定性</strong>，熵越大，信息量越大，是五月不确定，事物越复杂</p>
 <ul>
-<li>in fact it the eigenvector is a base vector and the eigenvalue is a scaling factor so that we can simplify the calculation of a linear transformation on one vector.</li>
-<li>def: if A is an $n \times n$ matrix,if there is an non-zero vector $x$ can let $Ax &#x3D; \lambda x$, then the $\lambda$ is the eigenvalue and the vector $x$ is the eigenvector belonging to $\lambda$.</li>
+<li>assign a loss to soft predictor –&gt; measure how good it is </li>
+<li>To measure the loss of the soft predictor q(t|x) on a pair$(x,t)$<br>using<br> $$l&#x3D;-log q(t|x)$$</li>
+</ul>
+<p><img src="/./img/loglossplot.png" srcset="/img/loading.gif" lazyload alt="plot"></p>
+<ul>
+<li>large when predictor gives low probability to the correct output t given x, which measere the <strong>“superise”</strong></li>
+<li>if t is discrete, the score is constrained in the itnerval[0,1]</li>
+<li>can be negative when t is continuous</li>
+<li>log-loss is used to compare different predictors<h2 id="Population-log-loss"><a href="#Population-log-loss" class="headerlink" title="Population log-loss"></a>Population log-loss</h2>an optimal soft predictor can then be obtained by minimizing the population log-loss<br>$$<br>min_{q(·|·)}{L_p(q(·|·))}&#x3D;E_{(x,t)\sim p(x,t)}[-log q(t|x)]<br>$$</li>
+<li>it the cross entropy between $p(t)$ and $q(t)$</li>
+<li>only for soft predictor and depends on the entire soft predictor q(t|x) obtained by considering all values of x and t<br>$$<br>L_p(q(·))&#x3D;H(p,q)<br>$$</li>
+<li>这反映了 divergence between distribution p and q</li>
+<li>if p &#x3D; q, minimizes the population log-loss</li>
+</ul>
+<h1 id="KL-divergence-kl散度，相对熵"><a href="#KL-divergence-kl散度，相对熵" class="headerlink" title="KL divergence (kl散度，相对熵)"></a>KL divergence (kl散度，相对熵)</h1><p><strong>一个用来衡量两个概率分布的相似性的一个度量指标</strong>，随机分布相同时，为0。<br>$$<br>KL(p||q) &#x3D; E_{t \sim p(t)}[log{\frac{p(t)}{q(t)}}]<br>$$<br><img src="/./img/LLR.png" srcset="/img/loading.gif" lazyload alt="LLR"></p>
+<ul>
+<li>The KL divergence is generally asymmetric<ul>
+<li>$KL(p||q) \neq KL(q||p)$</li>
 </ul>
 </li>
-<li><p>calculation of eigenvector</p>
-</li>
+<li>LLR 越大则分布越不同<h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2></li>
+<li>binomial distribution<br><img src="/./img/KLeg.png" srcset="/img/loading.gif" lazyload alt="KLeg"></li>
+<li>normal distribution<br><img src="/./img/normeg.png" srcset="/img/loading.gif" lazyload alt="normeg"><h2 id="relationship-between-Cross-entropy-and-KL"><a href="#relationship-between-Cross-entropy-and-KL" class="headerlink" title="relationship between Cross entropy and KL"></a>relationship between Cross entropy and KL</h2>KL div can be expressed as<br>$$<br>H(p,q):&#x3D;E_{t\sim p(t)}[-log(t)]<br>$$<br>which can have the equality<br>$$<br>KL(p||q)&#x3D;H(p,q)-H(p,p)<br>$$<h1 id="Differential-Entropy"><a href="#Differential-Entropy" class="headerlink" title="Differential Entropy"></a>Differential Entropy</h1></li>
+<li>For Gaussian rv $t\sim N(\mu,\sigma ^2)&#x3D;\frac{1}{2}log(2\pi e\sigma^2)$</li>
 </ul>
-<p>$$(A-\lambda I)x&#x3D;0$$<br>which means<br>$$det(A-\lambda I)&#x3D;0$$
-  </p>
 
                 
               </div>
@@ -399,8 +460,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>First lecture of 7CCEMMLE Machine Learning</div>
-      <div>https://alcuinyang.github.io/2023/02/17/MLLec1/</div>
+      <div>MLLec3</div>
+      <div>https://alcuinyang.github.io/2022/10/08/MLLec2/</div>
     </div>
     <div class="license-meta">
       
@@ -412,7 +473,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 17, 2023</div>
+          <div>October 8, 2022</div>
         </div>
       
       
@@ -444,9 +505,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/18/MLLec2/" title="MLLec3">
+                      <a href="/2022/11/17/dns/" title="dns">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MLLec3</span>
+                        <span class="hidden-mobile">dns</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -454,8 +515,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/17/dns/" title="dns">
-                        <span class="hidden-mobile">dns</span>
+                      <a href="/2022/10/05/TeleLec4/" title="TeleLec4">
+                        <span class="hidden-mobile">TeleLec4</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
