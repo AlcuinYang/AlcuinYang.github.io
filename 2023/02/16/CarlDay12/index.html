@@ -18,20 +18,20 @@
   
     <meta name="description" content="1-3 day of Carl’s  Algorithm training. Array and linkedarray related">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Carl Algorithm day1-3 | LC704 Bineary search、LC27 remove element">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/02/16/CarlDay123/index.html">
+<meta property="og:title" content="Carl Algorithm day1-3| Array and Linked arrary">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/02/16/CarlDay12/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
 <meta property="og:description" content="1-3 day of Carl’s  Algorithm training. Array and linkedarray related">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-16T14:34:16.000Z">
-<meta property="article:modified_time" content="2023-02-19T11:04:04.101Z">
+<meta property="article:modified_time" content="2023-02-20T11:40:25.087Z">
 <meta property="article:author" content="Alcuin Yang">
-<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Algorithm, carl">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Carl Algorithm day1-3 | LC704 Bineary search、LC27 remove element - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day1-3| Array and Linked arrary - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Carl Algorithm day1-3 | LC704 Bineary search、LC27 remove element"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day1-3| Array and Linked arrary"></span>
           
         </div>
 
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          729 words
+          3.8k words
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
         
-          7 mins
+          32 mins
         
       </span>
     
@@ -284,7 +284,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Carl Algorithm day1-3 | LC704 Bineary search、LC27 remove element</h1>
+            <h1 style="display: none">Carl Algorithm day1-3| Array and Linked arrary</h1>
             
             
               <div class="markdown-body">
@@ -299,8 +299,22 @@
 </ul>
 </li>
 </ul>
-<h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><p>In fact, Binary search is one tye of two-pointer, what we should od it judge the end of while loop. Here is the code<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length - <span class="hljs-number">1</span>;<br><br>      <span class="hljs-keyword">while</span>(left &lt;= right)&#123;<br>          <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> left + (right - left) / <span class="hljs-number">2</span>;<br><br>          <span class="hljs-keyword">if</span>(nums[mid] == target)&#123;<br>              <span class="hljs-keyword">return</span> mid;<br>          &#125;<br>          <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[mid] &gt; target)&#123;<br>              right = mid - <span class="hljs-number">1</span>;<br>          &#125;<br>          <span class="hljs-keyword">else</span>&#123;<br>              left = mid + <span class="hljs-number">1</span>;<br><br>          &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>  &#125;<br></code></pre></td></tr></table></figure></p>
-<h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h1>
+<h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><p>In fact, Binary search is one tye of two-pointer, what we should od it judge the end of while loop, it is important to handle the statement of while, &lt;= or &lt;. Here is the code<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length - <span class="hljs-number">1</span>;<br><br>      <span class="hljs-keyword">while</span>(left &lt;= right)&#123;<br>          <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> left + (right - left) / <span class="hljs-number">2</span>;  <span class="hljs-comment">//prevent int from overflow</span><br><br>          <span class="hljs-keyword">if</span>(nums[mid] == target)&#123;<br>              <span class="hljs-comment">// here is what we will do to teh target</span><br>              <span class="hljs-keyword">return</span> mid;<br>          &#125;<br>          <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[mid] &gt; target)&#123;<br>              right = mid - <span class="hljs-number">1</span>;<br>          &#125;<br>          <span class="hljs-keyword">else</span>&#123;<br>              left = mid + <span class="hljs-number">1</span>;<br><br>          &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>  &#125;<br></code></pre></td></tr></table></figure></p>
+<h2 id="Remove-element"><a href="#Remove-element" class="headerlink" title="Remove element"></a>Remove element</h2><p>Its a two pointers methods as will.  What we should focus on is <strong>in-place</strong> which means we can’t create a new array to store the  array. So, we can set a fast pointer and a slow pointer, if the fast one doesn’t meet the value, set slow to nums[fast], move slow, move fast.<br>Here is the code<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">removeElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, slow = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(fast &lt; nums.length)&#123;<br>            <span class="hljs-keyword">if</span>(nums[fast] != val)&#123;<br>                nums[slow] = nums[fast];<br>                slow++;<br>            &#125;<br>            fast ++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> slow;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><p>Noticed  that it is a non-decreasing order array, so the absolute of the left and right are larger than the middle, so we can use the Math.abs() to judge which is larger. Then utilize double-pointer one is <em>left</em> and one is <em>right</em>, the create a result array to store the result.<br>Here is the code<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] sortedSquares(<span class="hljs-type">int</span>[] nums) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = nums.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> nums.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> [] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[nums.length];<br>    <span class="hljs-keyword">while</span>(left &lt;= right)&#123;<br>        <span class="hljs-keyword">if</span>(Math.abs(nums[left]) &lt; Math.abs(nums[right]))&#123;<br>            res[p] = nums[right] * nums[right];<br>            right--;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            res[p] = nums[left] * nums[left];<br>            left++;<br>        &#125;<br>        p--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br></code></pre></td></tr></table></figure></p>
+<h2 id="Minumum-size-subarray-sum"><a href="#Minumum-size-subarray-sum" class="headerlink" title="Minumum size subarray sum"></a>Minumum size subarray sum</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">Question</a><br>Description: Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.  </p>
+<p>In this question, it is a type of <strong>Sliding-window</strong> method. The most important thing in Sliding window is identifying the start position.<br>The main procedure of sliding windown is </p>
+<ol>
+<li>set the start position</li>
+<li>enlarge the window size </li>
+<li>according to the condition, judge whether should we shrink the window.</li>
+<li>maintain the window and keep process</li>
+</ol>
+<p>In this question, what we should not is we need a variable <em>res</em> to store the result, we can set it as <em>Math.MAX_VALUE</em>, and in this way, we can update the <em>res</em> by compare the value of <em>res</em> and window size<br>Here is the code</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-type">int</span> target, <span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; right &lt; nums.length; right++)&#123;<br>            sum += nums[right];<br>            <span class="hljs-keyword">while</span>(sum &gt;= target)&#123;<br>                result = Integer.min(result,right-left+<span class="hljs-number">1</span>);<br>                <br>                sum -=nums[left];<br>                left++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result == Integer.MAX_VALUE? <span class="hljs-number">0</span>:result;<br></code></pre></td></tr></table></figure>
+<p>For the retrun thing, we use the <code>result == Integer.MAX_VALUE? 0:result</code> to judge whether the sum of all values in nums is larger than target. if not, return 0</p>
+<h2 id="LC59-Spiral-Matrix-II"><a href="#LC59-Spiral-Matrix-II" class="headerlink" title="LC59 Spiral Matrix II"></a>LC59 Spiral Matrix II</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">Question</a><br>It is a design question, what we should do is simulating a clockwise cycle. It is not very difficult but the details are annoying. Here is the solution.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[][] generateMatrix(<span class="hljs-type">int</span> n) &#123;<br>        <span class="hljs-type">int</span> [][] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n][n];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">up</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, down = n - <span class="hljs-number">1</span>;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(num &lt;= n * n)&#123;<span class="hljs-comment">//end case is maximum value of loop</span><br>            <span class="hljs-keyword">if</span>(up &lt;= down)&#123;<span class="hljs-comment">// from left to right</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> left;i &lt;= right;i++)&#123;<br>                    res[up][i] = num++;<br>                &#125;<br>                up++;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span>(left &lt;= right)&#123;<span class="hljs-comment">//right size, from top to down</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> up;i &lt;= down;i++)&#123;<br>                    res[i][right] = num++;<br>                &#125;<br>                right--;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span>(up &lt;= down)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> right; i &gt;= left; i--)&#123;<br>                    res[down][i] = num++;<br>                &#125;<br>                down--;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span>(left &lt;= right)&#123;<span class="hljs-comment">// ri</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> down; i &gt;= up; i--)&#123;<br>                    res[i][left] = num++;<br>                &#125;<br>                left++;<br>            &#125;<br>            <br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br><br>    &#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h1>
                 
               </div>
             
@@ -333,7 +347,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Algorithm/">#Algorithm</a>
+        <a href="/tags/Algorithm-carl/">#Algorithm, carl</a>
       
     </div>
   
@@ -345,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Carl Algorithm day1-3 | LC704 Bineary search、LC27 remove element</div>
-      <div>https://alcuinyang.github.io/2023/02/16/CarlDay123/</div>
+      <div>Carl Algorithm day1-3| Array and Linked arrary</div>
+      <div>https://alcuinyang.github.io/2023/02/16/CarlDay12/</div>
     </div>
     <div class="license-meta">
       
