@@ -18,20 +18,20 @@
   
     <meta name="description" content="PThread library, including basics, thread creation and termination, stnchronization, shceduling, pitfalls, debugging">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PThread librarybasic">
+<meta property="og:title" content="PThread library Basic">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/02/21/PThread/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
 <meta property="og:description" content="PThread library, including basics, thread creation and termination, stnchronization, shceduling, pitfalls, debugging">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T12:34:39.000Z">
-<meta property="article:modified_time" content="2023-02-21T13:07:08.022Z">
+<meta property="article:modified_time" content="2023-02-21T15:55:23.133Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="C, master, PThread">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>PThread librarybasic - Alcuin&#39;s Blog</title>
+  <title>PThread library Basic - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="PThread librarybasic"></span>
+            <span id="subtitle" data-typed-text="PThread library Basic"></span>
           
         </div>
 
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          682 words
+          902 words
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
         
-          6 mins
+          8 mins
         
       </span>
     
@@ -284,14 +284,30 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">PThread librarybasic</h1>
+            <h1 style="display: none">PThread library Basic</h1>
             
             
               <div class="markdown-body">
                 
                 <p>PThread library, including basics, thread creation and termination, stnchronization, shceduling, pitfalls, debugging<br><span id="more"></span></p>
-<h1 id="PThread-Intro"><a href="#PThread-Intro" class="headerlink" title="PThread Intro"></a>PThread Intro</h1><p>POSIX threads are standards based thread API. It is used to  spawn a new concurrent process flow. Threads require less overhead than “forking” or spawning a new process because the system does not initialize a new system virtual memory space and environment for the process. arallel programming technologies such as MPI and PVM are used in a distributed computing environment while threads are limited to a single computer system.<br>All threads within a process sahre the same address space</p>
-<h2 id="Thread-Basics"><a href="#Thread-Basics" class="headerlink" title="Thread Basics"></a>Thread Basics</h2><p>Thread operations include <strong>thread creation</strong>, <strong>termination</strong>, <strong>synchronization</strong> (joins,blocking), <strong>scheduling</strong>, <strong>data management</strong> and <strong>process interaction</strong>.</p>
+<h1 id="PThread-Intro"><a href="#PThread-Intro" class="headerlink" title="PThread Intro"></a>PThread Intro</h1><p>POSIX threads are standards based thread API. It is used to  spawn a new concurrent process flow. Threads require less overhead than “forking” or spawning a new process because the system does not initialize a new system virtual memory space and environment for the process. arallel programming technologies such as MPI and PVM are used in a distributed computing environment while threads are limited to a single computer system.<br>All threads within a process sahre the same address space:</p>
+<ul>
+<li>Process instruction</li>
+<li>most data</li>
+<li>open files9descriptors)</li>
+<li>signals and signal handlers </li>
+<li>current working direc</li>
+<li>user and group ID</li>
+</ul>
+<h2 id="Thread-Basics"><a href="#Thread-Basics" class="headerlink" title="Thread Basics"></a>Thread Basics</h2><p>Thread operations include <strong>thread creation</strong>, <strong>termination</strong>, <strong>synchronization</strong> (joins,blocking), <strong>scheduling</strong>, <strong>data management</strong> and <strong>process interaction</strong>.<br>each thread has unique:</p>
+<ul>
+<li>PID</li>
+<li>set of register, stack pointer</li>
+<li>stack for local variables, return address</li>
+<li>signal mask </li>
+<li>priority</li>
+<li>return value</li>
+</ul>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li><a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html">CMU tut</a>  </li>
 <li></li>
@@ -320,7 +336,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PThread librarybasic</div>
+      <div>PThread library Basic</div>
       <div>https://alcuinyang.github.io/2023/02/21/PThread/</div>
     </div>
     <div class="license-meta">
@@ -364,6 +380,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/02/21/CarlDay7/" title="Carl Algorithm day 7 | LC454 4Sum II">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Carl Algorithm day 7 | LC454 4Sum II</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

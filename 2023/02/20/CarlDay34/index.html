@@ -18,7 +18,7 @@
   
     <meta name="description" content="Linked List related.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CarlDay3,4| LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,">
+<meta property="og:title" content="CarlDay3,4 | LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/02/20/CarlDay34/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
 <meta property="og:description" content="Linked List related.">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://alcuinyang.github.io/img/reverseLinkedList.jpeg">
 <meta property="og:image" content="https://alcuinyang.github.io/img/lc24.jpeg">
 <meta property="article:published_time" content="2023-02-20T11:43:32.000Z">
-<meta property="article:modified_time" content="2023-02-21T15:19:01.041Z">
+<meta property="article:modified_time" content="2023-02-21T16:03:38.187Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Algorithm, carl, Linked List">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,7 +34,7 @@
   
   
   
-  <title>CarlDay3,4| LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List, - Alcuin&#39;s Blog</title>
+  <title>CarlDay3,4 | LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List, - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CarlDay3,4| LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,"></span>
+            <span id="subtitle" data-typed-text="CarlDay3,4 | LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,"></span>
           
         </div>
 
@@ -287,7 +287,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CarlDay3,4| LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,</h1>
+            <h1 style="display: none">CarlDay3,4 | LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,</h1>
             
             
               <div class="markdown-body">
@@ -300,7 +300,7 @@
 <h1 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h1><h2 id="LC-24-Swap-Nodes-in-Pairs"><a href="#LC-24-Swap-Nodes-in-Pairs" class="headerlink" title="LC 24 Swap Nodes in Pairs"></a>LC 24 Swap Nodes in Pairs</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/">Question</a><br>In this case we can consider the recursive method. Identify the base case and swap <code>head</code> and <code>head.next</code>. Then let <code>head</code> point to the result of <code>reverse(head.next.next)</code> .Plot the process for better understanding.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"> <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">swapPairs</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">null</span> || head.next == <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<span class="hljs-comment">//base case</span><br><br><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">second</span> <span class="hljs-operator">=</span> head.next;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> head.next.next;<br>    <br>    second.next = head;<br><br>    head.next = swapPairs(left);<br><br>    <span class="hljs-keyword">return</span> second;<br>&#125;<br><br></code></pre></td></tr></table></figure><br><img src="/img/lc24.jpeg" srcset="/img/loading.gif" lazyload alt="lc24"></p>
 <h2 id="LC-19-Remove-Nth-Node-From-End-of-List"><a href="#LC-19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LC 19 Remove Nth Node From End of List"></a>LC 19 Remove Nth Node From End of List</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">Question</a><br>This is a double pointer problem. After considering the base case, we can use a fast pointer and a slow pointer. After the fast pointer moves n times, the slow pointer starts to move. When the fast pointer points to the last position, the next node of the slow pointer is the node to be deleted.<br><strong>Remind, using dummy node to handle the list</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> n)</span> &#123;<br>           ListNode slow, fast;<br>           <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>           dummy.next = head;<br><br>           slow = dummy;<br>           fast = dummy;<br><br>           <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n;i++)&#123;<br>               fast = fast.next;<br>           &#125;<span class="hljs-comment">//fast fowards n nodes</span><br><br>           <span class="hljs-keyword">while</span>(fast.next != <span class="hljs-literal">null</span>)&#123;<br>               fast = fast.next;<br>               slow = slow.next;<br>           &#125;<span class="hljs-comment">// foward both pointers</span><br><br>            slow.next = slow.next.next;<span class="hljs-comment">//delete</span><br><br>            <span class="hljs-keyword">return</span> dummy.next;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
 <h2 id="LC-160-Intersection-of-Two-Linked-Lists-LCCI"><a href="#LC-160-Intersection-of-Two-Linked-Lists-LCCI" class="headerlink" title="LC 160  Intersection of Two Linked Lists LCCI"></a>LC 160  Intersection of Two Linked Lists LCCI</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists/">Question</a><br>Use two pointers to traverse from AB respectively, connect another linked list when the traversal is completed, and end when the two pointers meet, and it is an intersecting node<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java">ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>   <br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> headA, p2 = headB;<br>    <span class="hljs-keyword">while</span> (p1 != p2) &#123;<br>        <span class="hljs-comment">// P1 takes steps, if it reaches the end of A linked list, go to B linked list</span><br>        <span class="hljs-keyword">if</span> (p1 == <span class="hljs-literal">null</span>) p1 = headB;<br>        <span class="hljs-keyword">else</span>           <br>         p1 = p1.next;<br>        <span class="hljs-comment">// so as p1</span><br>        <span class="hljs-keyword">if</span> (p2 == <span class="hljs-literal">null</span>) p2 = headA;<br>        <span class="hljs-keyword">else</span>            <br>        p2 = p2.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p1;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h2 id="LC-142-Linked-List-Cycle-II"><a href="#LC-142-Linked-List-Cycle-II" class="headerlink" title="LC 142 Linked List Cycle II"></a>LC 142 Linked List Cycle II</h2><p><a href="https://alcuinyang.github.io/2023/02/17/linkedarray/">Wrote before</a></p>
+<h2 id="LC-142-Linked-List-Cycle-II"><a href="#LC-142-Linked-List-Cycle-II" class="headerlink" title="LC 142 Linked List Cycle II"></a>LC 142 Linked List Cycle II</h2><p><a href="./linkedarray.md">Wrote before</a></p>
 
                 
               </div>
@@ -346,7 +346,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CarlDay3,4| LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,</div>
+      <div>CarlDay3,4 | LC203 Remove Nth Node From End of List, LC707Design Linked List, LC206 Reverse Linked List,</div>
       <div>https://alcuinyang.github.io/2023/02/20/CarlDay34/</div>
     </div>
     <div class="license-meta">
@@ -391,9 +391,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/21/CarlDay6/" title="CarlDay5">
+                      <a href="/2023/02/21/CarlDay6/" title="Carl Algorithm day 6 | LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CarlDay5</span>
+                        <span class="hidden-mobile">Carl Algorithm day 6 | LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
