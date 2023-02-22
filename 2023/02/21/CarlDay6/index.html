@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hash Table IntroHash table is a map with Key and Value. It is an one2one mapping by using Hash function. In this way we can access the element in O(1) time.To implement hash table, we often use array,">
+    <meta name="description" content="HashTable. Including: LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1 two sum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Carl Algorithm day 6 | LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1 two sum">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/02/21/CarlDay6/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="Hash Table IntroHash table is a map with Key and Value. It is an one2one mapping by using Hash function. In this way we can access the element in O(1) time.To implement hash table, we often use array,">
+<meta property="og:description" content="HashTable. Including: LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1 two sum">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-21T00:38:45.000Z">
-<meta property="article:modified_time" content="2023-02-22T12:26:12.601Z">
+<meta property="article:modified_time" content="2023-02-22T14:51:13.686Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Algorithm, carl">
 <meta name="twitter:card" content="summary_large_image">
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k words
+          3.3k words
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
         
-          27 mins
+          28 mins
         
       </span>
     
@@ -289,7 +289,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Hash-Table-Intro"><a href="#Hash-Table-Intro" class="headerlink" title="Hash Table Intro"></a>Hash Table Intro</h1><p>Hash table is a map with <strong>Key</strong> and <strong>Value</strong>. It is an one2one mapping by using <strong>Hash function</strong>. In this way we can access the element in <strong>O(1)</strong> time.<br>To implement hash table, we often use <strong>array, set, map</strong></p>
+                <p>HashTable. Including: LC242 Valid Anagram LC349 Intersection of Two Arrays LC202 Happy Number LC1 two sum<br><span id="more"></span></p>
+<h1 id="Hash-Table-Intro"><a href="#Hash-Table-Intro" class="headerlink" title="Hash Table Intro"></a>Hash Table Intro</h1><p>Hash table is a map with <strong>Key</strong> and <strong>Value</strong>. It is an one2one mapping by using <strong>Hash function</strong>. In this way we can access the element in <strong>O(1)</strong> time.<br>To implement hash table, we often use <strong>array, set, map</strong></p>
 <h2 id="Hash-collision"><a href="#Hash-collision" class="headerlink" title="Hash collision"></a>Hash collision</h2><ul>
 <li>def: two values mapping one key.<h3 id="solution"><a href="#solution" class="headerlink" title="solution:"></a>solution:</h3><h4 id="Separate-chaining"><a href="#Separate-chaining" class="headerlink" title="Separate chaining"></a>Separate chaining</h4>It is usually implemented using linked lists. If there is any collision (i.e. two different elements have same hash value) then store both the elements in the same linked list.<h4 id="Linear-probing"><a href="#Linear-probing" class="headerlink" title="Linear probing"></a>Linear probing</h4></li>
 </ul>
@@ -307,7 +308,7 @@
 </li>
 </ul>
 <h1 id="LC1-two-sum"><a href="#LC1-two-sum" class="headerlink" title="LC1 two sum"></a>LC1 two sum</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/">Question</a>  </p>
-<p>Have done so many times bcs it is the first question of leetcode. It can be solved by <strong>double-pointer</strong> and <strong>HashMap</strong>. The solution of double-pointer is <a href="nsum.md">here</a>. Now is the <strong>HashMap</strong> solution.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] twoSum(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br><br>        Map&lt;Integer,Integer&gt; set1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">val</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; nums.length; i++)&#123;<br>            <span class="hljs-keyword">if</span>(set1.containsKey(target-nums[i]))&#123;<br>                val = set1.get(target-nums[i]);<br>                res[<span class="hljs-number">0</span>] = val;<br>                res[<span class="hljs-number">1</span>] = i;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            set1.put(nums[i],i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
+<p>Have done so many times bcs it is the first question of leetcode. It can be solved by <strong>two-pointer</strong> and <strong>HashMap</strong>. The solution of two-pointer is <a href="nsum.md">here</a>. Now is the <strong>HashMap</strong> solution.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] twoSum(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br><br>        Map&lt;Integer,Integer&gt; set1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">val</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; nums.length; i++)&#123;<br>            <span class="hljs-keyword">if</span>(set1.containsKey(target-nums[i]))&#123;<br>                val = set1.get(target-nums[i]);<br>                res[<span class="hljs-number">0</span>] = val;<br>                res[<span class="hljs-number">1</span>] = i;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            set1.put(nums[i],i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li><a target="_blank" rel="noopener" href="https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/tutorial/">Basics of Hash Tables</a></li>
 <li><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%93%88%E5%B8%8C%E8%A1%A8%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0">ProgrammerCarl</a></li>
