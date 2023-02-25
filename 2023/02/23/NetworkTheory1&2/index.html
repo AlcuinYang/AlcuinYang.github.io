@@ -32,8 +32,14 @@
 <meta property="og:image" content="https://alcuinyang.github.io/img/SIRModel2.png">
 <meta property="og:image" content="https://alcuinyang.github.io/img/SISModel.png">
 <meta property="og:image" content="https://alcuinyang.github.io/img/SISModel2.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/DelayModel.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Little&#39;s%20Theorem">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Markov%20for%20M/M/1">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Average%20Queue%20size.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Average%20Queue%20sizeeg.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/mmm.png">
 <meta property="article:published_time" content="2023-02-23T22:52:04.000Z">
-<meta property="article:modified_time" content="2023-02-24T13:15:34.784Z">
+<meta property="article:modified_time" content="2023-02-24T17:30:46.395Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Network Theory">
 <meta name="twitter:card" content="summary_large_image">
@@ -247,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k words
+          4.8k words
         
       </span>
     
@@ -258,7 +264,7 @@
         
         
         
-          33 mins
+          41 mins
         
       </span>
     
@@ -320,6 +326,7 @@
 <li>Direceted Acyclic Graph(DAG): has no cycles</li>
 </ul>
 </li>
+<li>$no. edge \geq no.Vertices - no.components$</li>
 <li><strong>DFS</strong> can be used to explore the graph repeatedly until the entire graph has been traversed </li>
 <li><strong>BFS</strong> can</li>
 <li>Weighted graph </li>
@@ -370,6 +377,8 @@ e_i is the number of edges between the neighbors of node i</script></li>
 <li>G contains a spanning tree</li>
 <li>if G contains exactly n-1 edges, G is a spanning tree</li>
 </ul>
+<h3 id="To-determine-a-Minimum-Spanning-Tree-MST"><a href="#To-determine-a-Minimum-Spanning-Tree-MST" class="headerlink" title="To determine a Minimum Spanning Tree(MST)"></a>To determine a Minimum Spanning Tree(MST)</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/30/2615542.html">文章</a></p>
+<h4 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h4><p><strong>Start from an arbitrary vertex</strong><br>  Find u ∈ U and v ∈ V − U such that the edge (u, v) is a smallest edge between U and V − U.</p>
 <h2 id="Distributed-Algorithm"><a href="#Distributed-Algorithm" class="headerlink" title="Distributed Algorithm"></a>Distributed Algorithm</h2><h3 id="Random-Graph-Model"><a href="#Random-Graph-Model" class="headerlink" title="Random Graph Model"></a>Random Graph Model</h3><p>Suppose: edge(u,v) is formed with probability $p \in (0,1)$, n is no. of nodes. Then <em>n</em> and <em>p</em> can’t define a unique graph</p>
 <h3 id="Degree-distribution"><a href="#Degree-distribution" class="headerlink" title="Degree distribution"></a>Degree distribution</h3><ul>
 <li>THe expected degree of a node </li>
@@ -451,7 +460,56 @@ E[X_v] = (n - 1)p</script><p><img src="/img/Degree Distribution.png" srcset="/im
 <li>Adoption: The node acts on the information</li>
 </ul>
 <h1 id="Lecture-5-Queueing-and-Modelling-Delay-in-the-Networks"><a href="#Lecture-5-Queueing-and-Modelling-Delay-in-the-Networks" class="headerlink" title="Lecture 5 Queueing and Modelling Delay in the Networks"></a>Lecture 5 Queueing and Modelling Delay in the Networks</h1><p>Queueing Systems: used for analysing network performance</p>
-<h2 id="delay"><a href="#delay" class="headerlink" title="delay"></a>delay</h2>
+<h2 id="delay-models"><a href="#delay-models" class="headerlink" title="delay models"></a>delay models</h2><p><img src="/img/DelayModel.png" srcset="/img/loading.gif" lazyload alt="DelayModel"></p>
+<ul>
+<li>Quantities<ul>
+<li>Arrival rate of customers ( λ)</li>
+<li>Service rate (μ)</li>
+<li>Queue Utilisation (ρ = λ/μ)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Little’s-Theorem"><a href="#Little’s-Theorem" class="headerlink" title="Little’s Theorem"></a>Little’s Theorem</h3><p><img src="/img/Little&#39;s Theorem" srcset="/img/loading.gif" lazyload alt="Little&#39;s Theorem"><br>Can be applied to entire system or part of it.</p>
+<h2 id="Single-Server-Queues"><a href="#Single-Server-Queues" class="headerlink" title="Single Server Queues"></a>Single Server Queues</h2><ul>
+<li><p>M/M/1</p>
+<ul>
+<li>Poisson arrivals, exponential service  times</li>
+</ul>
+</li>
+<li><p>Poinsson Process</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+P(n arrivals in interval T) = \frac{(λT)^ne^{-λT}}{n!}</script><ul>
+<li>$E[n] (first moment of arrival)= λT$</li>
+<li>$E[n^2] (second moment of arrival)= λT +(λT)^2$</li>
+<li>$σ^2= λT$</li>
+</ul>
+<h2 id="Markov-Chain"><a href="#Markov-Chain" class="headerlink" title="Markov Chain"></a>Markov Chain</h2><ul>
+<li>a memory-less: predictions about its future state without consulting past states.</li>
+<li>$\Pr(X<em>NaN=x\mid X</em>{1}=x<em>{1},X</em>{2}=x<em>{2},\ldots ,X</em>{n}=x<em>{n})=\Pr(X</em>NaN=x\mid X<em>{n}=x</em>{n})$</li>
+</ul>
+<h2 id="Markov-for-M-M-1"><a href="#Markov-for-M-M-1" class="headerlink" title="Markov for M/M/1"></a>Markov for M/M/1</h2><p><img src="/img/Markov for M/M/1" srcset="/img/loading.gif" lazyload alt="Markov for M/M/1"></p>
+<ul>
+<li>The probability of being in each state<script type="math/tex; mode=display">
+P(n) = ρ^n(1-ρ)</script>when n = 0, it means idel state</li>
+</ul>
+<h3 id="Average-Queue-size"><a href="#Average-Queue-size" class="headerlink" title="Average Queue size"></a>Average Queue size</h3><p><img src="/img/Average Queue size.png" srcset="/img/loading.gif" lazyload alt="Average Queue size"></p>
+<ul>
+<li>Example<br><img src="/img/Average Queue sizeeg.png" srcset="/img/loading.gif" lazyload alt="Average Queue sizeeg"></li>
+</ul>
+<h2 id="M-server-systems-M-M-m"><a href="#M-server-systems-M-M-m" class="headerlink" title="M server systems: M/M/m"></a>M server systems: M/M/m</h2><p><img src="/img/mmm.png" srcset="/img/loading.gif" lazyload alt="mmm"><br>utilization factor</p>
+<script type="math/tex; mode=display">
+ρ= λ/mμ</script><ul>
+<li>all idel:<script type="math/tex; mode=display">
+P(0) = (1+ρ+)</script><h3 id="why"><a href="#why" class="headerlink" title="why"></a>why</h3>We can model the system as a Markov chain with three states:</li>
+</ul>
+<ol>
+<li>State 0: Both servers are idle</li>
+<li>State 1: One server is busy, one server is idle</li>
+<li>State 2: Both servers are busy</li>
+</ol>
+
                 
               </div>
             
@@ -541,12 +599,18 @@ E[X_v] = (n - 1)p</script><p><img src="/img/Degree Distribution.png" srcset="/im
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/02/25/CarlDay10/" title="Carl Algorithm day 10 | LC232 Implement Queue using Stacks LC225 Implement Stack using Queues">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Carl Algorithm day 10 | LC232 Implement Queue using Stacks LC225 Implement Stack using Queues</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/CarlDay9/" title="CarlDay9">
-                        <span class="hidden-mobile">CarlDay9</span>
+                      <a href="/2023/02/23/CarlDay9/" title="Carl Algorithm day 6 | KMP(complete later)">
+                        <span class="hidden-mobile">Carl Algorithm day 6 | KMP(complete later)</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

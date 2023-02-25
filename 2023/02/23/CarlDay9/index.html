@@ -16,13 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="CarlDay9">
+    <meta name="description" content="KMPWhere F and b do not match, it will return to the place where it matched before  prefix tablePrefix: all strings including the first letter but not the last letterSuffix: Contains only the last let">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Carl Algorithm day 6 | KMP(complete later)">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/02/23/CarlDay9/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
+<meta property="og:description" content="KMPWhere F and b do not match, it will return to the place where it matched before  prefix tablePrefix: all strings including the first letter but not the last letterSuffix: Contains only the last let">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-23T11:50:51.000Z">
-<meta property="article:modified_time" content="2023-02-23T11:50:51.983Z">
+<meta property="article:modified_time" content="2023-02-25T10:22:58.039Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -30,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CarlDay9 - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 6 | KMP(complete later) - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CarlDay9"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 6 | KMP(complete later)"></span>
           
         </div>
 
@@ -234,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          505 words
         
       </span>
     
@@ -245,7 +247,7 @@
         
         
         
-          1 mins
+          5 mins
         
       </span>
     
@@ -291,12 +293,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CarlDay9</h1>
+            <h1 style="display: none">Carl Algorithm day 6 | KMP(complete later)</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><p>Where F and b do not match, it will return to the place where it matched before</p>
+<ul>
+<li>prefix table<br>Prefix: all strings including the first letter but not the last letter<br>Suffix: Contains only the last letter and does not contain the initial letter<br>longest equal suffix</li>
+</ul>
+<p>During the matching process, record the longest equal suffix and suffix. When a conflict occurs, the index returned by the pointer is the position of the longest suffix and suffix</p>
+<p>When there is a string mismatch, you can know a part of the text content that has been matched before, and you can use this information to avoid matching from scratch</p>
+
                 
               </div>
             
@@ -313,7 +321,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CarlDay9</div>
+      <div>Carl Algorithm day 6 | KMP(complete later)</div>
       <div>https://alcuinyang.github.io/2023/02/23/CarlDay9/</div>
     </div>
     <div class="license-meta">
