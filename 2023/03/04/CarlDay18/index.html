@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Install and Initiate Pintos For CS162">
+    <meta name="description" content="513. Find Bottom Left Tree ValueQuestioneasy to solve by level traverse.1234567891011121314151617181920212223242526public int findBottomLeftValue(TreeNode root) &amp;#123;      if(root &#x3D;&#x3D; null)&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pintos">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/02/28/pintos/index.html">
+<meta property="og:title" content="CarlDay18">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/03/04/CarlDay18/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="Install and Initiate Pintos For CS162">
+<meta property="og:description" content="513. Find Bottom Left Tree ValueQuestioneasy to solve by level traverse.1234567891011121314151617181920212223242526public int findBottomLeftValue(TreeNode root) &amp;#123;      if(root &#x3D;&#x3D; null)&amp;#123;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-28T13:53:02.000Z">
-<meta property="article:modified_time" content="2023-03-01T11:03:32.550Z">
+<meta property="article:published_time" content="2023-03-04T14:57:20.000Z">
+<meta property="article:modified_time" content="2023-03-09T15:45:30.360Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>pintos - Alcuin&#39;s Blog</title>
+  <title>CarlDay18 - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pintos"></span>
+            <span id="subtitle" data-typed-text="CarlDay18"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-28 13:53" pubdate>
-          February 28, 2023 pm
+        <time datetime="2023-03-04 14:57" pubdate>
+          March 4, 2023 pm
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32 words
+          2.1k words
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          1 mins
+          18 mins
         
       </span>
     
@@ -293,12 +293,16 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pintos</h1>
+            <h1 style="display: none">CarlDay18</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Install-and-Initiate-Pintos-For-CS162"><a href="#Install-and-Initiate-Pintos-For-CS162" class="headerlink" title="Install and Initiate Pintos For CS162"></a>Install and Initiate Pintos For CS162</h1>
+                <span id="more"></span>
+<h1 id="513-Find-Bottom-Left-Tree-Value"><a href="#513-Find-Bottom-Left-Tree-Value" class="headerlink" title="513. Find Bottom Left Tree Value"></a>513. Find Bottom Left Tree Value</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-bottom-left-tree-value/">Question</a><br>easy to solve by level traverse.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findBottomLeftValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>      <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>      Queue&lt;TreeNode&gt; que = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>      que.offer(root);<br><br>      <span class="hljs-keyword">while</span>(!que.isEmpty())&#123;<br>          <span class="hljs-type">int</span> <span class="hljs-variable">sz</span> <span class="hljs-operator">=</span> que.size();<br>          <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; sz; i++)&#123;<br>              <span class="hljs-type">TreeNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> que.poll();<br>              <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)&#123;<br>                  res = cur.val;<br>              &#125;<br>              <span class="hljs-keyword">if</span>(cur.left != <span class="hljs-literal">null</span>)&#123;<br>                  que.offer(cur.left);<br><br>              &#125;<br>              <span class="hljs-keyword">if</span>(cur.right != <span class="hljs-literal">null</span>)&#123;<br>                  que.offer(cur.right);<br>              &#125;<br>          &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> res;<br>  &#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="2-Path-Sum"><a href="#2-Path-Sum" class="headerlink" title="2. Path Sum"></a>2. Path Sum</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum/">Question</a><br>Easy question, just figure out the logic: ‘targetSum-root.val’ is next recursion’s input.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasPathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> targetSum)</span> &#123;<br>       <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>       &#125;<br><br>       <span class="hljs-keyword">if</span>(root.left == <span class="hljs-literal">null</span> &amp;&amp; root.right == <span class="hljs-literal">null</span>)&#123;<br>           <span class="hljs-keyword">return</span> targetSum == root.val;<br>       &#125;<br><br>       <span class="hljs-type">boolean</span> <span class="hljs-variable">leftPath</span> <span class="hljs-operator">=</span> hasPathSum(root.left,targetSum - root.val);<br>       <span class="hljs-type">boolean</span> <span class="hljs-variable">rightPath</span> <span class="hljs-operator">=</span> hasPathSum(root.right, targetSum - root.val);<br>       <span class="hljs-keyword">return</span> (leftPath||rightPath);<br>   &#125;   <br></code></pre></td></tr></table></figure></p>
+<h1 id="106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><a href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal" class="headerlink" title="106. Construct Binary Tree from Inorder and Postorder Traversal"></a>106. Construct Binary Tree from Inorder and Postorder Traversal</h1><p>In post-order traverse, the last value is the root node. Then we can split the left subtree and right subtree by root. Then we can calculate the no nodes in left subtree and then recursive. The key in this question is <strong>how to identify the start and end in both postorder and inorder array to build subtrees</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>&#123;<br>     HashMap&lt;Integer, Integer&gt; inHash = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>     <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">buildTree</span><span class="hljs-params">(<span class="hljs-type">int</span> [] inorder, <span class="hljs-type">int</span>[] postorder)</span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; inorder.length; i++)&#123;<br>            inHash.put(inorder[i], i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> build(inorder, <span class="hljs-number">0</span>, inorder.length - <span class="hljs-number">1</span>, postorder, <span class="hljs-number">0</span>, postorder.length - <span class="hljs-number">1</span>);<br>     &#125;<br><br>     <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">build</span><span class="hljs-params">(<span class="hljs-type">int</span>[] inorder, <span class="hljs-type">int</span> inStart, <span class="hljs-type">int</span> inEnd, <span class="hljs-type">int</span>[] postorder, <span class="hljs-type">int</span> postStart, <span class="hljs-type">int</span> postEnd )</span>&#123;<br>         <span class="hljs-keyword">if</span>(inStart &gt; inEnd)&#123;<br>             <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>         &#125;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootVal</span> <span class="hljs-operator">=</span> postorder[postEnd];<span class="hljs-comment">//the root is the last node in postorder</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> inHash.get(rootVal);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">leftSize</span> <span class="hljs-operator">=</span> index - inStart; <br><br>         <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>(rootVal);<br>         root.left = build(inorder, inStart, index - <span class="hljs-number">1</span>, postorder, postStart, postStart + leftSize - <span class="hljs-number">1</span>);<br>         root.right = build(inorder, index + <span class="hljs-number">1</span>, inEnd, postorder, postStart + leftSize, postEnd - <span class="hljs-number">1</span>);<span class="hljs-comment">//mind the end of postorder is og end-1 bcs it is used for root</span><br>         <span class="hljs-keyword">return</span> root;<br><br><br>     &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -315,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pintos</div>
-      <div>https://alcuinyang.github.io/2023/02/28/pintos/</div>
+      <div>CarlDay18</div>
+      <div>https://alcuinyang.github.io/2023/03/04/CarlDay18/</div>
     </div>
     <div class="license-meta">
       
@@ -328,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 28, 2023</div>
+          <div>March 4, 2023</div>
         </div>
       
       
@@ -360,9 +364,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/01/CarlDay14/" title="Carl Algorithm day 14">
+                      <a href="/2023/03/09/CoreJavaNotes/" title="CoreJavaNotes">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Carl Algorithm day 14</span>
+                        <span class="hidden-mobile">CoreJavaNotes</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -370,8 +374,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/28/CarlDay13/" title="Carl Algorithm day 13 | LC239 Sliding Window Maximum, LC347 Top K Frequent Elements（Unfinished)">
-                        <span class="hidden-mobile">Carl Algorithm day 13 | LC239 Sliding Window Maximum, LC347 Top K Frequent Elements（Unfinished)</span>
+                      <a href="/2023/03/03/CarlDay17/" title="Carl Algorithm day 17 | LC110 Balanced Binary Tree, LC257 Binary Tree Paths, LC404 Sum of Left Leaves">
+                        <span class="hidden-mobile">Carl Algorithm day 17 | LC110 Balanced Binary Tree, LC257 Binary Tree Paths, LC404 Sum of Left Leaves</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
