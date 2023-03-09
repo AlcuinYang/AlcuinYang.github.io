@@ -16,23 +16,24 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="513. Find Bottom Left Tree ValueQuestioneasy to solve by level traverse.1234567891011121314151617181920212223242526public int findBottomLeftValue(TreeNode root) &amp;#123;      if(root &#x3D;&#x3D; null)&amp;#123;">
+    <meta name="description" content="LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CarlDay18">
+<meta property="og:title" content="Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/03/04/CarlDay18/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="513. Find Bottom Left Tree ValueQuestioneasy to solve by level traverse.1234567891011121314151617181920212223242526public int findBottomLeftValue(TreeNode root) &amp;#123;      if(root &#x3D;&#x3D; null)&amp;#123;">
+<meta property="og:description" content="LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-04T14:57:20.000Z">
-<meta property="article:modified_time" content="2023-03-09T15:45:30.360Z">
+<meta property="article:modified_time" content="2023-03-09T15:50:12.560Z">
 <meta property="article:author" content="Alcuin Yang">
+<meta property="article:tag" content="Algorithm, carl">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CarlDay18 - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CarlDay18"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal"></span>
           
         </div>
 
@@ -236,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k words
+          2.2k words
         
       </span>
     
@@ -247,7 +248,7 @@
         
         
         
-          18 mins
+          19 mins
         
       </span>
     
@@ -293,12 +294,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CarlDay18</h1>
+            <h1 style="display: none">Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal</h1>
             
             
               <div class="markdown-body">
                 
-                <span id="more"></span>
+                <p>LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal<br><span id="more"></span></p>
 <h1 id="513-Find-Bottom-Left-Tree-Value"><a href="#513-Find-Bottom-Left-Tree-Value" class="headerlink" title="513. Find Bottom Left Tree Value"></a>513. Find Bottom Left Tree Value</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-bottom-left-tree-value/">Question</a><br>easy to solve by level traverse.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findBottomLeftValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>      <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>      &#125;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>      Queue&lt;TreeNode&gt; que = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>      que.offer(root);<br><br>      <span class="hljs-keyword">while</span>(!que.isEmpty())&#123;<br>          <span class="hljs-type">int</span> <span class="hljs-variable">sz</span> <span class="hljs-operator">=</span> que.size();<br>          <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; sz; i++)&#123;<br>              <span class="hljs-type">TreeNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> que.poll();<br>              <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)&#123;<br>                  res = cur.val;<br>              &#125;<br>              <span class="hljs-keyword">if</span>(cur.left != <span class="hljs-literal">null</span>)&#123;<br>                  que.offer(cur.left);<br><br>              &#125;<br>              <span class="hljs-keyword">if</span>(cur.right != <span class="hljs-literal">null</span>)&#123;<br>                  que.offer(cur.right);<br>              &#125;<br>          &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> res;<br>  &#125;<br></code></pre></td></tr></table></figure></p>
 <h1 id="2-Path-Sum"><a href="#2-Path-Sum" class="headerlink" title="2. Path Sum"></a>2. Path Sum</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum/">Question</a><br>Easy question, just figure out the logic: ‘targetSum-root.val’ is next recursion’s input.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">hasPathSum</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> targetSum)</span> &#123;<br>       <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>       &#125;<br><br>       <span class="hljs-keyword">if</span>(root.left == <span class="hljs-literal">null</span> &amp;&amp; root.right == <span class="hljs-literal">null</span>)&#123;<br>           <span class="hljs-keyword">return</span> targetSum == root.val;<br>       &#125;<br><br>       <span class="hljs-type">boolean</span> <span class="hljs-variable">leftPath</span> <span class="hljs-operator">=</span> hasPathSum(root.left,targetSum - root.val);<br>       <span class="hljs-type">boolean</span> <span class="hljs-variable">rightPath</span> <span class="hljs-operator">=</span> hasPathSum(root.right, targetSum - root.val);<br>       <span class="hljs-keyword">return</span> (leftPath||rightPath);<br>   &#125;   <br></code></pre></td></tr></table></figure></p>
 <h1 id="106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><a href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal" class="headerlink" title="106. Construct Binary Tree from Inorder and Postorder Traversal"></a>106. Construct Binary Tree from Inorder and Postorder Traversal</h1><p>In post-order traverse, the last value is the root node. Then we can split the left subtree and right subtree by root. Then we can calculate the no nodes in left subtree and then recursive. The key in this question is <strong>how to identify the start and end in both postorder and inorder array to build subtrees</strong></p>
@@ -310,6 +311,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Algorithm-carl/">#Algorithm, carl</a>
+      
+    </div>
   
 </div>
 
@@ -319,7 +348,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CarlDay18</div>
+      <div>Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal</div>
       <div>https://alcuinyang.github.io/2023/03/04/CarlDay18/</div>
     </div>
     <div class="license-meta">
@@ -363,12 +392,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2023/03/09/CoreJavaNotes/" title="CoreJavaNotes">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CoreJavaNotes</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
