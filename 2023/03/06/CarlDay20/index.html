@@ -16,21 +16,25 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Carl Algorithm day 19 |">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/03/09/CarlDay19/index.html">
+    <meta name="description" content="LC654,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Carl Algorithm day 20 | LC654. Maximum Binary Tree, LC617 Merge Two Binary Trees, LC700 Search in a Binary Search Tree, LC98 Validate Binary Search Tree">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/03/06/CarlDay20/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
+<meta property="og:description" content="LC654,">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-09T15:47:32.000Z">
-<meta property="article:modified_time" content="2023-03-09T15:50:59.982Z">
+<meta property="og:image" content="https://alcuinyang.github.io/img/bst.HEIC">
+<meta property="article:published_time" content="2023-03-06T15:47:32.000Z">
+<meta property="article:modified_time" content="2023-03-09T16:44:18.377Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/bst.HEIC">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Carl Algorithm day 19 | - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 20 | LC654. Maximum Binary Tree, LC617 Merge Two Binary Trees, LC700 Search in a Binary Search Tree, LC98 Validate Binary Search Tree - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Carl Algorithm day 19 |"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 20 | LC654. Maximum Binary Tree, LC617 Merge Two Binary Trees, LC700 Search in a Binary Search Tree, LC98 Validate Binary Search Tree"></span>
           
         </div>
 
@@ -222,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-09 15:47" pubdate>
-          March 9, 2023 pm
+        <time datetime="2023-03-06 15:47" pubdate>
+          March 6, 2023 pm
         </time>
       </span>
     
@@ -234,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.9k words
         
       </span>
     
@@ -245,7 +249,7 @@
         
         
         
-          1 mins
+          16 mins
         
       </span>
     
@@ -291,12 +295,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Carl Algorithm day 19 |</h1>
+            <h1 style="display: none">Carl Algorithm day 20 | LC654. Maximum Binary Tree, LC617 Merge Two Binary Trees, LC700 Search in a Binary Search Tree, LC98 Validate Binary Search Tree</h1>
             
             
               <div class="markdown-body">
                 
-                <span id="more"></span>
+                <p>LC654,<br><span id="more"></span></p>
+<h1 id="654-Maximum-Binary-Tree"><a href="#654-Maximum-Binary-Tree" class="headerlink" title="654. Maximum Binary Tree"></a>654. Maximum Binary Tree</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-binary-tree/">Question</a><br>Same method as <a href="CarlDay18.md">106. Construct Binary Tree from Inorder and Postorder Traversal</a>. Find the max value, tag its location and split it into subtrees. Then construct them seperately by recursion.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>&#123;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">constructMaximumBinaryTree</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>       <span class="hljs-keyword">return</span> build(nums, <span class="hljs-number">0</span>, nums.length - <span class="hljs-number">1</span>);<br>    <br>    &#125;<br><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">build</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span>&#123;<br>        <span class="hljs-keyword">if</span>(start &gt; end)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Integer.MIN_VALUE;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">maxTag</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt;= end; i++)&#123;<br>            <span class="hljs-keyword">if</span>(nums[i] &gt; max)&#123;<br>                max = nums[i];<br>                maxTag = i;<span class="hljs-comment">//Find the location of max value</span><br>            &#125;<br><br>        &#125;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>(max);<br>        root.left = build(nums, start, maxTag - <span class="hljs-number">1</span>);<br>        root.right = build(nums, maxTag + <span class="hljs-number">1</span>, end);<br><br>        <span class="hljs-keyword">return</span> root;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="617-Merge-Two-Binary-Trees"><a href="#617-Merge-Two-Binary-Trees" class="headerlink" title="617. Merge Two Binary Trees"></a>617. Merge Two Binary Trees</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-binary-trees/">Question</a><br>These question has one same point is <strong>we need to focus on the meaning of funtion itself, which can save a lot of trouble</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">mergeTrees</span><span class="hljs-params">(TreeNode root1, TreeNode root2)</span> &#123;<br>        <span class="hljs-keyword">if</span>(root1 == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> root2;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root2 == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> root1;<br>        &#125;<br><br>        root1.val += root2.val;<br><br>        root1.left = mergeTrees(root1.left, root2.left);<br>        root1.right = mergeTrees(root1.right, root2.right);<br><br>        <span class="hljs-keyword">return</span> root1;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="700-Search-in-a-Binary-Search-Tree"><a href="#700-Search-in-a-Binary-Search-Tree" class="headerlink" title="700. Search in a Binary Search Tree"></a>700. Search in a Binary Search Tree</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-in-a-binary-search-tree/">Question</a><br><img src="/img/bst.HEIC" srcset="/img/loading.gif" lazyload alt="notes"><br>Welcome to BST. As the notes show the basic logic, we can searc the tree<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">searchBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> val)</span> &#123;<br>       <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br><br>       <span class="hljs-keyword">if</span>(root.val &gt; val)&#123;<br>           <span class="hljs-keyword">return</span> searchBST(root.left, val);<br>       &#125;<br>       <span class="hljs-keyword">if</span>(root.val &lt; val)&#123;<br>           <span class="hljs-keyword">return</span> searchBST(root.right, val);<br>       &#125;<br>       <span class="hljs-keyword">return</span> root;<br>   &#125;<br></code></pre></td></tr></table></figure></p>
+<h1 id="98-Validate-Binary-Search-Tree"><a href="#98-Validate-Binary-Search-Tree" class="headerlink" title="98. Validate Binary Search Tree"></a>98. Validate Binary Search Tree</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-binary-search-tree/">Question</a>  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    TreeNode max;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValidBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> isValidBST(root.left);<br>        <span class="hljs-keyword">if</span> (!left) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (max != <span class="hljs-literal">null</span> &amp;&amp; root.val &lt;= max.val) &#123;<span class="hljs-comment">//focus on this part bcs it make sure the validation of tree.</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        max = root;<br><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> isValidBST(root.right);<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -334,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Carl Algorithm day 19 |</div>
-      <div>https://alcuinyang.github.io/2023/03/09/CarlDay19/</div>
+      <div>Carl Algorithm day 20 | LC654. Maximum Binary Tree, LC617 Merge Two Binary Trees, LC700 Search in a Binary Search Tree, LC98 Validate Binary Search Tree</div>
+      <div>https://alcuinyang.github.io/2023/03/06/CarlDay20/</div>
     </div>
     <div class="license-meta">
       
@@ -347,7 +358,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 9, 2023</div>
+          <div>March 6, 2023</div>
         </div>
       
       
@@ -374,6 +385,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/04/CarlDay18/" title="Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal">
+                        <span class="hidden-mobile">Carl Algorithm day 18 | LC513 Find Bottom Left Tree Value, LC2 Path Sum, LC106 Construct Binary Tree from Inorder and Postorder Traversal</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
