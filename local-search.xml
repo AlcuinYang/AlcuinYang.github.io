@@ -4,6 +4,107 @@
   
   
   <entry>
+    <title>NetworkTheory789</title>
+    <link href="/2023/03/22/NetworkTheory789/"/>
+    <url>/2023/03/22/NetworkTheory789/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CS61a notes</title>
+    <link href="/2023/03/17/CS61a/"/>
+    <url>/2023/03/17/CS61a/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Lec3"><a href="#Lec3" class="headerlink" title="Lec3"></a>Lec3</h1><ul><li>the return falue of print is <code>None</code>, if we try <code>x = print(-2)</code>, then the result is <code>-2</code>, if we try <code>x</code>, then print nothing.</li></ul><p><img src="/img/print/jpeg" alt="print"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>cs61a, Python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BackTracking Algorithm</title>
+    <link href="/2023/03/15/backtracking/"/>
+    <url>/2023/03/15/backtracking/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>Backtracking algorithms are by-products of recursive algorithms. It is essentially a violent exhaustive search. It is really like the <strong>DFS</strong>. The difference between them is <strong>DFS is traversing nodes, Backtracking is traversing branches</strong>.  </p><h2 id="Aimed-questions"><a href="#Aimed-questions" class="headerlink" title="Aimed questions"></a>Aimed questions</h2><p>mostly the backtracking is for the questions of </p><ul><li>Combination problem: Find the set of k numbers in N numbers according to certain rules</li><li>Cutting problem: There are several ways to cut a string according to certain rules</li><li>Subset problem: How many eligible subsets are there in a set of N numbers</li><li>Arrangement problem: N numbers are arranged according to certain rules, there are several ways of arrangement</li><li>Board Problems: N Queens, Solving Sudoku, and More</li></ul><h1 id="skeleton"><a href="#skeleton" class="headerlink" title="skeleton"></a>skeleton</h1><p>For a bracktrack problem ,we have to consider 3 conditions:  </p><ol><li>path: the dicisions have been made </li><li>choices list: what we can choose</li><li>end condition<br>Here is the skeloton of it in pseudocode</li></ol><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">reslut = []<br><br>def backtrack(<span class="hljs-type">path</span>, choicesList)&#123;<br>    <span class="hljs-keyword">if</span>(satisfy <span class="hljs-keyword">end</span> condition)&#123;<br>        result.<span class="hljs-keyword">add</span>(<span class="hljs-type">path</span>);<br>        <span class="hljs-keyword">return</span><br>    &#125;<br>    <span class="hljs-keyword">for</span>(choice : choicesList)&#123;<br>        choose process<br>        backtrack(<span class="hljs-type">path</span>, choicesList);<br>        recall choose process<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>it is hard to determine the parameters at first, we can set the logic first and fullfill the parameters when we need it.  </p><h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Leetcode-Permutations-https-leetcode-cn-problems-permutations"><a href="#Leetcode-Permutations-https-leetcode-cn-problems-permutations" class="headerlink" title="Leetcode: Permutations(https://leetcode.cn/problems/permutations/)"></a>Leetcode: Permutations(<a href="https://leetcode.cn/problems/permutations/">https://leetcode.cn/problems/permutations/</a>)</h3><ul><li>Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.  </li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    List&lt;List&lt;Integer&gt;&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;(); <span class="hljs-comment">// result </span><br><br>    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="hljs-title function_">permute</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        LinkedList&lt;Integer&gt; path = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-type">boolean</span>[] used = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[nums.length];<span class="hljs-comment">// to identify whether it has been used, like in graph traversing, we need a identifier to avoid loop</span><br><br>        backtrack(nums, path, used);<br>        <span class="hljs-keyword">return</span> res;<br><br>    &#125;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">backtrack</span><span class="hljs-params">(<span class="hljs-type">int</span> [] nums, LinkedList&lt;Integer&gt; path, <span class="hljs-type">boolean</span>[] used)</span>&#123;<br>        <span class="hljs-keyword">if</span>(path.size() == nums.length)&#123;<br>            res.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>(path));<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; i++)&#123;<br>            <span class="hljs-keyword">if</span>(used[i])&#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br><br>            path.addLast(nums[i]);<br>            used[i] = <span class="hljs-literal">true</span>;<br>            backtrack(nums, path, used); <span class="hljs-comment">// recursion, we need to make decision before recursion and withdraw decision after recursion. It means we do pre-order thing first then post-order</span><br>            path.removeLast();<br>            used[i] = <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Algorithm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Carl Algorithm day 25 |</title>
+    <link href="/2023/03/11/CarlDay25/"/>
+    <url>/2023/03/11/CarlDay25/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Algorithm, carl, Backtracking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Carl Algorithm day 24 |</title>
+    <link href="/2023/03/10/CarlDay24/"/>
+    <url>/2023/03/10/CarlDay24/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Algorithm, carl, Backtracking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Network Theory Lecture Notes Lec5</title>
     <link href="/2023/03/10/NetworkTheory5/"/>
     <url>/2023/03/10/NetworkTheory5/</url>
@@ -21,6 +122,31 @@
     <tags>
       
       <tag>Network Theory</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Carl Algorithm day 23 |</title>
+    <link href="/2023/03/09/CarlDay23/"/>
+    <url>/2023/03/09/CarlDay23/</url>
+    
+    <content type="html"><![CDATA[<h1 id="538-Convert-BST-to-Greater-Tree"><a href="#538-Convert-BST-to-Greater-Tree" class="headerlink" title="538. Convert BST to Greater Tree"></a>538. Convert BST to Greater Tree</h1><p>tranverse from right to left<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        traverse(root);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        traverse(root.right);<span class="hljs-comment">//since we need the sum of all keys greater than the original key in BST, so we traverse right node first then left</span><br>        sum += root.val;<br>        root.val = sum;<br>        traverse(root.left);<br><br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Algorithm, carl, BST, binary tree</tag>
       
     </tags>
     
