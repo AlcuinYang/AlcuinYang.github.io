@@ -16,21 +16,26 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="NetworkTheory789">
+    <meta name="description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network Theory Lecture Notes Lec 7 8 9">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/03/22/NetworkTheory789/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
+<meta property="og:description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
 <meta property="article:published_time" content="2023-03-22T14:38:06.000Z">
-<meta property="article:modified_time" content="2023-03-22T14:38:06.221Z">
+<meta property="article:modified_time" content="2023-03-22T17:40:58.730Z">
 <meta property="article:author" content="Alcuin Yang">
+<meta property="article:tag" content="Network Theory">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>NetworkTheory789 - Alcuin&#39;s Blog</title>
+  <title>Network Theory Lecture Notes Lec 7 8 9 - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="NetworkTheory789"></span>
+            <span id="subtitle" data-typed-text="Network Theory Lecture Notes Lec 7 8 9"></span>
           
         </div>
 
@@ -234,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          2.2k words
         
       </span>
     
@@ -245,7 +250,7 @@
         
         
         
-          1 mins
+          18 mins
         
       </span>
     
@@ -291,12 +296,114 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">NetworkTheory789</h1>
+            <h1 style="display: none">Network Theory Lecture Notes Lec 7 8 9</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="Lecture-7-Introduction-to-Network-Optimisation"><a href="#Lecture-7-Introduction-to-Network-Optimisation" class="headerlink" title="Lecture 7: Introduction to Network Optimisation"></a>Lecture 7: Introduction to Network Optimisation</h1><h2 id="What-is-Optimisation"><a href="#What-is-Optimisation" class="headerlink" title="What is Optimisation"></a>What is Optimisation</h2><ul>
+<li>def: select the best element from a set of alternatives</li>
+</ul>
+<h3 id="When-the-function-is-complex"><a href="#When-the-function-is-complex" class="headerlink" title="When the function is complex"></a>When the function is complex</h3><ul>
+<li>by constrained optimisation<ul>
+<li>on the input</li>
+<li>output</li>
+<li>input and output</li>
+</ul>
+</li>
+</ul>
+<h2 id="network-optimisation"><a href="#network-optimisation" class="headerlink" title="network optimisation"></a>network optimisation</h2><h3 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h3><ul>
+<li>to avoid the congestion and thus latency, jitter and packet loss in network</li>
+</ul>
+<h3 id="what-to-we-need-to-know"><a href="#what-to-we-need-to-know" class="headerlink" title="what to we need to know?"></a>what to we need to know?</h3><ul>
+<li>traffic demand</li>
+<li>capabilities of each node</li>
+<li><p>capabilities of each link</p>
+</li>
+<li><p>Goal: to ensure, with the given set of constraints, an optimal network design with<strong> lowest cost structure</strong> and <strong>best performance</strong></p>
+</li>
+</ul>
+<h2 id="KPIs"><a href="#KPIs" class="headerlink" title="KPIs"></a>KPIs</h2><ul>
+<li>the target functions to optimise</li>
+<li>performance<ul>
+<li>Throughtput: effective speed (Mbps)</li>
+<li>latency: delay from when a packet is sent to when it is received</li>
+<li>jitter: variation of delays</li>
+<li>paket loss</li>
+<li>congestion</li>
+</ul>
+</li>
+</ul>
+<h2 id="Steps-of-network-optimisation"><a href="#Steps-of-network-optimisation" class="headerlink" title="Steps of network optimisation"></a>Steps of network optimisation</h2><ol>
+<li>building a mathematical model<ul>
+<li>linear, convex, concave model</li>
+</ul>
+</li>
+<li>existence of optimao solution for the model<ul>
+<li>fesaible solution: a vector x that satisfies all constrains</li>
+<li>optimal solution: A feasible solution that gives the best value for objective function among all feasible solutions.</li>
+</ul>
+</li>
+<li>characterisation of optimal solutions</li>
+<li>algorithms for computing optimal solutions</li>
+</ol>
+<h3 id="Building-a-mathematical-model"><a href="#Building-a-mathematical-model" class="headerlink" title="Building a mathematical model"></a>Building a mathematical model</h3><ul>
+<li>identifications:<ul>
+<li>variables<ul>
+<li>can use “Dummy” variable can make model more readable or to facilitate algorithmic solution</li>
+</ul>
+</li>
+<li>object function</li>
+<li>constrains<ul>
+<li>Equality constraints (latency = 10ms) are too restrictive, better avoiding</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="how-to-build-model"><a href="#how-to-build-model" class="headerlink" title="how to build model"></a>how to build model</h4><ul>
+<li>idendify all decision var<br>* </li>
+<li>identify objective function<ul>
+<li>Cost function or profit function</li>
+</ul>
+</li>
+<li>identify all Constraints on Decision Variables</li>
+</ul>
+<h2 id="Minimum-cost-flow-problem"><a href="#Minimum-cost-flow-problem" class="headerlink" title="Minimum cost flow problem"></a>Minimum cost flow problem</h2><ul>
+<li>aim:  finding the <strong>cheapest possible way</strong> of sending a certain amount of flow through a network.<ul>
+<li>$x_{ij} =$amount transferred on edge (i,j)</li>
+<li>$u_{ij} =$  capacity of edge</li>
+<li>$c_{ij} =$ unit cost of shipping flow from node i to node j on (i,j) </li>
+<li>$b_i =$ flow to be transmitted over the network<script type="math/tex; mode=display">
+minimise \sum_{(i,j)\in A}{c_{ij}x_{ij}}</script><script type="math/tex; mode=display">
+subject to \sum_j{x_{i,j}}-\sum_j{x_{j,i}} = b_i</script><img src="/img/MinimumCostFlowProblem.png" srcset="/img/loading.gif" lazyload alt="Minimum Cost Flow Problem"></li>
+</ul>
+</li>
+</ul>
+<h1 id="Lecture-8-Solving-optimisation-problems"><a href="#Lecture-8-Solving-optimisation-problems" class="headerlink" title="Lecture 8: Solving optimisation problems"></a>Lecture 8: Solving optimisation problems</h1><h2 id="convex-optimisation-problems"><a href="#convex-optimisation-problems" class="headerlink" title="convex optimisation problems"></a>convex optimisation problems</h2><h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><ul>
+<li>Unconstrained problems: <ul>
+<li>Newton’s method</li>
+</ul>
+</li>
+<li>constrained problems:     <ul>
+<li>Lagrangian dual problem</li>
+<li>Penalty method<ul>
+<li>Barrier method</li>
+<li>logarithmic barrier</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="convexity"><a href="#convexity" class="headerlink" title="convexity"></a>convexity</h3><p>Use $H(x)$, Hessian(second grad) of $f(x)$, if $H(x)$ is positive semi definite for all x<br><strong>M</strong> is positive semi definite if $x^tMx\geq0$ for all $x\in R^n$</p>
+<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><p>it can only get local min instead of global</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><ol>
+<li>choose start point $x_0$</li>
+<li>obtain better approximation<script type="math/tex; mode=display">
+x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
+<li>The process is repeated until a more accurate<br>approximation is found</li>
+</ol>
+
                 
               </div>
             
@@ -304,6 +411,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Master-Lecture-notes/" class="category-chain-item">Master Lecture notes</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Network-Theory/">#Network Theory</a>
+      
+    </div>
   
 </div>
 
@@ -313,7 +448,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>NetworkTheory789</div>
+      <div>Network Theory Lecture Notes Lec 7 8 9</div>
       <div>https://alcuinyang.github.io/2023/03/22/NetworkTheory789/</div>
     </div>
     <div class="license-meta">
@@ -357,6 +492,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/03/25/array/" title="Linkedarray &amp; Array algorithm">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linkedarray &amp; Array algorithm</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

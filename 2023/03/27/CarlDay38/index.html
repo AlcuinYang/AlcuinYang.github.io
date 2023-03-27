@@ -16,23 +16,24 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Types Int: var hiScore: Int &#x3D; 0   Flout: 6 decimal places Double: 15 decimal places">
+    <meta name="description" content="Dynamic Programming BasicWhat is Dynamic Programming?The key in DP is Exhaustive, we have to identify the state transfer function to solve SkeletonWe have to know the transfer function first then we c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swift">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/03/10/swift/index.html">
+<meta property="og:title" content="Carl Algorithm day 38 | LC509. Fibonacci Number, LC746. Min Cost Climbing Stairs, LC746. Min Cost Climbing Stairs">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/03/27/CarlDay38/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="Types Int: var hiScore: Int &#x3D; 0   Flout: 6 decimal places Double: 15 decimal places">
+<meta property="og:description" content="Dynamic Programming BasicWhat is Dynamic Programming?The key in DP is Exhaustive, we have to identify the state transfer function to solve SkeletonWe have to know the transfer function first then we c">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-10T13:54:37.000Z">
-<meta property="article:modified_time" content="2023-03-11T17:36:18.281Z">
+<meta property="article:published_time" content="2023-03-27T13:22:33.000Z">
+<meta property="article:modified_time" content="2023-03-27T13:56:21.805Z">
 <meta property="article:author" content="Alcuin Yang">
+<meta property="article:tag" content="Dynamic Programming, Algorithm, carl">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>swift - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 38 | LC509. Fibonacci Number, LC746. Min Cost Climbing Stairs, LC746. Min Cost Climbing Stairs - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="swift"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 38 | LC509. Fibonacci Number, LC746. Min Cost Climbing Stairs, LC746. Min Cost Climbing Stairs"></span>
           
         </div>
 
@@ -224,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-10 13:54" pubdate>
-          March 10, 2023 pm
+        <time datetime="2023-03-27 13:22" pubdate>
+          March 27, 2023 pm
         </time>
       </span>
     
@@ -236,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          67 words
+          1.5k words
         
       </span>
     
@@ -247,7 +248,7 @@
         
         
         
-          1 mins
+          13 mins
         
       </span>
     
@@ -293,16 +294,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">swift</h1>
+            <h1 style="display: none">Carl Algorithm day 38 | LC509. Fibonacci Number, LC746. Min Cost Climbing Stairs, LC746. Min Cost Climbing Stairs</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><ul>
-<li>Int: <code>var hiScore: Int = 0</code>  </li>
-<li>Flout: 6 decimal places</li>
-<li>Double: 15 decimal places</li>
-</ul>
+                <h1 id="Dynamic-Programming-Basic"><a href="#Dynamic-Programming-Basic" class="headerlink" title="Dynamic Programming Basic"></a>Dynamic Programming Basic</h1><p>What is Dynamic Programming?<br>The key in DP is <strong>Exhaustive</strong>, we have to identify the state transfer function to solve</p>
+<h2 id="Skeleton"><a href="#Skeleton" class="headerlink" title="Skeleton"></a>Skeleton</h2><p><strong>We have to know the transfer function first then we can know it  is a dynamic problem</strong></p>
+<ol>
+<li>Determine the meaning of the dp array (dp table) and the subscript</li>
+<li>Determine the recursive formula</li>
+<li>try to initialize dp array</li>
+<li>Determine traversal order</li>
+<li>Example derivation dp array</li>
+</ol>
+<h2 id="LC509-Fibonacci-Number"><a href="#LC509-Fibonacci-Number" class="headerlink" title="LC509. Fibonacci Number"></a>LC509. Fibonacci Number</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fibonacci-number/">Question</a><br>It is a very calssic problem in dp. Helpful to identify the process of dp   </p>
+<ol>
+<li>identify the meaning of dp[i]: value of No. i fib</li>
+<li>transfer function: dp[i] = dp[i - 1] + dp[i - 2]</li>
+<li>initiate the base case: dp[0] = 0, dp[1] = 1</li>
+<li>set the order of traverse: it is from the front to end  </li>
+<li>examples for dp of array: it is for when the answer is wrong, we can print the DP array</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n )</span> &#123;<br>    <span class="hljs-type">int</span> (n == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> [] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>];<br><br>    dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>    dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt;= n; i++)&#123;<br>        dp[i] = dp[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>];<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="LC70-Climbing-Stairs"><a href="#LC70-Climbing-Stairs" class="headerlink" title="LC70. Climbing Stairs"></a>LC70. Climbing Stairs</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/">Question</a>  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">climbStairs</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-keyword">return</span> dp(n);<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">dp</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>&#123;<br>        <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n; <span class="hljs-comment">//base case</span><br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span> [n + <span class="hljs-number">1</span>];<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">2</span>;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>; i &lt;= n; i++)&#123;<br>            dp[i] = dp[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>];<span class="hljs-comment">// transfer function</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="LC746-Min-Cost-Climbing-Stairs"><a href="#LC746-Min-Cost-Climbing-Stairs" class="headerlink" title="LC746. Min Cost Climbing Stairs"></a>LC746. Min Cost Climbing Stairs</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-climbing-stairs/">Question</a><br>In this question, we have to<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">minCostClimbingStairs</span><span class="hljs-params">(<span class="hljs-type">int</span>[] cost)</span> &#123;<br>        <span class="hljs-keyword">return</span> dp(cost);<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">dp</span><span class="hljs-params">(<span class="hljs-type">int</span>[] cost)</span> &#123;<br>        <span class="hljs-comment">//base case</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> cost.length;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[l + <span class="hljs-number">1</span>];<br><br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt;= l; i++) &#123;<br>            dp[i] = Math.min(dp[i - <span class="hljs-number">1</span>] + cost[i - <span class="hljs-number">1</span>], dp[i - <span class="hljs-number">2</span>] + cost[i - <span class="hljs-number">2</span>]);<br>            System.out.println(dp[i]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[l];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
@@ -311,6 +328,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Dynamic-Programming-Algorithm-carl/">#Dynamic Programming, Algorithm, carl</a>
+      
+    </div>
   
 </div>
 
@@ -320,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>swift</div>
-      <div>https://alcuinyang.github.io/2023/03/10/swift/</div>
+      <div>Carl Algorithm day 38 | LC509. Fibonacci Number, LC746. Min Cost Climbing Stairs, LC746. Min Cost Climbing Stairs</div>
+      <div>https://alcuinyang.github.io/2023/03/27/CarlDay38/</div>
     </div>
     <div class="license-meta">
       
@@ -333,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 10, 2023</div>
+          <div>March 27, 2023</div>
         </div>
       
       
@@ -360,6 +405,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/27/CarlDay39/" title="Carl Algorithm day 39 | LC62. Unique Paths, 63. Unique Paths II">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Carl Algorithm day 39 | LC62. Unique Paths, 63. Unique Paths II</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/25/array/" title="Linkedarray &amp; Array algorithm">
+                        <span class="hidden-mobile">Linkedarray &amp; Array algorithm</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
