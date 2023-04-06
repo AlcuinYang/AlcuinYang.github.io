@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Alcuin Yang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network Theory Lecture Notes Lec 7 8 9">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/03/22/NetworkTheory789/index.html">
+<meta property="og:site_name" content="Alcuin&#39;s Blog">
+<meta property="og:description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
+<meta property="article:published_time" content="2023-03-22T14:38:06.000Z">
+<meta property="article:modified_time" content="2023-03-22T17:40:58.730Z">
+<meta property="article:author" content="Alcuin Yang">
+<meta property="article:tag" content="Network Theory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Network Theory Lecture Notes Lec 7 8 9 - Alcuin&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"alcuinyang.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Alcuin</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Network Theory Lecture Notes Lec 7 8 9"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-22 14:38" pubdate>
+          March 22, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Network Theory Lecture Notes Lec 7 8 9</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Lecture-7-Introduction-to-Network-Optimisation"><a href="#Lecture-7-Introduction-to-Network-Optimisation" class="headerlink" title="Lecture 7: Introduction to Network Optimisation"></a>Lecture 7: Introduction to Network Optimisation</h1><h2 id="What-is-Optimisation"><a href="#What-is-Optimisation" class="headerlink" title="What is Optimisation"></a>What is Optimisation</h2><ul>
+<li>def: select the best element from a set of alternatives</li>
+</ul>
+<h3 id="When-the-function-is-complex"><a href="#When-the-function-is-complex" class="headerlink" title="When the function is complex"></a>When the function is complex</h3><ul>
+<li>by constrained optimisation<ul>
+<li>on the input</li>
+<li>output</li>
+<li>input and output</li>
+</ul>
+</li>
+</ul>
+<h2 id="network-optimisation"><a href="#network-optimisation" class="headerlink" title="network optimisation"></a>network optimisation</h2><h3 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h3><ul>
+<li>to avoid the congestion and thus latency, jitter and packet loss in network</li>
+</ul>
+<h3 id="what-to-we-need-to-know"><a href="#what-to-we-need-to-know" class="headerlink" title="what to we need to know?"></a>what to we need to know?</h3><ul>
+<li>traffic demand</li>
+<li>capabilities of each node</li>
+<li><p>capabilities of each link</p>
+</li>
+<li><p>Goal: to ensure, with the given set of constraints, an optimal network design with<strong> lowest cost structure</strong> and <strong>best performance</strong></p>
+</li>
+</ul>
+<h2 id="KPIs"><a href="#KPIs" class="headerlink" title="KPIs"></a>KPIs</h2><ul>
+<li>the target functions to optimise</li>
+<li>performance<ul>
+<li>Throughtput: effective speed (Mbps)</li>
+<li>latency: delay from when a packet is sent to when it is received</li>
+<li>jitter: variation of delays</li>
+<li>paket loss</li>
+<li>congestion</li>
+</ul>
+</li>
+</ul>
+<h2 id="Steps-of-network-optimisation"><a href="#Steps-of-network-optimisation" class="headerlink" title="Steps of network optimisation"></a>Steps of network optimisation</h2><ol>
+<li>building a mathematical model<ul>
+<li>linear, convex, concave model</li>
+</ul>
+</li>
+<li>existence of optimao solution for the model<ul>
+<li>fesaible solution: a vector x that satisfies all constrains</li>
+<li>optimal solution: A feasible solution that gives the best value for objective function among all feasible solutions.</li>
+</ul>
+</li>
+<li>characterisation of optimal solutions</li>
+<li>algorithms for computing optimal solutions</li>
+</ol>
+<h3 id="Building-a-mathematical-model"><a href="#Building-a-mathematical-model" class="headerlink" title="Building a mathematical model"></a>Building a mathematical model</h3><ul>
+<li>identifications:<ul>
+<li>variables<ul>
+<li>can use “Dummy” variable can make model more readable or to facilitate algorithmic solution</li>
+</ul>
+</li>
+<li>object function</li>
+<li>constrains<ul>
+<li>Equality constraints (latency = 10ms) are too restrictive, better avoiding</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="how-to-build-model"><a href="#how-to-build-model" class="headerlink" title="how to build model"></a>how to build model</h4><ul>
+<li>idendify all decision var<br>* </li>
+<li>identify objective function<ul>
+<li>Cost function or profit function</li>
+</ul>
+</li>
+<li>identify all Constraints on Decision Variables</li>
+</ul>
+<h2 id="Minimum-cost-flow-problem"><a href="#Minimum-cost-flow-problem" class="headerlink" title="Minimum cost flow problem"></a>Minimum cost flow problem</h2><ul>
+<li>aim:  finding the <strong>cheapest possible way</strong> of sending a certain amount of flow through a network.<ul>
+<li>$x_{ij} =$amount transferred on edge (i,j)</li>
+<li>$u_{ij} =$  capacity of edge</li>
+<li>$c_{ij} =$ unit cost of shipping flow from node i to node j on (i,j) </li>
+<li>$b_i =$ flow to be transmitted over the network<script type="math/tex; mode=display">
+minimise \sum_{(i,j)\in A}{c_{ij}x_{ij}}</script><script type="math/tex; mode=display">
+subject to \sum_j{x_{i,j}}-\sum_j{x_{j,i}} = b_i</script><img src="/img/MinimumCostFlowProblem.png" srcset="/img/loading.gif" lazyload alt="Minimum Cost Flow Problem"></li>
+</ul>
+</li>
+</ul>
+<h1 id="Lecture-8-Solving-optimisation-problems"><a href="#Lecture-8-Solving-optimisation-problems" class="headerlink" title="Lecture 8: Solving optimisation problems"></a>Lecture 8: Solving optimisation problems</h1><h2 id="convex-optimisation-problems"><a href="#convex-optimisation-problems" class="headerlink" title="convex optimisation problems"></a>convex optimisation problems</h2><h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><ul>
+<li>Unconstrained problems: <ul>
+<li>Newton’s method</li>
+</ul>
+</li>
+<li>constrained problems:     <ul>
+<li>Lagrangian dual problem</li>
+<li>Penalty method<ul>
+<li>Barrier method</li>
+<li>logarithmic barrier</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="convexity"><a href="#convexity" class="headerlink" title="convexity"></a>convexity</h3><p>Use $H(x)$, Hessian(second grad) of $f(x)$, if $H(x)$ is positive semi definite for all x<br><strong>M</strong> is positive semi definite if $x^tMx\geq0$ for all $x\in R^n$</p>
+<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><p>it can only get local min instead of global</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><ol>
+<li>choose start point $x_0$</li>
+<li>obtain better approximation<script type="math/tex; mode=display">
+x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
+<li>The process is repeated until a more accurate<br>approximation is found</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Master-Lecture-notes/" class="category-chain-item">Master Lecture notes</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Network-Theory/">#Network Theory</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Network Theory Lecture Notes Lec 7 8 9</div>
+      <div>https://alcuinyang.github.io/2023/03/22/NetworkTheory789/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Alcuin Yang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 22, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/25/array/" title="Linkedarray &amp; Array algorithm">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Linkedarray &amp; Array algorithm</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/17/CS61a/" title="CS61a notes">
+                        <span class="hidden-mobile">CS61a notes</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
