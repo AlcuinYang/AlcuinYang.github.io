@@ -98,25 +98,6 @@
   
   
   <entry>
-    <title>CS61a notes</title>
-    <link href="/2023/03/17/CS61a/"/>
-    <url>/2023/03/17/CS61a/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Lec3"><a href="#Lec3" class="headerlink" title="Lec3"></a>Lec3</h1><ul><li>the return falue of print is <code>None</code>, if we try <code>x = print(-2)</code>, then the result is <code>-2</code>, if we try <code>x</code>, then print nothing.</li></ul><p><img src="/img/print/jpeg" alt="print"></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>cs61a, Python</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>BackTracking Algorithm</title>
     <link href="/2023/03/15/backtracking/"/>
     <url>/2023/03/15/backtracking/</url>
@@ -211,36 +192,11 @@
   
   
   <entry>
-    <title>Network Theory Lecture Notes Lec5</title>
-    <link href="/2023/03/10/NetworkTheory5/"/>
-    <url>/2023/03/10/NetworkTheory5/</url>
-    
-    <content type="html"><![CDATA[<p>Queueing and Modelling Delay in the Networks<br><span id="more"></span></p><h1 id="Queueing-and-Modelling-Delay-in-the-Networks"><a href="#Queueing-and-Modelling-Delay-in-the-Networks" class="headerlink" title="Queueing and Modelling Delay in the Networks"></a>Queueing and Modelling Delay in the Networks</h1><h2 id="Queueing-models"><a href="#Queueing-models" class="headerlink" title="Queueing models"></a>Queueing models</h2>]]></content>
-    
-    
-    <categories>
-      
-      <category>Master Lecture notes</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Network Theory</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Carl Algorithm day 23 |</title>
+    <title>Carl Algorithm day 23 | LC538. Convert BST to Greater Tree</title>
     <link href="/2023/03/09/CarlDay23/"/>
     <url>/2023/03/09/CarlDay23/</url>
     
-    <content type="html"><![CDATA[<h1 id="538-Convert-BST-to-Greater-Tree"><a href="#538-Convert-BST-to-Greater-Tree" class="headerlink" title="538. Convert BST to Greater Tree"></a>538. Convert BST to Greater Tree</h1><p>tranverse from right to left<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        traverse(root);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        traverse(root.right);<span class="hljs-comment">//since we need the sum of all keys greater than the original key in BST, so we traverse right node first then left</span><br>        sum += root.val;<br>        root.val = sum;<br>        traverse(root.left);<br><br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="LC538-Convert-BST-to-Greater-Tree"><a href="#LC538-Convert-BST-to-Greater-Tree" class="headerlink" title="LC538. Convert BST to Greater Tree"></a>LC538. Convert BST to Greater Tree</h1><p>tranverse from right to left<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        traverse(root);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        traverse(root.right);<span class="hljs-comment">//since we need the sum of all keys greater than the original key in BST, so we traverse right node first then left</span><br>        sum += root.val;<br>        root.val = sum;<br>        traverse(root.left);<br><br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure></p>]]></content>
     
     
     <categories>
