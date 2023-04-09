@@ -16,26 +16,26 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
+    <meta name="description" content="N QueensDescriptionQuestionThe n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.   Given an integer n, return all distinct solutions">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Network Theory Lecture Notes Lec 7 8 9">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/03/22/NetworkTheory789/index.html">
+<meta property="og:title" content="Carl Algorithm day 30 |">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/03/16/CarlDay30/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu">
+<meta property="og:description" content="N QueensDescriptionQuestionThe n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.   Given an integer n, return all distinct solutions">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
-<meta property="article:published_time" content="2023-03-22T14:38:06.000Z">
-<meta property="article:modified_time" content="2023-03-22T17:40:58.730Z">
+<meta property="og:image" content="https://alcuinyang.github.io/img/NQueens.png">
+<meta property="article:published_time" content="2023-03-16T15:16:14.000Z">
+<meta property="article:modified_time" content="2023-04-09T14:38:16.096Z">
 <meta property="article:author" content="Alcuin Yang">
-<meta property="article:tag" content="Network Theory">
+<meta property="article:tag" content="Algorithm, carl, Backtracking">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://alcuinyang.github.io/img/MinimumCostFlowProblem.png">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/NQueens.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Network Theory Lecture Notes Lec 7 8 9 - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 30 | - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Network Theory Lecture Notes Lec 7 8 9"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 30 |"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-22 14:38" pubdate>
-          March 22, 2023 pm
+        <time datetime="2023-03-16 15:16" pubdate>
+          March 16, 2023 pm
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k words
+          2.3k words
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          18 mins
+          20 mins
         
       </span>
     
@@ -296,114 +296,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Network Theory Lecture Notes Lec 7 8 9</h1>
+            <h1 style="display: none">Carl Algorithm day 30 |</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Lecture-7-Introduction-to-Network-Optimisation"><a href="#Lecture-7-Introduction-to-Network-Optimisation" class="headerlink" title="Lecture 7: Introduction to Network Optimisation"></a>Lecture 7: Introduction to Network Optimisation</h1><h2 id="What-is-Optimisation"><a href="#What-is-Optimisation" class="headerlink" title="What is Optimisation"></a>What is Optimisation</h2><ul>
-<li>def: select the best element from a set of alternatives</li>
-</ul>
-<h3 id="When-the-function-is-complex"><a href="#When-the-function-is-complex" class="headerlink" title="When the function is complex"></a>When the function is complex</h3><ul>
-<li>by constrained optimisation<ul>
-<li>on the input</li>
-<li>output</li>
-<li>input and output</li>
-</ul>
-</li>
-</ul>
-<h2 id="network-optimisation"><a href="#network-optimisation" class="headerlink" title="network optimisation"></a>network optimisation</h2><h3 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h3><ul>
-<li>to avoid the congestion and thus latency, jitter and packet loss in network</li>
-</ul>
-<h3 id="what-to-we-need-to-know"><a href="#what-to-we-need-to-know" class="headerlink" title="what to we need to know?"></a>what to we need to know?</h3><ul>
-<li>traffic demand</li>
-<li>capabilities of each node</li>
-<li><p>capabilities of each link</p>
-</li>
-<li><p>Goal: to ensure, with the given set of constraints, an optimal network design with<strong> lowest cost structure</strong> and <strong>best performance</strong></p>
-</li>
-</ul>
-<h2 id="KPIs"><a href="#KPIs" class="headerlink" title="KPIs"></a>KPIs</h2><ul>
-<li>the target functions to optimise</li>
-<li>performance<ul>
-<li>Throughtput: effective speed (Mbps)</li>
-<li>latency: delay from when a packet is sent to when it is received</li>
-<li>jitter: variation of delays</li>
-<li>paket loss</li>
-<li>congestion</li>
-</ul>
-</li>
-</ul>
-<h2 id="Steps-of-network-optimisation"><a href="#Steps-of-network-optimisation" class="headerlink" title="Steps of network optimisation"></a>Steps of network optimisation</h2><ol>
-<li>building a mathematical model<ul>
-<li>linear, convex, concave model</li>
-</ul>
-</li>
-<li>existence of optimao solution for the model<ul>
-<li>fesaible solution: a vector x that satisfies all constrains</li>
-<li>optimal solution: A feasible solution that gives the best value for objective function among all feasible solutions.</li>
-</ul>
-</li>
-<li>characterisation of optimal solutions</li>
-<li>algorithms for computing optimal solutions</li>
+                <h1 id="N-Queens"><a href="#N-Queens" class="headerlink" title="N Queens"></a>N Queens</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/n-queens/">Question</a><br>The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.  </p>
+<p>Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.  </p>
+<p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space, respectively.<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-symbol">Input</span>: n = <span class="hljs-number">4</span><br><span class="hljs-symbol">Output</span>: [[<span class="hljs-string">&quot;.Q..&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;..Q.&quot;</span>],[<span class="hljs-string">&quot;..Q.&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;.Q..&quot;</span>]]<br></code></pre></td></tr></table></figure><br><img src="/img/NQueens.png" srcset="/img/loading.gif" lazyload alt="NQueens"></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Clearly this is a difficult but a typical question of backtracking.  </p>
+<h3 id="3-steps"><a href="#3-steps" class="headerlink" title="3 steps"></a>3 steps</h3><ol>
+<li>parameters:<ol>
+<li><code>List&lt;String&gt; board</code>: we should initialze the board by the n</li>
+<li>row</li>
 </ol>
-<h3 id="Building-a-mathematical-model"><a href="#Building-a-mathematical-model" class="headerlink" title="Building a mathematical model"></a>Building a mathematical model</h3><ul>
-<li>identifications:<ul>
-<li>variables<ul>
-<li>can use “Dummy” variable can make model more readable or to facilitate algorithmic solution</li>
-</ul>
 </li>
-<li>object function</li>
-<li>constrains<ul>
-<li>Equality constraints (latency = 10ms) are too restrictive, better avoiding</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="how-to-build-model"><a href="#how-to-build-model" class="headerlink" title="how to build model"></a>how to build model</h4><ul>
-<li>idendify all decision var<br>* </li>
-<li>identify objective function<ul>
-<li>Cost function or profit function</li>
-</ul>
-</li>
-<li>identify all Constraints on Decision Variables</li>
-</ul>
-<h2 id="Minimum-cost-flow-problem"><a href="#Minimum-cost-flow-problem" class="headerlink" title="Minimum cost flow problem"></a>Minimum cost flow problem</h2><ul>
-<li>aim:  finding the <strong>cheapest possible way</strong> of sending a certain amount of flow through a network.<ul>
-<li>$x_{ij} =$amount transferred on edge (i,j)</li>
-<li>$u_{ij} =$  capacity of edge</li>
-<li>$c_{ij} =$ unit cost of shipping flow from node i to node j on (i,j) </li>
-<li>$b_i =$ flow to be transmitted over the network<script type="math/tex; mode=display">
-minimise \sum_{(i,j)\in A}{c_{ij}x_{ij}}</script><script type="math/tex; mode=display">
-subject to \sum_j{x_{i,j}}-\sum_j{x_{j,i}} = b_i</script><img src="/img/MinimumCostFlowProblem.png" srcset="/img/loading.gif" lazyload alt="Minimum Cost Flow Problem"></li>
-</ul>
-</li>
-</ul>
-<h1 id="Lecture-8-Solving-optimisation-problems"><a href="#Lecture-8-Solving-optimisation-problems" class="headerlink" title="Lecture 8: Solving optimisation problems"></a>Lecture 8: Solving optimisation problems</h1><h2 id="convex-optimisation-problems"><a href="#convex-optimisation-problems" class="headerlink" title="convex optimisation problems"></a>convex optimisation problems</h2><h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><ul>
-<li>Unconstrained problems: <ul>
-<li>Newton’s method</li>
-</ul>
-</li>
-<li>constrained problems:     <ul>
-<li>Lagrangian dual problem</li>
-<li>Penalty method<ul>
-<li>Barrier method</li>
-<li>logarithmic barrier</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="convexity"><a href="#convexity" class="headerlink" title="convexity"></a>convexity</h3><p>Use $H(x)$, Hessian(second grad) of $f(x)$, if $H(x)$ is positive semi definite for all x<br><strong>M</strong> is positive semi definite if $x^tMx\geq0$ for all $x\in R^n$</p>
-<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><p>it can only get local min instead of global</p>
-<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><ol>
-<li>choose start point $x_0$</li>
-<li>obtain better approximation<script type="math/tex; mode=display">
-x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
-<li>The process is repeated until a more accurate<br>approximation is found</li>
+<li>end condition<ol>
+<li><code>row == board.size()</code>: if row reach the last row, the end </li>
 </ol>
-
+</li>
+<li>single layer<ol>
+<li>function <code>isValid</code> to judge whether it is valid to place a queen here: inlcuding <strong>column</strong>, <strong>top right</strong>, <strong>top left</strong></li>
+<li>set the queen</li>
+</ol>
+</li>
+</ol>
+<h3 id="codes"><a href="#codes" class="headerlink" title="codes"></a>codes</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    List&lt;List&lt;String&gt;&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">public</span> List&lt;List&lt;String&gt;&gt; <span class="hljs-title function_">solveNQueens</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-comment">// &#x27;.&#x27; means empty</span><br>        List&lt;String&gt; board = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            sb.append(<span class="hljs-string">&#x27;.&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            board.add(sb.toString());<br>        &#125;<br>        backtrack(board, <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">backtrack</span><span class="hljs-params">(List&lt;String&gt; board, <span class="hljs-type">int</span> row)</span> &#123;<br>        <span class="hljs-keyword">if</span> (row == board.size()) &#123;<br>            res.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(board));<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> board.get(row).length();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; col &lt; n; col++) &#123;<br><br>            <span class="hljs-keyword">if</span> (!isValid(board, row, col)) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br><br>            <span class="hljs-type">char</span>[] arr = board.get(row).toCharArray();<br>            arr[col] = <span class="hljs-string">&#x27;Q&#x27;</span>;<br>            board.set(row, String.valueOf(arr));<br><br>            backtrack(board, row + <span class="hljs-number">1</span>);<br><br>            arr[col] = <span class="hljs-string">&#x27;.&#x27;</span>;<br>            board.set(row, String.valueOf(arr));<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// check the validation of queens</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(List&lt;String&gt; board, <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> board.size();<br><br>        <span class="hljs-comment">// check column</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= row; i++) &#123;<br>            <span class="hljs-keyword">if</span> (board.get(i).charAt(col) == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// check top right</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> row - <span class="hljs-number">1</span>, j = col + <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;<br>            <span class="hljs-keyword">if</span> (board.get(i).charAt(j) == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">// check top left</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> row - <span class="hljs-number">1</span>, j = col - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span> &amp;&amp; j &gt;= <span class="hljs-number">0</span>; i--, j--) &#123;<br>            <span class="hljs-keyword">if</span> (board.get(i).charAt(j) == <span class="hljs-string">&#x27;Q&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -421,7 +339,7 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
     
       <span class="category-chain">
         
-  <a href="/categories/Master-Lecture-notes/" class="category-chain-item">Master Lecture notes</a>
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
   
   
 
@@ -436,7 +354,7 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Network-Theory/">#Network Theory</a>
+        <a href="/tags/Algorithm-carl-Backtracking/">#Algorithm, carl, Backtracking</a>
       
     </div>
   
@@ -448,8 +366,8 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Network Theory Lecture Notes Lec 7 8 9</div>
-      <div>https://alcuinyang.github.io/2023/03/22/NetworkTheory789/</div>
+      <div>Carl Algorithm day 30 |</div>
+      <div>https://alcuinyang.github.io/2023/03/16/CarlDay30/</div>
     </div>
     <div class="license-meta">
       
@@ -461,7 +379,7 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 22, 2023</div>
+          <div>March 16, 2023</div>
         </div>
       
       
@@ -493,9 +411,9 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/25/array/" title="Linkedarray &amp; Array algorithm">
+                      <a href="/2023/03/22/NetworkTheory789/" title="Network Theory Lecture Notes Lec 7 8 9">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linkedarray &amp; Array algorithm</span>
+                        <span class="hidden-mobile">Network Theory Lecture Notes Lec 7 8 9</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -503,8 +421,8 @@ x_1 = x_0-\frac{f(x_0)}{f'(x_0)}</script></li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/16/CarlDay30/" title="Carl Algorithm day 30 |">
-                        <span class="hidden-mobile">Carl Algorithm day 30 |</span>
+                      <a href="/2023/03/15/backtracking/" title="BackTracking Algorithm">
+                        <span class="hidden-mobile">BackTracking Algorithm</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
