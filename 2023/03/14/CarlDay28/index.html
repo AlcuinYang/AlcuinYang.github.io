@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC78. SubsetsDescriptionGiven an integer array nums of unique elements, return all possible subsets (the power set).   The solution set must not contain duplicate subsets. Return the solution in any o">
+    <meta name="description" content="LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Carl Algorithm day 28 | LC78. Subsets">
+<meta property="og:title" content="Carl Algorithm day 28 | LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/03/14/CarlDay28/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="LC78. SubsetsDescriptionGiven an integer array nums of unique elements, return all possible subsets (the power set).   The solution set must not contain duplicate subsets. Return the solution in any o">
+<meta property="og:description" content="LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-14T10:16:14.000Z">
-<meta property="article:modified_time" content="2023-04-09T13:25:23.043Z">
+<meta property="article:modified_time" content="2023-04-09T14:55:00.277Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Algorithm, carl, Backtracking">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Carl Algorithm day 28 | LC78. Subsets - Alcuin&#39;s Blog</title>
+  <title>Carl Algorithm day 28 | LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Carl Algorithm day 28 | LC78. Subsets"></span>
+            <span id="subtitle" data-typed-text="Carl Algorithm day 28 | LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences"></span>
           
         </div>
 
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k words
+          3.7k words
         
       </span>
     
@@ -294,12 +294,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Carl Algorithm day 28 | LC78. Subsets</h1>
+            <h1 style="display: none">Carl Algorithm day 28 | LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="LC78-Subsets"><a href="#LC78-Subsets" class="headerlink" title="LC78. Subsets"></a>LC78. Subsets</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array nums of unique elements, return all possible subsets (the power set).  </p>
+                <p>LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences<br><span id="more"></span></p>
+<h1 id="LC78-Subsets"><a href="#LC78-Subsets" class="headerlink" title="LC78. Subsets"></a>LC78. Subsets</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array nums of unique elements, return all possible subsets (the power set).  </p>
 <p>The solution set must not contain duplicate subsets. Return the solution in any order.</p>
 <p>Example 1:<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">Input: nums = <span class="hljs-comment">[1,2,3]</span><br>Output: <span class="hljs-comment">[<span class="hljs-comment">[]</span>,<span class="hljs-comment">[1]</span>,<span class="hljs-comment">[2]</span>,<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[3]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[2,3]</span>,<span class="hljs-comment">[1,2,3]</span>]</span><br></code></pre></td></tr></table></figure><br>Example 2:<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">Input: nums = [<span class="hljs-number">0</span>]<br>Output: <span class="hljs-string">[[],[0]]</span><br></code></pre></td></tr></table></figure></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>This is a brand new kind of question. If the subset problem, combination problem, and segmentation problem are all abstracted into a <strong>tree</strong>, then the combination problem and the segmentation problem are to <strong>collect the leaf nodes</strong> of the tree, and the subset problem is to <strong>find all the nodes</strong> of the tree!</p>
@@ -405,7 +406,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Carl Algorithm day 28 | LC78. Subsets</div>
+      <div>Carl Algorithm day 28 | LC78. Subsets, LC90. Subsets II, LC491. Non-decreasing Subsequences</div>
       <div>https://alcuinyang.github.io/2023/03/14/CarlDay28/</div>
     </div>
     <div class="license-meta">
@@ -460,8 +461,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/13/CarlDay27/" title="Carl Algorithm day 27 | 39. Combination Sum, LC40. Combination Sum II, LC93. Restore IP Addresses">
-                        <span class="hidden-mobile">Carl Algorithm day 27 | 39. Combination Sum, LC40. Combination Sum II, LC93. Restore IP Addresses</span>
+                      <a href="/2023/03/13/CarlDay27/" title="Carl Algorithm day 27 | LC39. Combination Sum, LC40. Combination Sum II, LC93. Restore IP Addresses">
+                        <span class="hidden-mobile">Carl Algorithm day 27 | LC39. Combination Sum, LC40. Combination Sum II, LC93. Restore IP Addresses</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

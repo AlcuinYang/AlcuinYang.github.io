@@ -16,17 +16,17 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Backtracking algorithm basicsee in Backtrack algorithm LC77. CombinationsDescriptionQuestion   Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].">
+    <meta name="description" content="Backtracking algorithm basic and LC77. Combinations">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Carl Algorithm day 24 | LC77. Combinations">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/03/10/CarlDay24/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="Backtracking algorithm basicsee in Backtrack algorithm LC77. CombinationsDescriptionQuestion   Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].">
+<meta property="og:description" content="Backtracking algorithm basic and LC77. Combinations">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://alcuinyang.github.io/img/combinationeg.jpeg">
 <meta property="og:image" content="https://alcuinyang.github.io/img/combinationeg.jpeg">
 <meta property="article:published_time" content="2023-03-10T14:44:41.000Z">
-<meta property="article:modified_time" content="2023-04-06T17:04:27.848Z">
+<meta property="article:modified_time" content="2023-04-09T14:54:33.192Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Algorithm, carl, Backtracking">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k words
+          2.5k words
         
       </span>
     
@@ -302,7 +302,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Backtracking-algorithm-basic"><a href="#Backtracking-algorithm-basic" class="headerlink" title="Backtracking algorithm basic"></a>Backtracking algorithm basic</h1><p>see in <a href="backtracking.md">Backtrack algorithm</a></p>
+                <p>Backtracking algorithm basic and LC77. Combinations<br><span id="more"></span></p>
+<h1 id="Backtracking-algorithm-basic"><a href="#Backtracking-algorithm-basic" class="headerlink" title="Backtracking algorithm basic"></a>Backtracking algorithm basic</h1><p>see in <a href="backtracking.md">Backtrack algorithm</a></p>
 <h1 id="LC77-Combinations"><a href="#LC77-Combinations" class="headerlink" title="LC77. Combinations"></a>LC77. Combinations</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/">Question</a>  </p>
 <p>Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].  </p>
 <p>Example 1:<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">Input: n = 4, k = 2<br>Output: <span class="hljs-comment">[<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[1,4]</span>,<span class="hljs-comment">[2,3]</span>,<span class="hljs-comment">[2,4]</span>,<span class="hljs-comment">[3,4]</span>]</span><br></code></pre></td></tr></table></figure><br>Explanation: There are 4 choose 2 = 6 total combinations.<br>Note that combinations are unordered, i.e., [1,2] and [2,1] are considered to be the same combination.<br>Example 2:<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">Input: n = <span class="hljs-number">1</span>, k = <span class="hljs-number">1</span><br>Output: <span class="hljs-string">[[1]]</span><br></code></pre></td></tr></table></figure><br>Explanation: There is 1 choose 1 = 1 total combination. </p>

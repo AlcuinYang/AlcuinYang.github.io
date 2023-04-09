@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="LC538. Convert BST to Greater Treetranverse from right to left1234567891011121314151617class Solution &amp;#123;    int sum &#x3D; 0;    public TreeNode convertBST(TreeNode root) &amp;#123;        traverse(root);">
+    <meta name="description" content="LC538. Convert BST to Greater Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Carl Algorithm day 23 | LC538. Convert BST to Greater Tree">
 <meta property="og:url" content="https://alcuinyang.github.io/2023/03/09/CarlDay23/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="LC538. Convert BST to Greater Treetranverse from right to left1234567891011121314151617class Solution &amp;#123;    int sum &#x3D; 0;    public TreeNode convertBST(TreeNode root) &amp;#123;        traverse(root);">
+<meta property="og:description" content="LC538. Convert BST to Greater Tree">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-09T14:44:31.000Z">
-<meta property="article:modified_time" content="2023-04-07T11:04:51.351Z">
+<meta property="article:modified_time" content="2023-04-09T14:54:18.626Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta property="article:tag" content="Algorithm, carl, BST, binary tree">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          426 words
+          455 words
         
       </span>
     
@@ -299,7 +299,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="LC538-Convert-BST-to-Greater-Tree"><a href="#LC538-Convert-BST-to-Greater-Tree" class="headerlink" title="LC538. Convert BST to Greater Tree"></a>LC538. Convert BST to Greater Tree</h1><p>tranverse from right to left<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        traverse(root);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        traverse(root.right);<span class="hljs-comment">//since we need the sum of all keys greater than the original key in BST, so we traverse right node first then left</span><br>        sum += root.val;<br>        root.val = sum;<br>        traverse(root.left);<br><br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure></p>
+                <p>LC538. Convert BST to Greater Tree<br><span id="more"></span></p>
+<h1 id="LC538-Convert-BST-to-Greater-Tree"><a href="#LC538-Convert-BST-to-Greater-Tree" class="headerlink" title="LC538. Convert BST to Greater Tree"></a>LC538. Convert BST to Greater Tree</h1><p>tranverse from right to left<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        traverse(root);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        traverse(root.right);<span class="hljs-comment">//since we need the sum of all keys greater than the original key in BST, so we traverse right node first then left</span><br>        sum += root.val;<br>        root.val = sum;<br>        traverse(root.left);<br><br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
