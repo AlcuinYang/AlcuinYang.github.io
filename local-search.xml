@@ -20,7 +20,11 @@
     
     <tags>
       
-      <tag>Dynamic Programming, Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -45,7 +49,11 @@
     
     <tags>
       
-      <tag>Dynamic Programming, Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -114,7 +122,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -134,6 +146,10 @@
     <tags>
       
       <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -158,7 +174,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -183,7 +203,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -208,7 +232,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -233,7 +261,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -258,7 +290,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Backtracking</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -283,7 +319,13 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree, BST</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>BST</tag>
       
     </tags>
     
@@ -308,7 +350,13 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree, BST</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>BST</tag>
       
     </tags>
     
@@ -333,7 +381,13 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree, BST</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>BST</tag>
       
     </tags>
     
@@ -358,7 +412,13 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree, BST</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>BST</tag>
       
     </tags>
     
@@ -383,7 +443,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
       
     </tags>
     
@@ -408,7 +472,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
       
     </tags>
     
@@ -433,7 +501,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Binary Tree</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
       
     </tags>
     
@@ -458,7 +530,40 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Carl Algorithm day 14 | Binary tree basis</title>
+    <link href="/2023/03/01/CarlDay14/"/>
+    <url>/2023/03/01/CarlDay14/</url>
+    
+    <content type="html"><![CDATA[<p>Binary tree basis<br><span id="more"></span></p><h1 id="Binary-Tree"><a href="#Binary-Tree" class="headerlink" title="Binary Tree"></a>Binary Tree</h1><p>In Java the TreeNode is defined<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeNode</span>&#123;<br>    <span class="hljs-type">int</span> val;<br>    TreeNode left;<br>    TreeNode right;<br><br>    TreeNode()&#123;&#125;<br>    TreeNode(<span class="hljs-type">int</span> val)&#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>    &#125;<br>    TreeNode(<span class="hljs-type">int</span> val, TreeNode left, TreeNode right)&#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>        <span class="hljs-built_in">this</span>.left = left;<br>        <span class="hljs-built_in">this</span>.right = right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p><h1 id="Traversal"><a href="#Traversal" class="headerlink" title="Traversal"></a>Traversal</h1><p>No matter preorder, inorder or postordder traverse, the main different is whill should we do some process, here is the skeleton<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">traverse</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>)&#123;<span class="hljs-comment">//base</span><br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// pre order process</span><br>    traverse(root.left);<br>    <span class="hljs-comment">//in order process</span><br>    traverse(root.right);<br><br>    <span class="hljs-comment">// post order</span><br>&#125;<br><br></code></pre></td></tr></table></figure><br>According to <a href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-66994/dong-ge-da-334dd/">Labuladong</a>, when we try to figure out a tree problem when shold consider  </p><pre><code class="hljs">1. Is it possible to get the answer by traversing the binary tree? If possible, implement it with a traverse function with external variables.2. Is it possible to define a recursive function to derive the answer to the original question through the answer to the sub-question (subtree)? If possible, write the definition of this recursive function, and make full use of the return value of this function.3. No matter which thinking mode you use, you must understand what each node of the binary tree needs to do, and when it needs to be done (front, middle, and back order).</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithm</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Binary Tree</tag>
       
     </tags>
     
@@ -483,7 +588,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -508,7 +615,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -533,7 +642,9 @@
     
     <tags>
       
-      <tag>Algorithm, stack,queue$$</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -608,7 +719,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -658,7 +771,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -671,7 +786,7 @@
     <link href="/2023/02/21/PThread/"/>
     <url>/2023/02/21/PThread/</url>
     
-    <content type="html"><![CDATA[<p>PThread library, including basics, thread creation and termination, stnchronization, shceduling, pitfalls, debugging<br><span id="more"></span></p><h1 id="PThread-Intro"><a href="#PThread-Intro" class="headerlink" title="PThread Intro"></a>PThread Intro</h1><p>POSIX threads are standards based thread API. It is used to  spawn a new concurrent process flow. Threads require less overhead than “forking” or spawning a new process because the system does not initialize a new system virtual memory space and environment for the process. arallel programming technologies such as MPI and PVM are used in a distributed computing environment while threads are limited to a single computer system.<br>All threads within a process sahre the same address space:</p><ul><li>Process instruction</li><li>most data</li><li>open files9descriptors)</li><li>signals and signal handlers </li><li>current working direc</li><li>user and group ID</li></ul><h2 id="Thread-Basics"><a href="#Thread-Basics" class="headerlink" title="Thread Basics"></a>Thread Basics</h2><p>Thread operations include <strong>thread creation</strong>, <strong>termination</strong>, <strong>synchronization</strong> (joins,blocking), <strong>scheduling</strong>, <strong>data management</strong> and <strong>process interaction</strong>.<br>each thread has unique:</p><ul><li>PID</li><li>set of register, stack pointer</li><li>stack for local variables, return address</li><li>signal mask </li><li>priority</li><li>return value</li></ul><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol><li><a href="https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html">CMU tut</a>  </li><li></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>PThread library, including basics, thread creation and termination, stnchronization, shceduling, pitfalls, debugging<br><span id="more"></span></p><h1 id="PThread-Intro"><a href="#PThread-Intro" class="headerlink" title="PThread Intro"></a>PThread Intro</h1><p>POSIX threads are standards based thread API. It is used to  spawn a new concurrent process flow. Threads require less overhead than “forking” or spawning a new process because the system does not initialize a new system virtual memory space and environment for the process. arallel programming technologies such as MPI and PVM are used in a distributed computing environment while threads are limited to a single computer system.<br>All threads within a process sahre the same address space:</p><ul><li>Process instruction</li><li>most data</li><li>open files9descriptors)</li><li>signals and signal handlers </li><li>current working direc</li><li>user and group ID</li></ul><h2 id="Thread-Basics"><a href="#Thread-Basics" class="headerlink" title="Thread Basics"></a>Thread Basics</h2><p>Thread operations include <strong>thread creation</strong>, <strong>termination</strong>, <strong>synchronization</strong> (joins,blocking), <strong>scheduling</strong>, <strong>data management</strong> and <strong>process interaction</strong>.<br>each thread has unique:</p><ul><li>PID</li><li>set of register, stack pointer</li><li>stack for local variables, return address</li><li>signal mask </li><li>priority</li><li>return value</li></ul><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol><li><a href="https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html">CMU tut</a>  </li></ol>]]></content>
     
     
     
@@ -680,19 +795,6 @@
       <tag>C, master, PThread</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>DailyNotes</title>
-    <link href="/2023/02/21/DailyNotes/"/>
-    <url>/2023/02/21/DailyNotes/</url>
-    
-    <content type="html"><![CDATA[<p>Using to record some notes<br><span id="more"></span></p><h1 id="sched-get-priority-max-int-policy-amp-sched-get-priority-min-int-policy"><a href="#sched-get-priority-max-int-policy-amp-sched-get-priority-min-int-policy" class="headerlink" title="sched_get_priority_max(int policy) &amp; sched_get_priority_min(int policy)"></a>sched_get_priority_max(int policy) &amp; sched_get_priority_min(int policy)</h1><p>in head file: <code>#include &lt;sched.h&gt;</code>  </p><ul><li>Description:<ul><li><code>sched_get_priority_max()</code> returns the <strong>maximum</strong> priority value that can be used with the scheduling algorithm identified by <em>policy</em>.</li><li><code>sched_get_priority_min()</code> returns the <strong>minimum</strong> priority value that can be used with the scheduling algorithm identified by <em>policy</em>.</li><li><code>policy</code>:  SCHED_FIFO, SCHED_RR, SCHED_OTHER,SCHED_BATCH, SCHED_IDLE, and SCHED_DEADLINE</li></ul></li></ul><h1 id="Java-map-to-array"><a href="#Java-map-to-array" class="headerlink" title="Java: map to array"></a>Java: map to array</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">resSet.stream().mapToInt(x -&gt; x).toArray();<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
     
   </entry>
   
@@ -715,7 +817,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
@@ -740,7 +844,11 @@
     
     <tags>
       
-      <tag>Algorithm, carl, Linked List</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
+      
+      <tag>Linked List</tag>
       
     </tags>
     
@@ -804,7 +912,9 @@
     
     <tags>
       
-      <tag>Algorithm, carl</tag>
+      <tag>Algorithm</tag>
+      
+      <tag>carl</tag>
       
     </tags>
     
