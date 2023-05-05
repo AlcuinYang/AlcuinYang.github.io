@@ -16,23 +16,26 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="This blog is used for keynotes in book:">
+    <meta name="description" content="Session2Array initialize an array” arrayType arrayName [length], like char a[10]   In memory, the elememt in single array is contiguous.( Can initialize an array by &#96;int first[] &#x3D; {12,3,4,5}two dimens">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CoreJavaNotes">
-<meta property="og:url" content="https://alcuinyang.github.io/2023/03/09/CoreJavaNotes/index.html">
+<meta property="og:title" content="CIntro">
+<meta property="og:url" content="https://alcuinyang.github.io/2023/04/14/CIntro/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="This blog is used for keynotes in book:">
+<meta property="og:description" content="Session2Array initialize an array” arrayType arrayName [length], like char a[10]   In memory, the elememt in single array is contiguous.( Can initialize an array by &#96;int first[] &#x3D; {12,3,4,5}two dimens">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-09T11:34:08.000Z">
-<meta property="article:modified_time" content="2023-03-09T15:47:39.613Z">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Two-dimensional%20Character%20Array.png">
+<meta property="og:image" content="https://alcuinyang.github.io/img/Pointer-variables.png">
+<meta property="article:published_time" content="2023-04-14T10:13:28.000Z">
+<meta property="article:modified_time" content="2023-04-15T13:22:04.729Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alcuinyang.github.io/img/Two-dimensional%20Character%20Array.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CoreJavaNotes - Alcuin&#39;s Blog</title>
+  <title>CIntro - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CoreJavaNotes"></span>
+            <span id="subtitle" data-typed-text="CIntro"></span>
           
         </div>
 
@@ -224,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-09 11:34" pubdate>
-          March 9, 2023 am
+        <time datetime="2023-04-14 10:13" pubdate>
+          April 14, 2023 am
         </time>
       </span>
     
@@ -236,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32 words
+          2k words
         
       </span>
     
@@ -247,7 +250,7 @@
         
         
         
-          1 mins
+          17 mins
         
       </span>
     
@@ -293,13 +296,39 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CoreJavaNotes</h1>
+            <h1 style="display: none">CIntro</h1>
             
             
               <div class="markdown-body">
                 
-                <p>This blog is used for keynotes in book: <Core Java><br><span id="more"></span></p>
-<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1>
+                <h1 id="Session2"><a href="#Session2" class="headerlink" title="Session2"></a>Session2</h1><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><ul>
+<li>initialize an array” <code>arrayType arrayName [length]</code>, like <code>char a[10]</code>  </li>
+<li>In memory, the elememt in single array is contiguous.<br>( Can initialize an array by `int first[] = {12,3,4,5}<h3 id="two-dimensional-arrays"><a href="#two-dimensional-arrays" class="headerlink" title="two dimensional arrays"></a>two dimensional arrays</h3></li>
+<li>table m by n array </li>
+<li><code>int a[m][n]</code></li>
+<li>int </li>
+</ul>
+<h2 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h2><p>String  are a null-terminated character arrays. which means the last digit is <code>\0</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span> name [<span class="hljs-number">4</span>] =<span class="hljs-string">&quot;ABC&quot;</span>;<br></code></pre></td></tr></table></figure><br>then<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C">name[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;A&#x27;</span><br>name[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;B&#x27;</span><br>name[<span class="hljs-number">2</span>] = <span class="hljs-string">&#x27;C&#x27;</span><br>name[<span class="hljs-number">3</span>] = <span class="hljs-string">&#x27;\0&#x27;</span><br></code></pre></td></tr></table></figure><br>The compiler inserts the ‘\0’ (backslash followed by a zero) automatically<br><img src="/img/Two-dimensional Character Array.png" srcset="/img/loading.gif" lazyload alt="Two-dimensional Character Array">  </p>
+<h2 id="Pointers"><a href="#Pointers" class="headerlink" title="Pointers"></a>Pointers</h2><ul>
+<li>A pointer is a variable that holds a <strong>memory addres</strong>s </li>
+<li>The address held by the pointer is the location of some other variable in memory</li>
+</ul>
+<p><img src="/img/Pointer-variables.png" srcset="/img/loading.gif" lazyload alt="Pointer-variables">   </p>
+<ul>
+<li>Different type pointer has different size   </li>
+<li>initialize: <code>data_type *var_name</code>. <code>int *myPtr</code></li>
+<li>use <code>&amp;</code> to assign the address of a variable</li>
+<li>The name of an array without its index returns the address of the first element  </li>
+</ul>
+<h2 id="Dynamic-Memory-Allocation"><a href="#Dynamic-Memory-Allocation" class="headerlink" title="Dynamic Memory Allocation"></a>Dynamic Memory Allocation</h2><p>Sometimes the storage requirements of a program are not known at compile-time<br>Theconventionalarraydefinitionresultsinafixedblockofmemory<br>being reserved at the beginning of program execution. We cant change the size and cant release it.<br>So, we use the <code>malloc()</code> and <code>free()</code>  in <code>stdlib.h</code> along with <strong>pointers</strong> to provide a dynamically allocate memory</p>
+<h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc()"></a>malloc()</h3><p><code>void *malloc(size_t num_of_bytes);</code><br>Takes number of bytes to allocate</p>
+<ul>
+<li>Returns a pointer (of type void*, pointer to void), which can be<br>assigned to any type of pointer</li>
+<li>If unsuccessful, the function returns a null pointer<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> *p;<br>p=(<span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+or <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *p;<br>p = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">50</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<span class="hljs-comment">//200 bytes bcs 50*4</span><br><span class="hljs-built_in">free</span>(p);<span class="hljs-comment">//release the memory after using it</span><br></code></pre></td></tr></table></figure>
+<h2 id="Strings-and-Characters"><a href="#Strings-and-Characters" class="headerlink" title="Strings and Characters"></a>Strings and Characters</h2>Characters<br>• Building blocks of programs<br>• Every program is a sequence of meaningfully grouped characters<br>• Character constant<br>• Anintvaluerepresentedasacharacterinsinglequotes • ‘z’ represents the integer value of z<br>• Strings<br>• Series of characters treated as a single unit<br>• Canincludeletters,digitsandspecialcharacters(*,/,$) • String literal (string constant) - written in double quotes<br>• “Hello”<br>• Strings are arrays of characters<br>• String a pointer to first character<br>• Value of string is the address of first character<h3 id="String-definitions"><a href="#String-definitions" class="headerlink" title="String definitions"></a>String definitions</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">char</span> color [] = <span class="hljs-string">&quot;blue&quot;</span>;<span class="hljs-comment">//array</span><br><span class="hljs-type">char</span> *color_Ptr=<span class="hljs-string">&quot;blue; //char pointer</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+
                 
               </div>
             
@@ -316,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CoreJavaNotes</div>
-      <div>https://alcuinyang.github.io/2023/03/09/CoreJavaNotes/</div>
+      <div>CIntro</div>
+      <div>https://alcuinyang.github.io/2023/04/14/CIntro/</div>
     </div>
     <div class="license-meta">
       
@@ -329,7 +358,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 9, 2023</div>
+          <div>April 14, 2023</div>
         </div>
       
       
@@ -356,6 +385,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/20/GNNBase/" title="Personal Project records">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Personal Project records</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/27/CarlDay39/" title="Carl Algorithm day 39 | LC62. Unique Paths, 63. Unique Paths II">
+                        <span class="hidden-mobile">Carl Algorithm day 39 | LC62. Unique Paths, 63. Unique Paths II</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
