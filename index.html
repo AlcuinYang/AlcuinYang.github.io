@@ -241,17 +241,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
-        
-        <a href="/2023/02/18/notice/" target="_self">
-          notice!!!
+        <a href="/2024/04/11/myRPC/" target="_self">
+          myRPC
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/18/notice/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/11/myRPC/" target="_self">
         <div>
-          2023-02-18文档乱码因为前几天电脑泡水了，time machine的备份也罢工了导致所有本地数据都没了，目前可以看到的博文很多都是刚刚恢复的，所以会有很多乱码，maybe之后抽空会慢慢修复。 关于博客内容因为是留英选手，强迫自己用英文写博客, 为了更好的和local交流、分享博客，也让自己对术语更熟悉一些，所以用英文写了。
+          myRPC框架及实现思路text    如果消费者想要调用提供者，需要提供者启动一个web服务 然后通过请求客户端发送HTTP请求来调用   因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个请求处理器 来进行统一调用。 在provider维护一个本地服务注册器来记录服务和对应实现类的映射。    模块模块化，包括：  common
         </div>
       </a>
 
@@ -259,8 +257,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-02-18 14:41" pubdate>
-              2023-02-18
+            <time datetime="2024-04-11 12:33" pubdate>
+              2024-04-11
             </time>
           </div>
         
@@ -276,15 +274,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/04/20/GNNBase/" target="_self">
-          Personal Project records
+        <a href="/2024/04/06/MySQLNotes/" target="_self">
+          MySQL 学习笔记
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/20/GNNBase/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/06/MySQLNotes/" target="_self">
         <div>
-          NLP basisEmbeding: EvaluationBLUE(Bilingual Evaluation Understudy)It is a metric for automatically evaluating machine-translated text.  What is GNNUseful tools graph built PyG: Pytorch Geometric   Net
+          MySQLSQL结构化查询语言，用于查询管理数据库；定义操和操作数据，维护数据的完整性和安全性 分类 DDL(Data Definition Language),用于操作数据库、表、列，如：CREATE, ALTER, DROP DML(Data Manipulation Language): 操作数据。如：INSERT,UPDATE,DELETE DCL(Data Control Languag
         </div>
       </a>
 
@@ -292,8 +290,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-20 11:00" pubdate>
-              2023-04-20
+            <time datetime="2024-04-06 12:36" pubdate>
+              2024-04-06
             </time>
           </div>
         
@@ -309,15 +307,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/04/14/CIntro/" target="_self">
-          CIntro
+        <a href="/2024/03/29/interview/" target="_self">
+          JavaGuide 学习记录
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/14/CIntro/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/29/interview/" target="_self">
         <div>
-          Session2Array initialize an array” arrayType arrayName [length], like char a[10]   In memory, the elememt in single array is contiguous.( Can initialize an array by `int first[] = {12,3,4,5}two dimens
+          简历项目论坛如何保证Redis与数据库双写时数据一致 先更新缓存后更新数据库（不考虑）一般不考虑，因为如果缓存更新成功，但是更新数据库出现异常，则导致缓存数据与数据库数据不一致切很难察觉，因为缓存中的数据一直存在。 先更新数据库后更新缓存也不考虑，中间环节出现导致数据不一致，同1 先删除缓存后更新数据库 可能会出现问题的原因： 同时来了请求A（更新操作）和请求B（查询操作）， A会先删除Redis
         </div>
       </a>
 
@@ -325,8 +323,173 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-14 10:13" pubdate>
-              2023-04-14
+            <time datetime="2024-03-29 11:49" pubdate>
+              2024-03-29
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/03/29/community/" target="_self">
+          论坛项目笔记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/29/community/" target="_self">
+        <div>
+          项目背景为什么要做这个项目？为了学习新知识 春招简历上太空了，又是NLP又是CV的。这个项目是个烂大街项目所以学起来资源多一些，而且能覆盖大部分的后端需要的东西。春招时间也不多，赶紧学赶紧面。由于本人属于喜欢先学一学bg再开始进行项目顺便背八股文，所以会记录笔记，没准会单独成篇，之后再说。   项目介绍嗯，放眼望去好想没有什么东西是真的会的，看来都得重新学。  本着面向简历学习的思想，我们可以看出
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-28 22:59" pubdate>
+              2024-03-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/12/17/system-design/" target="_self">
+          system-design notes
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/17/system-design/" target="_self">
+        <div>
+          Notes for system design
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-16 16:38" pubdate>
+              2023-12-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/12/08/WebsiteBasis/" target="_self">
+          Introduct to HTML and CSS
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/08/WebsiteBasis/" target="_self">
+        <div>
+          HTML OverviewIntroductionHTML (Hypertext Markup Language) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a tri
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-07 16:54" pubdate>
+              2023-12-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/07/13/TheMissingClass/" target="_self">
+          MIT-Missing-Semester
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/13/TheMissingClass/" target="_self">
+        <div>
+          The tools necessary
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-12 18:42" pubdate>
+              2023-07-12
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/06/27/cs61aNotes/" target="_self">
+          cs61aNotes
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/06/27/cs61aNotes/" target="_self">
+        <div>
+          Higher-order functionGeneralizationwhen we try to implement a function, we need to find the common structure.   lambda equation square = lambda x: x * x means for var x, return x*x the expression must
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-06-27 11:04" pubdate>
+              2023-06-27
             </time>
           </div>
         
@@ -386,17 +549,6 @@
           </div>
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">#Algorithm</a>
-            
-              <a href="/tags/carl/">#carl</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
       </div>
     </article>
   </div>
@@ -450,313 +602,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">#Algorithm</a>
-            
-              <a href="/tags/carl/">#carl</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/25/array/" target="_self">
-          Linkedarray &amp; Array algorithm
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/25/array/" target="_self">
-        <div>
-          Array and linkedarray method, mainly two pointer
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-25 08:59" pubdate>
-              2023-03-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm-Binary-search-two-pointer/">#Algorithm, Binary search, two-pointer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/22/NetworkTheory789/" target="_self">
-          Network Theory Lecture Notes Lec 7 8 9
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/22/NetworkTheory789/" target="_self">
-        <div>
-          Lecture 7: Introduction to Network OptimisationWhat is Optimisation def: select the best element from a set of alternatives  When the function is complex by constrained optimisation on the input outpu
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-22 14:38" pubdate>
-              2023-03-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Master-Lecture-notes/" class="category-chain-item">Master Lecture notes</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Network-Theory/">#Network Theory</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/18/CarlDay32/" target="_self">
-          Carl Algorithm day 32 | LC51
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/18/CarlDay32/" target="_self">
-        <div>
-          LC122. Best Time to Buy and Sell Stock IIDescriptionQuestionYou are given an integer array prices where prices[i] is the price of a given stock on the ith day. On each day, you may decide to buy and/o
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-18 15:16" pubdate>
-              2023-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">#Algorithm</a>
-            
-              <a href="/tags/carl/">#carl</a>
-            
-              <a href="/tags/Greedy-Algorithm/">#Greedy Algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/17/CarlDay31/" target="_self">
-          Carl Algorithm day 31 | LC455. Assign Cookies, LC376. Wiggle Subsequence, LC53. Maximum Subarray
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/CarlDay31/" target="_self">
-        <div>
-          Greedy AlgorithmGreedy algodithm build up a solution piece by piece, always choosing the next piece that offers the most obvious and immediate benefit.Key of greedy algorithm is select the local optim
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-17 15:16" pubdate>
-              2023-03-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">#Algorithm</a>
-            
-              <a href="/tags/carl/">#carl</a>
-            
-              <a href="/tags/Greedy-Algorithm/">#Greedy Algorithm</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/16/CarlDay30/" target="_self">
-          Carl Algorithm day 30 | LC51. N Queens
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/16/CarlDay30/" target="_self">
-        <div>
-          N-Queens
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-16 15:16" pubdate>
-              2023-03-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Algorithm/">#Algorithm</a>
-            
-              <a href="/tags/carl/">#carl</a>
-            
-              <a href="/tags/Backtracking/">#Backtracking</a>
-            
-          </div>
         
       </div>
     </article>
