@@ -24,8 +24,11 @@
 <meta property="og:description" content="MySQLSQL结构化查询语言，用于查询管理数据库；定义操和操作数据，维护数据的完整性和安全性 分类 DDL(Data Definition Language),用于操作数据库、表、列，如：CREATE, ALTER, DROP DML(Data Manipulation Language): 操作数据。如：INSERT,UPDATE,DELETE DCL(Data Control Languag">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://oss.javaguide.cn/javaguide/13526879-3037b144ed09eb88.png">
+<meta property="og:image" content="https://oss.javaguide.cn/github/javaguide/mysql/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://javaguide.cn/assets/concurrency-consistency-issues-dirty-reading-C1rL9lNt.png">
+<meta property="og:image" content="https://javaguide.cn/assets/concurrency-consistency-issues-phantom-read-D-ETycCp.png">
 <meta property="article:published_time" content="2024-04-06T12:36:20.000Z">
-<meta property="article:modified_time" content="2024-04-16T11:06:28.865Z">
+<meta property="article:modified_time" content="2024-05-27T05:15:30.778Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://oss.javaguide.cn/javaguide/13526879-3037b144ed09eb88.png">
@@ -238,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          4.2k words
         
       </span>
     
@@ -249,7 +252,7 @@
         
         
         
-          9 mins
+          35 mins
         
       </span>
     
@@ -337,7 +340,110 @@
 <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">create</span> database db1;  <span class="hljs-comment">--创建数据库db1</span><br><span class="hljs-keyword">show</span> database； <br><span class="hljs-keyword">drop</span> database db1; <span class="hljs-comment">--删除db</span><br><span class="hljs-keyword">select</span> database(); <span class="hljs-comment">--查询当前使用的databse</span><br></code></pre></td></tr></table></figure>
 <p>有时候创建库时需要设置一些默认值，和大小写敏感<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> DATABASE `database`  <br>    <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> <span class="hljs-string">&#x27;utf8&#x27;</span>  <br>    <span class="hljs-keyword">COLLATE</span> <span class="hljs-string">&#x27;utf8_general_ci &#x27;</span>;  <br></code></pre></td></tr></table></figure></p>
 <h3 id="表的基本操作"><a href="#表的基本操作" class="headerlink" title="表的基本操作"></a>表的基本操作</h3><figure class="highlight plaintext"><figcaption><span>TABLE tb(</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs CEATE">    id int,<br>    name varchar(20),<br>    gender varchar(10)<br>);<br></code></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>h</p>
+<h2 id="MySQL-存储索引"><a href="#MySQL-存储索引" class="headerlink" title="MySQL 存储索引"></a>MySQL 存储索引</h2><p>支持多种索引，包括InnoDB, MyISAM, Memory。 默认引擎是InnoDB并且只有InnoDB是事务性存储。  </p>
+<h3 id="MyISAM-vs-InnoDB"><a href="#MyISAM-vs-InnoDB" class="headerlink" title="MyISAM vs InnoDB"></a>MyISAM vs InnoDB</h3><p>区别在：</p>
+<ol>
+<li>是否支持row-level locking：InnoDB支持。MyISAM只有table-level导致起在并发方面不够搞笑</li>
+<li>是否支持事物：InnoDB实现了四个隔离级别：具有commit和rollback事物功能。InnoDB 默认使用的 <strong>REPEATABLE-READ（可重读）</strong>隔离级别是可以解决幻读问题发生的(基于 MVCC 和 Next-Key Lock)</li>
+<li>是否支持外键：MySQL支持。但是性能有损耗，不建议使用。</li>
+<li>是否支持异常崩溃后的安全恢复:InnoDB支持。数据库重新启动时会恢复到崩溃前状态。这个过程依赖于<code>redo log</code></li>
+<li>是否支持MVCC:InnoDB可以</li>
+<li>索引实现不同： 都是B+Tree索引结构，但是实现方式不同。<ol>
+<li>InnDB本身就是索引文件。</li>
+<li>MyISAM：索引文件和数据文件是分离的，数据文件本身就是按B+Tree组织的一个索引结构，曙节点data保存了完整的数据记录</li>
+</ol>
+</li>
+<li>性能差别：InnoDB随着CPU核增加可以线性增长。</li>
+</ol>
+<h2 id="MySQL事务"><a href="#MySQL事务" class="headerlink" title="MySQL事务"></a>MySQL事务</h2><h3 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h3><p>为了保证数据的一致性，系统必须能够处理这些问题。事务就是我们抽象出来简化这些问题的首选机制。<br><strong>事务是逻辑上的一组操作，要么都执行，要么都不执行。</strong><br><img src="https://oss.javaguide.cn/github/javaguide/mysql/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E7%A4%BA%E6%84%8F%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="alt text">  </p>
+<h4 id="关系型数据库ACID特性"><a href="#关系型数据库ACID特性" class="headerlink" title="关系型数据库ACID特性"></a>关系型数据库ACID特性</h4><ul>
+<li>A(atomicity) 原子性:事务是最小的执行单位，不允许分割，要么动作全部完成要么完全不起作用</li>
+<li>C(Consistency):执行事务前后，数据保持一致。例如转账业务，无论是否成功，收款人和付款人的总额不变</li>
+<li>I(Isolation):并发访问数据库时，一个用户的事物不被其他事物干扰</li>
+<li>D(Durability):一个事务commit之后，对数据库中的数据改变是持久的，即使数据库发生了故障也不应该有影响<br>总的来说AID是手段，C是目的。<strong> 原子性，隔离性和持久性是数据库的属性，而一致性（在 ACID 意义上）是应用程序的属性。</strong><h3 id="并发事务的问题"><a href="#并发事务的问题" class="headerlink" title="并发事务的问题"></a>并发事务的问题</h3><h4 id="脏读-Dirty-read"><a href="#脏读-Dirty-read" class="headerlink" title="脏读(Dirty read)"></a>脏读(Dirty read)</h4><img src="https://javaguide.cn/assets/concurrency-consistency-issues-dirty-reading-C1rL9lNt.png" srcset="/img/loading.gif" lazyload alt="dirty read"><br>一个事务读取数据并且对数据进行了修改，这个修改对其他事务来说是可见的，即使当前事务没有提交。这时另外一个事务读取了这个还未提交的数据，但第一个事务突然回滚，导致数据并没有被提交到数据库，那第二个事务读取到的就是脏数据，这也就是脏读的由来。  </li>
+</ul>
+<h4 id="丢失修改-Lost-to-modify"><a href="#丢失修改-Lost-to-modify" class="headerlink" title="丢失修改(Lost to modify)"></a>丢失修改(Lost to modify)</h4><p>在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。<br>例子：假设有一个简单的银行账户数据库，其中包含一个账户余额字段。现在有两个事务同时运行，它们都试图更新同一个账户的余额。</p>
+<p>事务 A 读取账户余额，读取到的值为 1000 元。<br>同时，事务 B 也读取了同一个账户的余额，读取的值同样为 1000 元。<br>事务 A 将余额更新为 1200 元，因为它向账户中添加了 200 元。<br>事务 B 不知道事务 A 的更新，它也试图更新余额，假设它想从账户中取出 500 元，所以它将余额更新为 500 元。<br>事务 B 的更新最终被提交到数据库，覆盖了事务 A 的更新  </p>
+<p>最终，本应该余额是700但是由于B的覆盖变成了500.</p>
+<h4 id="不可重复读-Unrepeatable-read"><a href="#不可重复读-Unrepeatable-read" class="headerlink" title="不可重复读(Unrepeatable read)"></a>不可重复读(Unrepeatable read)</h4><p>指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。例如：事务 1 读取某表中的数据 A=20，事务 2 也读取 A=20，事务 1 修改 A=A-1，事务 2 再次读取 A =19，此时读取的结果和第一次读取的结果不同。</p>
+<h4 id="幻读-Phantom-read"><a href="#幻读-Phantom-read" class="headerlink" title="幻读(Phantom read)"></a>幻读(Phantom read)</h4><p>幻读与不可重复读类似。它发生在一个事务读取了几行数据，接着另一个并发事务插入了一些数据时。在随后的查询中，第一个事务就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。例如：事务 2 读取某个范围的数据，事务 1 在这个范围插入了新的数据，事务 2 再次读取这个范围的数据发现相比于第一次读取的结果多了新的数据。<br><img src="https://javaguide.cn/assets/concurrency-consistency-issues-phantom-read-D-ETycCp.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h3 id="并发事务的控制"><a href="#并发事务的控制" class="headerlink" title="并发事务的控制"></a>并发事务的控制</h3><p>两种方法：<strong>锁和MVCC</strong></p>
+<h4 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h4><p><strong>锁</strong>控制方式下会通过锁来显示控制共享资源而不是通过调度手段，MySQL 中主要是通过 读写锁 来实现并发控制</p>
+<ul>
+<li>共享锁（S锁）：读锁，允许多个事物同时获取，在事务读取记录的时候获取</li>
+<li>排他锁（X锁）：写锁，不事务在修改记录的时候获取。不允许多个事务同时获取。如果一个记录被夹了排他锁，就不能再加入任何类型的锁<br>读写锁可以做到<strong>读读并行</strong>。<br>根据锁粒度不同，还可以分为table-level locking 和 row-level locking。  </li>
+</ul>
+<h4 id="MVCC-多版本并发控制"><a href="#MVCC-多版本并发控制" class="headerlink" title="MVCC 多版本并发控制"></a>MVCC 多版本并发控制</h4><p>即对一份数据会存储多个版本，通过事务的可见性来保证事务能看到自己应该看到的版本。通常会有一个全局的版本分配器来为每一行数据设置版本号，版本号是唯一的<br>主要依赖于以下手段实现：</p>
+<ul>
+<li>undo log：用于记录某行数据的多个版本数据</li>
+<li>read view和隐藏字段：判断当前版本数据可见性<h3 id="MVCC-详解"><a href="#MVCC-详解" class="headerlink" title="MVCC 详解"></a>MVCC 详解</h3>用于多个并发事务同时读写数据库时保持数据的一致性和隔离性。<br>当一个事务要对数据库中的数据进行修改时，MVCC 会为该事务创建一个<strong>数据快照</strong>，而不是直接修改实际的数据行。  </li>
+</ul>
+<ol>
+<li>读(SELECT)<br>使用快找读区。基于事务开启时，数据库中的状态创建的。不会读取其他事务上为提交的修改</li>
+<li>写(INSERT, UPDATE, DELETE)<br>执行写操作时，会生成新的数据版本，修改后写入数据库。<br>原始版本的数据仍然存在，以供其他事物使用快照读取。且新数据会带有当前事物的版本号</li>
+<li>事务提交和回滚</li>
+</ol>
+<ul>
+<li>提交时：所做修改会变成数据库的最新版本</li>
+<li>回滚：修改被撤销，对其他事物不可见</li>
+</ul>
+<ol>
+<li>版本回收<br>避免版本无线增长，会进行定期回收。</li>
+</ol>
+<h4 id="一致性非锁定读"><a href="#一致性非锁定读" class="headerlink" title="一致性非锁定读"></a>一致性非锁定读</h4><p>对于 一致性非锁定读（Consistent Nonlocking Reads）的实现，通常做法是加一个版本号或者时间戳字段，在更新数据的同时版本号 + 1 或者更新时间戳。查询时，将当前可见的版本号与对应记录的版本号进行比对，如果记录的版本小于可见版本，则表示该记录可见</p>
+<h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><p>四个隔离级别：</p>
+<ul>
+<li>READ-UNCOMMITTED：最低级别，允许读取上为提交的数据变更</li>
+<li>READ-COMMITTED：允许读取并发事务已经提交的数据</li>
+<li>REPEATABLE-READ：对同一个字段多次读取结果都是一致的，除非数据是被本身事务自己修改</li>
+<li>SERIALIZABLE：最高级别，完全服从ACID，。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰。<br>InnoDB的默认级别时REPEATABLE-READ。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">隔离级别</th>
+<th style="text-align:center">脏读</th>
+<th style="text-align:center">不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">READ-UNCOMMITTED</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td style="text-align:center">READ-COMMITTED</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td style="text-align:center">REPEATABLE-READ</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SERIALIZABLE</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="InnoDB-的锁"><a href="#InnoDB-的锁" class="headerlink" title="InnoDB 的锁"></a>InnoDB 的锁</h2><p>InnoDB 的行锁是针对索引字段加的锁，表级锁是针对非索引字段加的锁</p>
+<h3 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h3><ul>
+<li>记录锁（Record Lock）：也被称为记录锁，属于单个行记录上的锁。</li>
+<li>间隙锁（Gap Lock）：锁定一个范围，不包括记录本身。</li>
+<li>临键锁（Next-Key Lock）：Record Lock+Gap Lock，锁定一个范围，包含记录本身，主要目的是为了解决幻读问题（MySQL 事务部分提到过）。记录锁只能锁住已经存在的记录，为了避免插入新记录，需要依赖间隙锁。</li>
+</ul>
+<h2 id="MySQL索引"><a href="#MySQL索引" class="headerlink" title="MySQL索引"></a>MySQL索引</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><p>索引是一种用于快速查询和检索数据的数据结构，其本质可以看成是一种排序好的数据结构。</p>
+<h1 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>h</p>
 <ol>
 <li>MySQL 有这一篇就够(<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45851945/article/details/114287877">https://blog.csdn.net/weixin_45851945/article/details/114287877</a>)</li>
 </ol>

@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="myRPC框架及实现思路text    如果消费者想要调用提供者，需要提供者启动一个web服务 然后通过请求客户端发送HTTP请求来调用   因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个请求处理器 来进行统一调用。 在provider维护一个本地服务注册器来记录服务和对应实现类的映射。   注册中心：为了保存服务提供者的地址来">
+    <meta name="description" content="基于Hyperledger Fabric的学籍管理系统实现方案用户问题与解答用户问题 1问题：技术选型为什么这样选？ 解答：选择适合的技术栈对于项目的成功至关重要。以下是我们针对基于Hyperledger Fabric的学籍管理系统的技术选型及其原因： 1. 区块链平台：Hyperledger Fabric原因：  权限管理： Hyperledger Fabric是一种许可区块链平台，适合需要严格">
 <meta property="og:type" content="article">
-<meta property="og:title" content="myRPC">
-<meta property="og:url" content="https://alcuinyang.github.io/2024/04/11/myRPC/index.html">
+<meta property="og:title" content="StatusChain">
+<meta property="og:url" content="https://alcuinyang.github.io/2024/06/04/StatusChain/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="myRPC框架及实现思路text    如果消费者想要调用提供者，需要提供者启动一个web服务 然后通过请求客户端发送HTTP请求来调用   因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个请求处理器 来进行统一调用。 在provider维护一个本地服务注册器来记录服务和对应实现类的映射。   注册中心：为了保存服务提供者的地址来">
+<meta property="og:description" content="基于Hyperledger Fabric的学籍管理系统实现方案用户问题与解答用户问题 1问题：技术选型为什么这样选？ 解答：选择适合的技术栈对于项目的成功至关重要。以下是我们针对基于Hyperledger Fabric的学籍管理系统的技术选型及其原因： 1. 区块链平台：Hyperledger Fabric原因：  权限管理： Hyperledger Fabric是一种许可区块链平台，适合需要严格">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-11T12:33:07.000Z">
-<meta property="article:modified_time" content="2024-05-09T12:20:16.890Z">
+<meta property="article:published_time" content="2024-06-04T13:14:31.000Z">
+<meta property="article:modified_time" content="2024-06-18T04:58:57.309Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>myRPC - Alcuin&#39;s Blog</title>
+  <title>StatusChain - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="myRPC"></span>
+            <span id="subtitle" data-typed-text="StatusChain"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-11 12:33" pubdate>
-          April 11, 2024 pm
+        <time datetime="2024-06-04 13:14" pubdate>
+          June 4, 2024 pm
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k words
+          3.1k words
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          23 mins
+          26 mins
         
       </span>
     
@@ -293,99 +293,137 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">myRPC</h1>
+            <h1 style="display: none">StatusChain</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="myRPC"><a href="#myRPC" class="headerlink" title="myRPC"></a>myRPC</h1><h2 id="框架及实现思路"><a href="#框架及实现思路" class="headerlink" title="框架及实现思路"></a>框架及实现思路</h2><p><a target="_blank" rel="noopener" href="https://article-images.zsxq.com/FtUDqWGvAhCfNH4toi5kbgx9fWgC">text</a>  </p>
+                <h1 id="基于Hyperledger-Fabric的学籍管理系统实现方案"><a href="#基于Hyperledger-Fabric的学籍管理系统实现方案" class="headerlink" title="基于Hyperledger Fabric的学籍管理系统实现方案"></a>基于Hyperledger Fabric的学籍管理系统实现方案</h1><h2 id="用户问题与解答"><a href="#用户问题与解答" class="headerlink" title="用户问题与解答"></a>用户问题与解答</h2><h3 id="用户问题-1"><a href="#用户问题-1" class="headerlink" title="用户问题 1"></a>用户问题 1</h3><p><strong>问题：技术选型为什么这样选？</strong></p>
+<h4 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h4><p>选择适合的技术栈对于项目的成功至关重要。以下是我们针对基于Hyperledger Fabric的学籍管理系统的技术选型及其原因：</p>
+<h4 id="1-区块链平台：Hyperledger-Fabric"><a href="#1-区块链平台：Hyperledger-Fabric" class="headerlink" title="1. 区块链平台：Hyperledger Fabric"></a>1. 区块链平台：Hyperledger Fabric</h4><p><strong>原因：</strong></p>
 <ul>
-<li>如果消费者想要调用提供者，需要<strong>提供者</strong>启动一个<strong>web服务</strong> 然后通过请求客户端发送HTTP请求来调用  </li>
-<li>因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个<strong>请求处理器</strong> 来进行统一调用。</li>
-<li>在provider维护一个<strong>本地服务注册器</strong>来记录服务和对应实现类的映射。  </li>
-<li>注册中心：为了保存服务提供者的地址来方便消费者调用，常用第三方中心，如redis </li>
-<li>负载均衡：</li>
-<li>容错机制</li>
-<li>SPI</li>
+<li><strong>权限管理：</strong> Hyperledger Fabric是一种许可区块链平台，适合需要严格权限管理的场景。各参与方可以通过预定义的身份认证机制访问数据。</li>
+<li><strong>模块化架构：</strong> Fabric具有高度模块化的架构，可以根据具体需求选择和配置不同的模块，如共识机制、成员管理等。</li>
+<li><strong>隐私和机密性：</strong> Fabric支持多通道架构，可以在一个网络中创建多个通道，每个通道上的交易数据对其他通道不可见，确保数据隐私。</li>
+<li><strong>成熟的企业级解决方案：</strong> Hyperledger Fabric由Linux基金会托管，得到广泛的企业支持，拥有良好的社区和文档支持。</li>
 </ul>
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>模块化，包括：</p>
+<h4 id="2-智能合约语言：Go-或-JavaScript-Chaincode"><a href="#2-智能合约语言：Go-或-JavaScript-Chaincode" class="headerlink" title="2. 智能合约语言：Go 或 JavaScript (Chaincode)"></a>2. 智能合约语言：Go 或 JavaScript (Chaincode)</h4><p><strong>原因：</strong></p>
 <ul>
-<li>common：公共模块：包括公共依赖，接口，model</li>
-<li>consumer：消费者</li>
-<li>provider：提供者模块</li>
-<li>框架模块<h3 id="common："><a href="#common：" class="headerlink" title="common："></a>common：</h3>用于编写和服务相关的接口和数据模型</li>
+<li><strong>性能与稳定性：</strong> Go语言具有高性能和稳定性，适合编写高效的链码。</li>
+<li><strong>开发者生态：</strong> JavaScript是最广泛使用的编程语言之一，拥有大量的开发资源和社区支持。</li>
+<li><strong>Fabric支持：</strong> Hyperledger Fabric原生支持使用Go和JavaScript编写链码，能够充分利用平台特性。</li>
 </ul>
-<h3 id="请求处理器"><a href="#请求处理器" class="headerlink" title="请求处理器"></a>请求处理器</h3><p>用于provider处理调用，并根据请求参数找到对应的服务和方法，通过反射实现调用，最后封装返回结果并响应需求  </p>
+<h4 id="3-前端框架：React-js"><a href="#3-前端框架：React-js" class="headerlink" title="3. 前端框架：React.js"></a>3. 前端框架：React.js</h4><p><strong>原因：</strong></p>
 <ul>
-<li>RpcRequest类： 封装所需要的信息，如服务名称、方法名称、参数的类型列表、参数列表。用于Java反射机制。</li>
-<li>RpcResponse 类：封装调用方法得到的返回值<h4 id="业务逻辑"><a href="#业务逻辑" class="headerlink" title="业务逻辑"></a>业务逻辑</h4></li>
+<li><strong>组件化：</strong> React.js使用组件化的开发模式，可以重用组件，提升开发效率和代码可维护性。</li>
+<li><strong>性能：</strong> React.js通过虚拟DOM实现高效的UI更新，提升用户体验。</li>
+<li><strong>生态系统：</strong> React.js有丰富的生态系统和第三方库支持，能快速实现复杂的前端功能。</li>
+</ul>
+<h4 id="4-后端框架：Node-js-Express"><a href="#4-后端框架：Node-js-Express" class="headerlink" title="4. 后端框架：Node.js + Express"></a>4. 后端框架：Node.js + Express</h4><p><strong>原因：</strong></p>
+<ul>
+<li><strong>非阻塞I/O：</strong> Node.js采用事件驱动和非阻塞I/O模型，适合高并发、高吞吐量的应用场景。</li>
+<li><strong>一致性：</strong> 使用JavaScript作为前后端语言，减少了学习成本和上下文切换，提升开发效率。</li>
+<li><strong>简洁和高效：</strong> Express是一个简洁且灵活的Node.js Web应用框架，提供了丰富的中间件，可以快速搭建RESTful API服务。</li>
+</ul>
+<h4 id="5-数据库：MongoDB"><a href="#5-数据库：MongoDB" class="headerlink" title="5. 数据库：MongoDB"></a>5. 数据库：MongoDB</h4><p><strong>原因：</strong></p>
+<ul>
+<li><strong>灵活的数据模型：</strong> MongoDB是一个NoSQL数据库，使用文档存储数据，数据模型灵活，适合快速变化的应用需求。</li>
+<li><strong>水平扩展：</strong> MongoDB支持水平扩展，能够处理大量数据和高并发请求。</li>
+<li><strong>JSON文档存储：</strong> MongoDB使用JSON格式存储数据，与前端的JSON数据格式一致，简化了数据处理流程。</li>
+</ul>
+<h4 id="6-其他工具：Fabric-SDK"><a href="#6-其他工具：Fabric-SDK" class="headerlink" title="6. 其他工具：Fabric SDK"></a>6. 其他工具：Fabric SDK</h4><p><strong>原因：</strong></p>
+<ul>
+<li><strong>与Fabric集成：</strong> Fabric SDK提供了与Hyperledger Fabric网络交互的API，可以方便地调用链码，提交交易，查询数据。</li>
+<li><strong>多语言支持：</strong> Fabric SDK支持多种编程语言，包括JavaScript、Go、Java等，提供灵活的开发选择。</li>
+</ul>
+<h3 id="用户问题-2"><a href="#用户问题-2" class="headerlink" title="用户问题 2"></a>用户问题 2</h3><p><strong>问题：Hyperledger Fabric 的优势是什么，为什么不选择其他的？</strong></p>
+<h4 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h4><p>Hyperledger Fabric 的优势在于其独特的架构设计和强大的企业级功能，使其在需要高安全性、隐私性和灵活性的企业应用中表现优异。</p>
+<h4 id="Hyperledger-Fabric-的主要优势"><a href="#Hyperledger-Fabric-的主要优势" class="headerlink" title="Hyperledger Fabric 的主要优势"></a>Hyperledger Fabric 的主要优势</h4><ol>
+<li><strong>权限管理与隐私性</strong></li>
+</ol>
+<ul>
+<li><strong>许可区块链：</strong> Hyperledger Fabric 是一种许可区块链，允许网络成员通过受控的身份验证机制加入网络，确保只有授权的实体可以访问和操作数据。</li>
+<li><strong>多通道架构：</strong> 支持创建多个独立的通道，每个通道有自己的账本和智能合约，确保交易数据仅在相关方之间共享，提高隐私性和数据隔离。</li>
+<li><strong>私有数据集合：</strong> Fabric 支持私有数据集合功能，允许在链上存储私密数据，只对相关方可见，进一步提升数据隐私。</li>
 </ul>
 <ol>
-<li>反序列化请求为对象，并从请求对象中获取参数。</li>
-<li>根据服务名称从本地注册器中获取到对应的服务实现类。</li>
-<li>通过反射机制调用方法，得到返回结果。</li>
-<li>对返回结果进行封装和序列化，并写入到响应中。</li>
-</ol>
-<h2 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h2><p>服务注册中心是 RPC 框架中不可或缺的重要模块：<br>1）服务提供者在启动时，会把自己能提供的服务信息（比如服务名称、地址、端口<br>等信息）提交到注册中心。<br>2） 服务消费者在调用服务时，会通过服务注册中心查询所需服务的地址和其他信息，从而完成调用。<br>3） 服务注册中心还会定期检查服务提供者的健康状态，如果发现某个服务提供者不可用，它会自动将其从服务列表中剔除。这保证了服务消费者总是调用到正常的服务<br>实例。</p>
-<h3 id="Vert-x"><a href="#Vert-x" class="headerlink" title="Vert.x"></a>Vert.x</h3><p>一个全异步Java服务器，底层使用Netty运行<br>是JVM上构建 <strong>响应式</strong> 应用的工具。 响应式应用既可以随着工作负载的增长而<strong>扩展</strong> ，又可以在出现故障时 <strong>弹性回复</strong> 。 响应式应用是 <strong>即时响应</strong> 的，因为它能有效利用系统资源并保护自身免受错误影响，从而使延迟可控。  </p>
-<ol>
-<li>Vertx基于事件循环机制。使用异步编程可以使用更少的线程处理更多的并发连接。  </li>
-<li><h4 id="vertx-vs-tomcat"><a href="#vertx-vs-tomcat" class="headerlink" title="vertx vs tomcat"></a>vertx vs tomcat</h4></li>
+<li><strong>模块化架构</strong></li>
 </ol>
 <ul>
-<li>vertx时全异步服务器，tomcat可异步可同步</li>
-<li>支持多个语言，不仅是java</li>
-<li>vertx是全异步，所以io性能比较强。对异步传输数据的比例高的软件时很实用</li>
+<li><strong>灵活配置：</strong> Fabric 的模块化设计允许开发者根据需求选择和配置不同的模块，如共识机制、成员管理、智能合约等，提供高度的定制化能力。</li>
+<li><strong>可插拔共识机制：</strong> 支持多种共识机制，如 Kafka、Raft，可以根据具体应用场景选择最适合的共识算法，提高系统的性能和可靠性。</li>
 </ul>
-<h3 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h3><ul>
-<li>网络编程</li>
-<li>内部类</li>
-<li>lambda的好处</li>
-<li>为什么用ConcurrentMap<h2 id="序列化器"><a href="#序列化器" class="headerlink" title="序列化器"></a>序列化器</h2><h3 id="为什么要序列化"><a href="#为什么要序列化" class="headerlink" title="为什么要序列化"></a>为什么要序列化</h3>因为对象存活在JVM的堆上，如果想要在其他位置或者网络中传输，需要序列化成可传输的字节数组。  <h3 id="想到的问题"><a href="#想到的问题" class="headerlink" title="想到的问题"></a>想到的问题</h3><h4 id="什么是堆什么是栈。生命周期"><a href="#什么是堆什么是栈。生命周期" class="headerlink" title="什么是堆什么是栈。生命周期"></a>什么是堆什么是栈。生命周期</h4><h4 id="范性"><a href="#范性" class="headerlink" title="范性"></a>范性</h4><h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3></li>
-</ul>
-<h2 id="请求处理器-1"><a href="#请求处理器-1" class="headerlink" title="请求处理器"></a>请求处理器</h2><p>作用：处理接收到的请求，根据请求参数找到对应的服务和方法，通过反射实现调用，最后封装返回结果并响应请求  </p>
-<h3 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h3><p>允许程序在运行时，检查或修改器自身结构。 可以进行的操作及方法：  </p>
 <ol>
-<li>动态创建对象：反射机制可以在运行时创建任何类的对象，即使在编译时不知道具体类名。这是通过使用Class对象的newInstance()方法（或者通过构造器对象）实现的</li>
+<li><strong>高性能和可扩展性</strong></li>
 </ol>
-<h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><ol>
-<li>反序列化请求为对象，并从请求对象中获取参数</li>
-<li>根据名称从本地注册器中获取到对应的服务实现类</li>
-<li>通过反射机制调用方法，得到返回结果</li>
-<li>对返回结果进行封装和序列化，写入到响应</li>
-</ol>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理灵活性差，需要为每个方法都写一个代理。所以使用动态代理。  </p>
-<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>教程(<a target="_blank" rel="noopener" href="https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde">https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde</a>)</p>
-<h2 id="高可用分布式注册中心"><a href="#高可用分布式注册中心" class="headerlink" title="高可用分布式注册中心"></a>高可用分布式注册中心</h2><h3 id="注册中心的能力"><a href="#注册中心的能力" class="headerlink" title="注册中心的能力"></a>注册中心的能力</h3><ul>
-<li>数据分布式存储：及中的注册信息数据存储、读取和共享</li>
-<li>服务注册：服务者上报服务信息</li>
-<li>服务发现：消费者从注册中心拉去服务信息</li>
-<li>心跳检测：检查服务提供者存货状态</li>
-<li>服务注销：手动剔除结点</li>
-</ul>
-<h3 id="为什么选ETCD"><a href="#为什么选ETCD" class="headerlink" title="为什么选ETCD"></a>为什么选ETCD</h3><ol>
-<li>是一个分布式的Key-Value存储系统，性能高，方便存储元信息。</li>
-<li>通过采用Raft一致性算法来保证数据的一致性和可靠性，具有高可用性，强一致性、分布式特性</li>
-<li>简单易用，提供了简单的API、数据的过期机制、监听和同志机制</li>
-<li>入门成本低<h3 id="ETCD的特性"><a href="#ETCD的特性" class="headerlink" title="ETCD的特性"></a>ETCD的特性</h3></li>
-<li>Lease：超时之后自动删除</li>
-<li>Watch：监视特定key的变化，如果key的value发生变换就会触发通知<h4 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h4>表层看：ETCD支持实务操作<br>底层看：采用了Raft一致性算法：具体来说，Raft 算法通过选举机制选举出一个领导者 (Leader)节点，领导者负责接收客户端的写请求，并将写操作复制到其他节点上。当客户端发送写请求时，领导者首先将写操作写入自己的日志中，并将写操作的日志条目分发给其他节点，其他节点收到日志后也将其马入自己的日志中。一旦 大多数节点（即半数以上的节点） 都将该日志条目成功写入到自己的日志中，该日志条目就被视为已提交，领导者会向客户端发送成功响应。在领导者发送成功响应后，该写操作就被视为已提交，从而保证了数据的一致性。  <h3 id="存储结构设计"><a href="#存储结构设计" class="headerlink" title="存储结构设计"></a>存储结构设计</h3><strong>层级结构</strong>：将服务理解为文件夹、将服务对应的多个节点理解为文件夹下的文件，那么可以通过服务名称，用前缀查询的方式查询到某个服务的所有节点。  </li>
-<li>Key：/业务前缀/服务名/服务节点地址</li>
-<li>Value</li>
-<li>Key什么时候过期</li>
-</ol>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p><a target="_blank" rel="noopener" href="https://bcdh.yuque.com/staff-wpxfif/resource/sak10cd1xd6wr925">https://bcdh.yuque.com/staff-wpxfif/resource/sak10cd1xd6wr925</a></p>
-<h2 id="SPI-是什么"><a href="#SPI-是什么" class="headerlink" title="SPI 是什么"></a>SPI 是什么</h2><p>Service Provider Interface是Java 的重要机制，主要用于实现模块化开发和插件化扩展。<br>SPI机制允许服务提供者通过特定的配置文件将自己的实现注册到系统中，然后系统通过<strong>反射机制动态加载</strong>这些实现，而不需要修改原始框架的代码，从而实现了系统的解耦、提高了可扩展性。  它有一点类似IoC思想，将装配的控制权移交给程序之外。<br>SPI 机制在很多框架中都有应用：Spring 框架的基本原理也是类似的方式。还有 Dubbo 框架提供同样的 SPI 扩展机制.</p>
-<h3 id="SPI和API的区别"><a href="#SPI和API的区别" class="headerlink" title="SPI和API的区别"></a>SPI和API的区别</h3><p>当模块之间需要进行通信，我们在服务的调用方和提供者之间引入一个接口。  两个都是软件开发的接口，但是用途和目标群体不同。</p>
 <ul>
-<li>API: 当<strong>实现方提供了接口和实现</strong>，我们可以通过调用实现方的接口从而拥有实现方给我们提供的能力</li>
-<li>SPI: 接口存在于调用方这边,接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。<h2 id="用到了哪些工厂模式"><a href="#用到了哪些工厂模式" class="headerlink" title="用到了哪些工厂模式"></a>用到了哪些工厂模式</h2>序列化器工厂、注册中心工厂、服务代理工厂、负载均衡器工厂</li>
+<li><strong>链码执行：</strong> Fabric 将链码执行和交易排序分离，采用并行执行链码的方式，提高交易处理速度和系统吞吐量。</li>
+<li><strong>水平扩展：</strong> 支持通过增加节点来扩展网络规模和处理能力，适应业务增长需求。</li>
 </ul>
-<h2 id="注解驱动的实现"><a href="#注解驱动的实现" class="headerlink" title="注解驱动的实现"></a>注解驱动的实现</h2><p>两种常用方法：</p>
 <ol>
-<li>主动扫描</li>
-<li>监听Bean家在<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>SpringBoot Starter   </li>
+<li><strong>企业级支持</strong></li>
 </ol>
+<ul>
+<li><strong>Linux 基金会支持：</strong> Hyperledger Fabric 由 Linux 基金会托管，得到广泛的企业支持和良好的社区资源。</li>
+<li><strong>成熟的工具和生态系统：</strong> 提供丰富的开发工具、SDK 和文档支持，帮助开发者快速上手和部署应用。</li>
+</ul>
+<h4 id="为什么不选择其他区块链平台"><a href="#为什么不选择其他区块链平台" class="headerlink" title="为什么不选择其他区块链平台"></a>为什么不选择其他区块链平台</h4><ol>
+<li><strong>以太坊 (Ethereum)</strong></li>
+</ol>
+<ul>
+<li><strong>公有链 vs 许可链：</strong> 以太坊主要用于公有链应用，虽然也有企业级解决方案（如 Quorum），但其权限管理和隐私保护机制不如 Fabric 灵活和强大。</li>
+<li><strong>智能合约性能：</strong> 以太坊的智能合约执行在所有节点上进行，性能较低且难以扩展，高交易费用也是一个问题。</li>
+</ul>
+<ol>
+<li><strong>EOSIO</strong></li>
+</ol>
+<ul>
+<li><strong>共识机制：</strong> EOSIO 使用 DPoS（委任权益证明）共识机制，依赖于超级节点，虽然性能较高，但去中心化程度和安全性可能不如 Fabric。</li>
+<li><strong>企业支持：</strong> EOSIO 的企业级支持和工具生态系统相对较少，特别是在企业级权限管理和隐私保护方面。</li>
+</ul>
+<ol>
+<li><strong>Corda</strong></li>
+</ol>
+<ul>
+<li><strong>金融领域专注：</strong> Corda 主要面向金融行业，尽管其点对点的隐私交易和高效的共识机制适用于金融应用，但在其他领域的通用性和扩展性不如 Fabric。</li>
+<li><strong>社区支持：</strong> 相较于 Fabric，Corda 的社区支持和开发资源相对较少。</li>
+</ul>
+<h3 id="用户问题-3"><a href="#用户问题-3" class="headerlink" title="用户问题 3"></a>用户问题 3</h3><p><strong>问题：它支持什么共识机制？如何数据上链？</strong></p>
+<h4 id="解答：-2"><a href="#解答：-2" class="headerlink" title="解答："></a>解答：</h4><p>Hyperledger Fabric支持多种共识机制，并且其独特的模块化架构允许根据需求灵活选择和配置不同的共识机制。</p>
+<h4 id="Hyperledger-Fabric-支持的共识机制"><a href="#Hyperledger-Fabric-支持的共识机制" class="headerlink" title="Hyperledger Fabric 支持的共识机制"></a>Hyperledger Fabric 支持的共识机制</h4><ol>
+<li><strong>Crash Fault Tolerance (CFT)</strong></li>
+</ol>
+<ul>
+<li><strong>Raft:</strong> Fabric 从 1.4 版本开始原生支持 Raft 共识机制。Raft 是一种基于领导者的分布式一致性算法，具有较高的性能和容错能力，适合大多数企业应用。</li>
+<li><strong>Kafka:</strong> Fabric 也支持 Kafka 作为共识机制，Kafka 是一个分布式流处理平台，通过分区和复制提供高可用性和容错能力。然而，Kafka 在 Hyperledger Fabric 2.0 版本之后不再推荐，Raft 成为默认选择。</li>
+</ul>
+<ol>
+<li><strong>Byzantine Fault Tolerance (BFT)</strong></li>
+</ol>
+<ul>
+<li><strong>SBFT (Simplified Byzantine Fault Tolerance):</strong> Fabric 未来计划支持更高级的 BFT 共识机制，如 SBFT，以应对恶意节点的存在，提高系统的安全性和可靠性。</li>
+</ul>
+<h4 id="数据上链过程"><a href="#数据上链过程" class="headerlink" title="数据上链过程"></a>数据上链过程</h4><p>Hyperledger Fabric 采用了一种独特的“交易排序 - 并行执行 - 交易验证”的架构，将数据上链过程分为以下几个步骤：</p>
+<ol>
+<li><strong>提交交易提案 (Transaction Proposal)</strong></li>
+</ol>
+<ul>
+<li><strong>客户端应用提交提案：</strong> 客户端应用程序（例如学生提交成绩更新请求）通过 Fabric SDK 向一个或多个背书节点（Peer Nodes）提交交易提案。</li>
+<li><strong>签名交易提案：</strong> 每个背书节点接收交易提案，执行链码（智能合约）逻辑，生成交易响应，并对响应进行签名。</li>
+</ul>
+<ol>
+<li><strong>背书交易 (Endorsement)</strong></li>
+</ol>
+<ul>
+<li><strong>收集背书：</strong> 客户端应用程序收集足够数量的背书节点的签名（根据通道配置中的背书策略），将交易提案和背书签名打包成一个交易。</li>
+</ul>
+<ol>
+<li><strong>交易排序 (Ordering)</strong></li>
+</ol>
+<ul>
+<li><strong>提交交易到排序服务：</strong> 客户端将打包好的交易发送到排序服务（Orderer Nodes）。排序服务负责将所有提交的交易进行排序，并生成区块。</li>
+<li><strong>生成区块：</strong> 排序服务将</li>
+</ul>
 
                 
               </div>
@@ -403,8 +441,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>myRPC</div>
-      <div>https://alcuinyang.github.io/2024/04/11/myRPC/</div>
+      <div>StatusChain</div>
+      <div>https://alcuinyang.github.io/2024/06/04/StatusChain/</div>
     </div>
     <div class="license-meta">
       
@@ -416,7 +454,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>April 11, 2024</div>
+          <div>June 4, 2024</div>
         </div>
       
       
@@ -448,9 +486,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/05/StringAlgorithm/" title="StringAlgorithm">
+                      <a href="/2024/06/19/AndrewML/" title="吴恩达机器学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">StringAlgorithm</span>
+                        <span class="hidden-mobile">吴恩达机器学习笔记</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -458,8 +496,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/06/MySQLNotes/" title="MySQL 学习笔记">
-                        <span class="hidden-mobile">MySQL 学习笔记</span>
+                      <a href="/2024/05/05/BFS/" title="BFS 算法">
+                        <span class="hidden-mobile">BFS 算法</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://oss.javaguide.cn/github/javaguide/system-design/framework/spring/20200831175708.png">
 <meta property="article:published_time" content="2024-03-29T11:49:40.000Z">
-<meta property="article:modified_time" content="2024-04-15T02:21:22.200Z">
+<meta property="article:modified_time" content="2024-06-18T04:56:55.546Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://oss.javaguide.cn/github/javaguide/system-design/framework/spring/20200831175708.png">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.3k words
+          11k words
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          70 mins
+          95 mins
         
       </span>
     
@@ -445,7 +445,12 @@
 <li>Handler ，并会将请求涉及到的拦截器和 Handler 一起封装。</li>
 <li>HandlerAdapter：处理器适配器，根据 HandlerMapping 找到的 Handler ，适配执行对应的 Handler；</li>
 <li>Handler：请求处理器，处理实际请求的处理器。</li>
-<li>ViewResolver：视图解析器，根据 Handler 返回的逻辑视图 / 视图，解析并渲染真正的视图，并传递给 DispatcherServlet 响应客户端</li>
+<li>ViewResolver：视图解析器，根据 Handler 返回的逻辑视图 / 视图，解析并渲染真正的视图，并传递给 DispatcherServlet 响应客户端<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><h3 id="Bean-是什么"><a href="#Bean-是什么" class="headerlink" title="Bean 是什么"></a>Bean 是什么</h3>代指那些被IoC容器管理的对象。可以通过配置元数据来定义（XML文件、注解或者Java配置类）<h3 id="注入Bean的注解"><a href="#注入Bean的注解" class="headerlink" title="注入Bean的注解"></a>注入Bean的注解</h3></li>
+<li>@Autowired:属于内置注解，注入方式为：<strong>byType</strong>，会优先根据接口类型匹配并注入Bean。当一个接口存在多个实现类，则都需要适应名称来匹配。 支持构造函数、方法、字段和参数上使用</li>
+<li><p>@Resource：属于JDK提供的注解，诸如方式是<strong>byName</strong></p>
+</li>
+<li><p>@Inject</p>
+<h3 id="Bean是线程安全的吗"><a href="#Bean是线程安全的吗" class="headerlink" title="Bean是线程安全的吗"></a>Bean是线程安全的吗</h3><h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3></li>
 </ul>
 <h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><p>是一个模板引擎，生成动态HTML。</p>
 <h3 id="什么是RESTful-java开发"><a href="#什么是RESTful-java开发" class="headerlink" title="什么是RESTful java开发"></a>什么是RESTful java开发</h3><h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p>Redisopen in new window （REmote DIctionary Server）是一个基于 C 语言开发的开源 NoSQL 数据库（BSD 许可）。与传统数据库不同的是，Redis 的数据是保存在<strong>内存中的（内存数据库，支持持久化）</strong>，因此读写速度非常快，被广泛应用于分布式缓存方向。并且，Redis 存储的是 KV 键值对数据。</p>
@@ -527,7 +532,68 @@
 <li>讲一下负载均衡</li>
 <li>如何做故障转移</li>
 </ol>
-
+<h2 id="小雨智造一面-1h"><a href="#小雨智造一面-1h" class="headerlink" title="小雨智造一面(1h)"></a>小雨智造一面(1h)</h2><ol>
+<li>项目里面的技术是怎么学的</li>
+<li>讲一下myRPC项目里有哪些模块，都是用来做什么的</li>
+<li>你这项目是要部署在服务器上的，如果是部署在单机该怎么办？有哪些模块可以被优化</li>
+<li>如果是进程之间的通信该有化掉哪些部分<br>回答了常用的进程通信方式。追问：你会如何实现？<br>如果是在不同的JVM之间该怎么通信<br>回答了会使用socket？用一个类似于识别码的东西来标准化通信。<br>为什么要标准化通信，如果不这样的话，会发生什么情况？<br>没答上来，结束</li>
+<li>看你用了Vertx，为什么用了vertx？<br>异步。<br>那么tomcat是什么？</li>
+</ol>
+<p>在项目初期我是通过 vert.x 的HTTP服务器的功能来实现网络通信，因为官方文档首先演示了这个 Demd，比较方便。但后面我了解到 RPC 框架需要更高的性能，所以我叉基于 Vert.x 实现了 TCP 服务器，并且自主设计了协议消息结构，从而提高了 RPC 框架的网络通信效率。<br>我的项目选用 vert.x 实现 TCP 服务器，而不是 Netty 或直接用 Socket， 主要有几个方面原因：</p>
+<ol>
+<li>Vert.x 提供了高层次的抽象，相比 Netty 框架更简单易用。它不仅仅是一个网络框架，还是一个完整的异步编程框架，提供了包括 HTTP 服务器 / 客户端、WebSocket、事件总线、数据库访问、定时器等在内的多种构建高性能应用程序的工具和各种网络编程的 APl。<br>2.高性能。Vert.x 基于事件循环机制，采用单线程或少量线程处理大量并发连接，可以有效滅少线程上下文切换的开销，提高服务器的吞吐量和响应速度。更适合 RPC 框架这种需要处理大量 TCP 连接的应用场景。<br>3.对于 TCP 半包粘包的情况。Vert.x 提供了 RecordParser 类，能更方便地解决，不用自己去设计算法来处理。</li>
+<li>你的论坛项目改进了什么？</li>
+<li>讲一下锁的概念，如果要是不用常见的api，你该怎么实现</li>
+<li>看你用了SPI，什么是SPI怎么实现的SPI</li>
+<li>讲一下注解吧</li>
+<li>假设java的包之间有互相的依赖，如何统计间接依赖。 写个代码吧</li>
+</ol>
+<h2 id="航旅纵横"><a href="#航旅纵横" class="headerlink" title="航旅纵横"></a>航旅纵横</h2><ol>
+<li>Java 序列化时，不希望某些字段序列化，该使用什么<br>对于不想进行序列化的变量，可以使用 transient 关键字修饰。transient 关键字的作用是：阻止实例中那些用此关键字修饰的的变量序列化；当对象被反序列化时，被 transient 修饰的变量值不会被持久化和恢复。关于 transient 还有几点注意：transient 只能修饰变量，不能修饰类和方法。transient 修饰的变量，在反序列化后变量值将会被置成类型的默认值。例如，如果是修饰 int 类型，那么反序列后结果就是 0。static 变量因为不属于任何对象(Object)，所以无论有没有 transient 关键字修饰，均不会被序列化。</li>
+</ol>
+<ol>
+<li>实现多线程的方法有哪些</li>
+<li>Redis怎么</li>
+<li>RPC项目遇到了什么问题，怎么解决的</li>
+<li>RPC项目参考了Dubble，讲一下dubble的运行流程<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs">1、服务容器负责启动，加载，运行服务提供者。  <br>2、服务提供者在启动时，向注册中心注册自己提供的服务。  <br>3、服务消费者在启动时，向注册中心订阅自己所需的服务。  <br>4、注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。  <br>5、服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。  <br>6、服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。  <br></code></pre></td></tr></table></figure></li>
+<li>dubble是同步还是异步的</li>
+<li>Linux常见的命令有哪些</li>
+<li>mybatis相关</li>
+<li>IoC 是什么</li>
+<li>讲讲Bean的生命周期</li>
+<li>常见的注解<br>@Controller(处理请求)<br>@Service（提供服务/业务）<br>@Repository(处理数据库)<br>@Conponent(通用)</li>
+</ol>
+<h2 id="光大"><a href="#光大" class="headerlink" title="光大"></a>光大</h2><ol>
+<li>Transformer, BERT, GPT的区别</li>
+</ol>
+<h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3><p><strong>Transformer</strong> 是一种用于自然语言处理（NLP）任务的深度学习模型架构，由Vaswani等人在2017年提出。Transformer的核心创新在于引入了<strong>注意力机制</strong>（Attention Mechanism），取代了传统的循环神经网络（RNN）和长短期记忆网络（LSTM），实现了更高效的并行处理。</p>
+<ul>
+<li><strong>架构</strong>：Transformer包括编码器（Encoder）和解码器（Decoder）两部分。编码器和解码器各由多个相同的层（Layer）堆叠而成，每一层包含多头自注意力机制（Multi-Head Self-Attention）和前馈神经网络（Feed-Forward Neural Network）。</li>
+<li><strong>自注意力机制</strong>：每个输入单词都可以关注序列中所有其他单词，计算这些单词之间的相关性。这种机制允许模型更好地捕捉全局上下文信息。</li>
+<li><strong>多头注意力</strong>：通过多个独立的注意力头，模型可以从不同的子空间中学习信息。</li>
+</ul>
+<h3 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h3><p><strong>BERT</strong>（Bidirectional Encoder Representations from Transformers）是一种基于Transformer的预训练语言模型，由Google在2018年提出。BERT的核心在于双向性，即它在训练时同时考虑了左右两侧的上下文。</p>
+<ul>
+<li><strong>预训练与微调</strong>：BERT首先在大规模语料库上进行预训练，然后在具体任务上进行微调。预训练任务包括掩码语言模型（Masked Language Model, MLM）和下一个句子预测（Next Sentence Prediction, NSP）。</li>
+<li><strong>架构</strong>：BERT只使用了Transformer的编码器部分。通过双向编码器，BERT在理解句子整体语义方面表现出色。</li>
+<li><strong>应用</strong>：BERT在多个NLP任务上取得了显著的效果，如问答、文本分类和命名实体识别等。</li>
+</ul>
+<h3 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h3><p><strong>GPT</strong>（Generative Pre-trained Transformer）是另一种基于Transformer的预训练语言模型，由OpenAI提出。与BERT不同，GPT主要关注生成任务。</p>
+<ul>
+<li><strong>单向性</strong>：GPT是单向模型，即在生成某个单词时只考虑该单词左侧的上下文。尽管如此，GPT在生成自然语言文本方面表现优异。</li>
+<li><strong>架构</strong>：GPT主要使用了Transformer的解码器部分。通过自回归方式生成文本，每次生成一个单词并将其作为输入继续生成下一个单词。</li>
+<li><strong>版本演进</strong>：OpenAI相继推出了GPT-2和GPT-3，模型规模和参数量显著增加，性能也大幅提升。GPT-3以其强大的生成能力广受关注。</li>
+</ul>
+<h3 id="Transformer-BERT-和-GPT-的关系"><a href="#Transformer-BERT-和-GPT-的关系" class="headerlink" title="Transformer, BERT 和 GPT 的关系"></a>Transformer, BERT 和 GPT 的关系</h3><ul>
+<li><strong>共同点</strong>：Transformer、BERT和GPT都基于Transformer架构。Transformer是基础架构，提供了编码器和解码器的框架，BERT和GPT则是基于这一架构的具体实现。</li>
+<li><strong>不同点</strong>：<ul>
+<li><strong>架构部分</strong>：BERT使用了Transformer的编码器部分，GPT使用了Transformer的解码器部分。</li>
+<li><strong>训练方式</strong>：BERT是双向模型，预训练任务包括MLM和NSP。GPT是单向模型，通过自回归方式生成文本。</li>
+<li><strong>应用场景</strong>：BERT主要用于理解任务，如问答和文本分类；GPT主要用于生成任务，如文本生成和对话系统。</li>
+</ul>
+</li>
+</ul>
+<h3 id="图示总结"><a href="#图示总结" class="headerlink" title="图示总结"></a>图示总结</h3>
                 
               </div>
             

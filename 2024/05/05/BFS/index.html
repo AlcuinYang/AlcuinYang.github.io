@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="myRPC框架及实现思路text    如果消费者想要调用提供者，需要提供者启动一个web服务 然后通过请求客户端发送HTTP请求来调用   因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个请求处理器 来进行统一调用。 在provider维护一个本地服务注册器来记录服务和对应实现类的映射。   注册中心：为了保存服务提供者的地址来">
+    <meta name="description" content="BFS算法BFS(Breadth First Search): 广度优先算法。在笔试中很常考的一个算法，适用于寻找最短路径的。   核心思想把一些问题抽象成图，从一个点开始向四周扩散。与DFS不同的是：找到的最短路径一定是最短的。我们在处理这类问题时最常用的是队列这个数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="myRPC">
-<meta property="og:url" content="https://alcuinyang.github.io/2024/04/11/myRPC/index.html">
+<meta property="og:title" content="BFS 算法">
+<meta property="og:url" content="https://alcuinyang.github.io/2024/05/05/BFS/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="myRPC框架及实现思路text    如果消费者想要调用提供者，需要提供者启动一个web服务 然后通过请求客户端发送HTTP请求来调用   因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个请求处理器 来进行统一调用。 在provider维护一个本地服务注册器来记录服务和对应实现类的映射。   注册中心：为了保存服务提供者的地址来">
+<meta property="og:description" content="BFS算法BFS(Breadth First Search): 广度优先算法。在笔试中很常考的一个算法，适用于寻找最短路径的。   核心思想把一些问题抽象成图，从一个点开始向四周扩散。与DFS不同的是：找到的最短路径一定是最短的。我们在处理这类问题时最常用的是队列这个数据结构">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-11T12:33:07.000Z">
-<meta property="article:modified_time" content="2024-05-09T12:20:16.890Z">
+<meta property="article:published_time" content="2024-05-05T12:03:24.000Z">
+<meta property="article:modified_time" content="2024-05-09T12:20:21.570Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>myRPC - Alcuin&#39;s Blog</title>
+  <title>BFS 算法 - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="myRPC"></span>
+            <span id="subtitle" data-typed-text="BFS 算法"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-11 12:33" pubdate>
-          April 11, 2024 pm
+        <time datetime="2024-05-05 12:03" pubdate>
+          May 5, 2024 pm
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k words
+          132 words
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          23 mins
+          2 mins
         
       </span>
     
@@ -293,99 +293,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">myRPC</h1>
+            <h1 style="display: none">BFS 算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="myRPC"><a href="#myRPC" class="headerlink" title="myRPC"></a>myRPC</h1><h2 id="框架及实现思路"><a href="#框架及实现思路" class="headerlink" title="框架及实现思路"></a>框架及实现思路</h2><p><a target="_blank" rel="noopener" href="https://article-images.zsxq.com/FtUDqWGvAhCfNH4toi5kbgx9fWgC">text</a>  </p>
-<ul>
-<li>如果消费者想要调用提供者，需要<strong>提供者</strong>启动一个<strong>web服务</strong> 然后通过请求客户端发送HTTP请求来调用  </li>
-<li>因为provider提供多个服务和方法，消费者为了更方便调用而不是为每个方法都写一个HTTP调用逻辑，所以要实现一个<strong>请求处理器</strong> 来进行统一调用。</li>
-<li>在provider维护一个<strong>本地服务注册器</strong>来记录服务和对应实现类的映射。  </li>
-<li>注册中心：为了保存服务提供者的地址来方便消费者调用，常用第三方中心，如redis </li>
-<li>负载均衡：</li>
-<li>容错机制</li>
-<li>SPI</li>
-</ul>
-<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>模块化，包括：</p>
-<ul>
-<li>common：公共模块：包括公共依赖，接口，model</li>
-<li>consumer：消费者</li>
-<li>provider：提供者模块</li>
-<li>框架模块<h3 id="common："><a href="#common：" class="headerlink" title="common："></a>common：</h3>用于编写和服务相关的接口和数据模型</li>
-</ul>
-<h3 id="请求处理器"><a href="#请求处理器" class="headerlink" title="请求处理器"></a>请求处理器</h3><p>用于provider处理调用，并根据请求参数找到对应的服务和方法，通过反射实现调用，最后封装返回结果并响应需求  </p>
-<ul>
-<li>RpcRequest类： 封装所需要的信息，如服务名称、方法名称、参数的类型列表、参数列表。用于Java反射机制。</li>
-<li>RpcResponse 类：封装调用方法得到的返回值<h4 id="业务逻辑"><a href="#业务逻辑" class="headerlink" title="业务逻辑"></a>业务逻辑</h4></li>
-</ul>
-<ol>
-<li>反序列化请求为对象，并从请求对象中获取参数。</li>
-<li>根据服务名称从本地注册器中获取到对应的服务实现类。</li>
-<li>通过反射机制调用方法，得到返回结果。</li>
-<li>对返回结果进行封装和序列化，并写入到响应中。</li>
-</ol>
-<h2 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h2><p>服务注册中心是 RPC 框架中不可或缺的重要模块：<br>1）服务提供者在启动时，会把自己能提供的服务信息（比如服务名称、地址、端口<br>等信息）提交到注册中心。<br>2） 服务消费者在调用服务时，会通过服务注册中心查询所需服务的地址和其他信息，从而完成调用。<br>3） 服务注册中心还会定期检查服务提供者的健康状态，如果发现某个服务提供者不可用，它会自动将其从服务列表中剔除。这保证了服务消费者总是调用到正常的服务<br>实例。</p>
-<h3 id="Vert-x"><a href="#Vert-x" class="headerlink" title="Vert.x"></a>Vert.x</h3><p>一个全异步Java服务器，底层使用Netty运行<br>是JVM上构建 <strong>响应式</strong> 应用的工具。 响应式应用既可以随着工作负载的增长而<strong>扩展</strong> ，又可以在出现故障时 <strong>弹性回复</strong> 。 响应式应用是 <strong>即时响应</strong> 的，因为它能有效利用系统资源并保护自身免受错误影响，从而使延迟可控。  </p>
-<ol>
-<li>Vertx基于事件循环机制。使用异步编程可以使用更少的线程处理更多的并发连接。  </li>
-<li><h4 id="vertx-vs-tomcat"><a href="#vertx-vs-tomcat" class="headerlink" title="vertx vs tomcat"></a>vertx vs tomcat</h4></li>
-</ol>
-<ul>
-<li>vertx时全异步服务器，tomcat可异步可同步</li>
-<li>支持多个语言，不仅是java</li>
-<li>vertx是全异步，所以io性能比较强。对异步传输数据的比例高的软件时很实用</li>
-</ul>
-<h3 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h3><ul>
-<li>网络编程</li>
-<li>内部类</li>
-<li>lambda的好处</li>
-<li>为什么用ConcurrentMap<h2 id="序列化器"><a href="#序列化器" class="headerlink" title="序列化器"></a>序列化器</h2><h3 id="为什么要序列化"><a href="#为什么要序列化" class="headerlink" title="为什么要序列化"></a>为什么要序列化</h3>因为对象存活在JVM的堆上，如果想要在其他位置或者网络中传输，需要序列化成可传输的字节数组。  <h3 id="想到的问题"><a href="#想到的问题" class="headerlink" title="想到的问题"></a>想到的问题</h3><h4 id="什么是堆什么是栈。生命周期"><a href="#什么是堆什么是栈。生命周期" class="headerlink" title="什么是堆什么是栈。生命周期"></a>什么是堆什么是栈。生命周期</h4><h4 id="范性"><a href="#范性" class="headerlink" title="范性"></a>范性</h4><h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3></li>
-</ul>
-<h2 id="请求处理器-1"><a href="#请求处理器-1" class="headerlink" title="请求处理器"></a>请求处理器</h2><p>作用：处理接收到的请求，根据请求参数找到对应的服务和方法，通过反射实现调用，最后封装返回结果并响应请求  </p>
-<h3 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h3><p>允许程序在运行时，检查或修改器自身结构。 可以进行的操作及方法：  </p>
-<ol>
-<li>动态创建对象：反射机制可以在运行时创建任何类的对象，即使在编译时不知道具体类名。这是通过使用Class对象的newInstance()方法（或者通过构造器对象）实现的</li>
-</ol>
-<h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><ol>
-<li>反序列化请求为对象，并从请求对象中获取参数</li>
-<li>根据名称从本地注册器中获取到对应的服务实现类</li>
-<li>通过反射机制调用方法，得到返回结果</li>
-<li>对返回结果进行封装和序列化，写入到响应</li>
-</ol>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理灵活性差，需要为每个方法都写一个代理。所以使用动态代理。  </p>
-<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>教程(<a target="_blank" rel="noopener" href="https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde">https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde</a>)</p>
-<h2 id="高可用分布式注册中心"><a href="#高可用分布式注册中心" class="headerlink" title="高可用分布式注册中心"></a>高可用分布式注册中心</h2><h3 id="注册中心的能力"><a href="#注册中心的能力" class="headerlink" title="注册中心的能力"></a>注册中心的能力</h3><ul>
-<li>数据分布式存储：及中的注册信息数据存储、读取和共享</li>
-<li>服务注册：服务者上报服务信息</li>
-<li>服务发现：消费者从注册中心拉去服务信息</li>
-<li>心跳检测：检查服务提供者存货状态</li>
-<li>服务注销：手动剔除结点</li>
-</ul>
-<h3 id="为什么选ETCD"><a href="#为什么选ETCD" class="headerlink" title="为什么选ETCD"></a>为什么选ETCD</h3><ol>
-<li>是一个分布式的Key-Value存储系统，性能高，方便存储元信息。</li>
-<li>通过采用Raft一致性算法来保证数据的一致性和可靠性，具有高可用性，强一致性、分布式特性</li>
-<li>简单易用，提供了简单的API、数据的过期机制、监听和同志机制</li>
-<li>入门成本低<h3 id="ETCD的特性"><a href="#ETCD的特性" class="headerlink" title="ETCD的特性"></a>ETCD的特性</h3></li>
-<li>Lease：超时之后自动删除</li>
-<li>Watch：监视特定key的变化，如果key的value发生变换就会触发通知<h4 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h4>表层看：ETCD支持实务操作<br>底层看：采用了Raft一致性算法：具体来说，Raft 算法通过选举机制选举出一个领导者 (Leader)节点，领导者负责接收客户端的写请求，并将写操作复制到其他节点上。当客户端发送写请求时，领导者首先将写操作写入自己的日志中，并将写操作的日志条目分发给其他节点，其他节点收到日志后也将其马入自己的日志中。一旦 大多数节点（即半数以上的节点） 都将该日志条目成功写入到自己的日志中，该日志条目就被视为已提交，领导者会向客户端发送成功响应。在领导者发送成功响应后，该写操作就被视为已提交，从而保证了数据的一致性。  <h3 id="存储结构设计"><a href="#存储结构设计" class="headerlink" title="存储结构设计"></a>存储结构设计</h3><strong>层级结构</strong>：将服务理解为文件夹、将服务对应的多个节点理解为文件夹下的文件，那么可以通过服务名称，用前缀查询的方式查询到某个服务的所有节点。  </li>
-<li>Key：/业务前缀/服务名/服务节点地址</li>
-<li>Value</li>
-<li>Key什么时候过期</li>
-</ol>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1><h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p><a target="_blank" rel="noopener" href="https://bcdh.yuque.com/staff-wpxfif/resource/sak10cd1xd6wr925">https://bcdh.yuque.com/staff-wpxfif/resource/sak10cd1xd6wr925</a></p>
-<h2 id="SPI-是什么"><a href="#SPI-是什么" class="headerlink" title="SPI 是什么"></a>SPI 是什么</h2><p>Service Provider Interface是Java 的重要机制，主要用于实现模块化开发和插件化扩展。<br>SPI机制允许服务提供者通过特定的配置文件将自己的实现注册到系统中，然后系统通过<strong>反射机制动态加载</strong>这些实现，而不需要修改原始框架的代码，从而实现了系统的解耦、提高了可扩展性。  它有一点类似IoC思想，将装配的控制权移交给程序之外。<br>SPI 机制在很多框架中都有应用：Spring 框架的基本原理也是类似的方式。还有 Dubbo 框架提供同样的 SPI 扩展机制.</p>
-<h3 id="SPI和API的区别"><a href="#SPI和API的区别" class="headerlink" title="SPI和API的区别"></a>SPI和API的区别</h3><p>当模块之间需要进行通信，我们在服务的调用方和提供者之间引入一个接口。  两个都是软件开发的接口，但是用途和目标群体不同。</p>
-<ul>
-<li>API: 当<strong>实现方提供了接口和实现</strong>，我们可以通过调用实现方的接口从而拥有实现方给我们提供的能力</li>
-<li>SPI: 接口存在于调用方这边,接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。<h2 id="用到了哪些工厂模式"><a href="#用到了哪些工厂模式" class="headerlink" title="用到了哪些工厂模式"></a>用到了哪些工厂模式</h2>序列化器工厂、注册中心工厂、服务代理工厂、负载均衡器工厂</li>
-</ul>
-<h2 id="注解驱动的实现"><a href="#注解驱动的实现" class="headerlink" title="注解驱动的实现"></a>注解驱动的实现</h2><p>两种常用方法：</p>
-<ol>
-<li>主动扫描</li>
-<li>监听Bean家在<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>SpringBoot Starter   </li>
-</ol>
+                <h1 id="BFS算法"><a href="#BFS算法" class="headerlink" title="BFS算法"></a>BFS算法</h1><p>BFS(Breadth First Search): 广度优先算法。<br>在笔试中很常考的一个算法，适用于寻找最短路径的。  </p>
+<h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>把一些问题抽象成图，从一个点开始向四周扩散。与DFS不同的是：<strong>找到的最短路径一定是最短的</strong>。<br>我们在处理这类问题时最常用的是<strong>队列</strong>这个数据结构</p>
 
                 
               </div>
@@ -403,8 +317,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>myRPC</div>
-      <div>https://alcuinyang.github.io/2024/04/11/myRPC/</div>
+      <div>BFS 算法</div>
+      <div>https://alcuinyang.github.io/2024/05/05/BFS/</div>
     </div>
     <div class="license-meta">
       
@@ -416,7 +330,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>April 11, 2024</div>
+          <div>May 5, 2024</div>
         </div>
       
       
@@ -448,9 +362,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/05/StringAlgorithm/" title="StringAlgorithm">
+                      <a href="/2024/06/04/StatusChain/" title="StatusChain">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">StringAlgorithm</span>
+                        <span class="hidden-mobile">StatusChain</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -458,8 +372,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/06/MySQLNotes/" title="MySQL 学习笔记">
-                        <span class="hidden-mobile">MySQL 学习笔记</span>
+                      <a href="/2024/05/05/StringAlgorithm/" title="StringAlgorithm">
+                        <span class="hidden-mobile">StringAlgorithm</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
