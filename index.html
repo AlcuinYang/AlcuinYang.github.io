@@ -241,15 +241,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2024/07/12/databaseTut/" target="_self">
-          数据库相关知识培训
+        <a href="/2024/08/07/scriptRecords/" target="_self">
+          日常脚本记录
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/12/databaseTut/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/07/scriptRecords/" target="_self">
         <div>
-          数据库培训Oracle逻辑结构 数据库 表空间： 可以有多个表空间 段 块：读取的最小单位表空间   一个数据库可以有多个表空间，也有多种表空间   表空间类型有： Postgresql
+          介绍在处理文件的时候经常会用到某些脚本，本文档就是用来记录的并且记录学习到了什么 合并和删除文件因为之前写了很多Carl算法题的笔记，内容比较多所以合并成了一个，在此期间用了俩脚本：合并和删除。   合并1234567891011121314151617181920212223242526272829import osfolder_path= &#x27;/Users/alcuin/Deskto
         </div>
       </a>
 
@@ -257,8 +257,74 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-11 16:07" pubdate>
-              2024-07-11
+            <time datetime="2024-08-06 16:15" pubdate>
+              2024-08-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/08/06/ComputerVision/" target="_self">
+          ComputerVision
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/ComputerVision/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-06 14:02" pubdate>
+              2024-08-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/07/29/Networking/" target="_self">
+          计算机网络网络层笔记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/29/Networking/" target="_self">
+        <div>
+          网络层网络层有两部分功能：  forwarding(转发)：从输入路由移动packet到合适的输出路由——data plane  routing: 确定数据包从源到目的地所采取的路线 —- control plane 控制平面常见的两种方法来构造控制面： pre-router control：在每个router中都有的独立的算法，每个路由器中的各个路由算法组件在控制平面中相互作用 logicall
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-29 08:49" pubdate>
+              2024-07-29
             </time>
           </div>
         
@@ -275,14 +341,14 @@
       <h1 class="index-header">
         
         <a href="/2024/07/11/LinuxCmd/" target="_self">
-          LinuxCmd
+          Linux 常用命令
         </a>
       </h1>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/07/11/LinuxCmd/" target="_self">
         <div>
-          以下是为您整理的以 .md 格式呈现的 Linux 常用命令文档： 12345# Linux 常用命令## 一、内存管理- `free`    - 使用格式：     free [选项]     12345- 选项：    - `-h`：以人类可读的格式显示内存大小，如 `GB`、`MB` 等。    - `-m`：以 `MB` 为单位显示内存使用情况。    - `-s &lt;间隔秒数&gt;
+          Linux 常用命令一、内存管理 free 使用格式：  1free [选项] 选项： -h：以人类可读的格式显示内存大小，如 GB、MB 等。 -m：以 MB 为单位显示内存使用情况。 -s &lt;间隔秒数&gt;：可以指定每隔几秒刷新一次显示。   示例：  free -h    二、进程管理 ps 使用格式：  1ps [选项] 选项： -ef：显示所有进程的详细信息。 -aux：显示所有
         </div>
       </a>
 
@@ -315,7 +381,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/07/11/d2lNote/" target="_self">
         <div>
-          第一章：安装及遇到的问题第二章：预备知识微积分把拟合模型的任务氛围两个关键部分：  优化：用模型拟合观测数据的过程 泛化：第三章：线性神经网络线性回归回归(regression)为一个或者多个自变量与因变量之间关系建模的一类方法。当我们想要预测一个数值的时候就会涉及回归问题。  基本元素 训练集：训练数据 样本：但个训练样本 lable/target：试图预测的目标 feature：自变量线性模型
+          第一章：安装及遇到的问题包导入本文所有常用包的导入如下123import torchfrom torch import nnfrom torch.nn import functional as F 第二章：预备知识微积分把拟合模型的任务氛围两个关键部分：  优化：用模型拟合观测数据的过程 泛化：第三章：线性神经网络线性回归回归(regression)为一个或者多个自变量与因变量之间关系建模的一类方
         </div>
       </a>
 
@@ -499,77 +565,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/03/29/community/" target="_self">
-          论坛项目笔记
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/29/community/" target="_self">
-        <div>
-          项目背景为什么要做这个项目？为了学习新知识 春招简历上太空了，又是NLP又是CV的。这个项目是个烂大街项目所以学起来资源多一些，而且能覆盖大部分的后端需要的东西。春招时间也不多，赶紧学赶紧面。由于本人属于喜欢先学一学bg再开始进行项目顺便背八股文，所以会记录笔记，没准会单独成篇，之后再说。   项目介绍嗯，放眼望去好想没有什么东西是真的会的，看来都得重新学。  本着面向简历学习的思想，我们可以看出
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-28 22:59" pubdate>
-              2024-03-28
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/12/17/system-design/" target="_self">
-          system-design notes
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/17/system-design/" target="_self">
-        <div>
-          Notes for system design
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-16 16:38" pubdate>
-              2023-12-16
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -16,15 +16,15 @@
   <meta name="author" content="Alcuin Yang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="以下是为您整理的以 .md 格式呈现的 Linux 常用命令文档： 12345# Linux 常用命令## 一、内存管理- &#96;free&#96;    - 使用格式：     free [选项]     12345- 选项：    - &#96;-h&#96;：以人类可读的格式显示内存大小，如 &#96;GB&#96;、&#96;MB&#96; 等。    - &#96;-m&#96;：以 &#96;MB&#96; 为单位显示内存使用情况。    - &#96;-s &lt;间隔秒数&gt;">
+    <meta name="description" content="Linux 常用命令一、内存管理 free 使用格式：  1free [选项] 选项： -h：以人类可读的格式显示内存大小，如 GB、MB 等。 -m：以 MB 为单位显示内存使用情况。 -s &lt;间隔秒数&gt;：可以指定每隔几秒刷新一次显示。   示例：  free -h    二、进程管理 ps 使用格式：  1ps [选项] 选项： -ef：显示所有进程的详细信息。 -aux：显示所有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LinuxCmd">
+<meta property="og:title" content="Linux 常用命令">
 <meta property="og:url" content="https://alcuinyang.github.io/2024/07/11/LinuxCmd/index.html">
 <meta property="og:site_name" content="Alcuin&#39;s Blog">
-<meta property="og:description" content="以下是为您整理的以 .md 格式呈现的 Linux 常用命令文档： 12345# Linux 常用命令## 一、内存管理- &#96;free&#96;    - 使用格式：     free [选项]     12345- 选项：    - &#96;-h&#96;：以人类可读的格式显示内存大小，如 &#96;GB&#96;、&#96;MB&#96; 等。    - &#96;-m&#96;：以 &#96;MB&#96; 为单位显示内存使用情况。    - &#96;-s &lt;间隔秒数&gt;">
+<meta property="og:description" content="Linux 常用命令一、内存管理 free 使用格式：  1free [选项] 选项： -h：以人类可读的格式显示内存大小，如 GB、MB 等。 -m：以 MB 为单位显示内存使用情况。 -s &lt;间隔秒数&gt;：可以指定每隔几秒刷新一次显示。   示例：  free -h    二、进程管理 ps 使用格式：  1ps [选项] 选项： -ef：显示所有进程的详细信息。 -aux：显示所有">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-11T15:37:29.000Z">
-<meta property="article:modified_time" content="2024-07-12T00:34:35.217Z">
+<meta property="article:modified_time" content="2024-07-17T06:11:31.978Z">
 <meta property="article:author" content="Alcuin Yang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>LinuxCmd - Alcuin&#39;s Blog</title>
+  <title>Linux 常用命令 - Alcuin&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LinuxCmd"></span>
+            <span id="subtitle" data-typed-text="Linux 常用命令"></span>
           
         </div>
 
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k words
+          2.8k words
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          28 mins
+          24 mins
         
       </span>
     
@@ -293,136 +293,325 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LinuxCmd</h1>
+            <h1 style="display: none">Linux 常用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <p>以下是为您整理的以 <code>.md</code> 格式呈现的 Linux 常用命令文档：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># Linux 常用命令</span><br><br><span class="hljs-section">## 一、内存管理</span><br><span class="hljs-bullet">-</span> <span class="hljs-code">`free`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-<pre><code class="hljs">    free [选项]
-    <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">- 选项：<br>    - `-h`：以人类可读的格式显示内存大小，如 `GB`、`MB` 等。<br>    - `-m`：以 `MB` 为单位显示内存使用情况。<br>    - `-s &lt;间隔秒数&gt;`：可以指定每隔几秒刷新一次显示。<br>- 示例：<br></code></pre></td></tr></table></figure>
-    free -h
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 以人类可读的格式显示内存信息。"><br>## 二、进程管理<br>- `ps`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    ps [选项]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-ef`</span>：显示所有进程的详细信息。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-aux`</span>：显示所有用户的进程信息。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    ps -ef
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示系统中所有进程的详细信息。">- `top`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    top
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">    -</span> 示例：直接输入 <span class="hljs-code">`top`</span> 运行。<br><br><br><span class="hljs-section">## 三、网络管理</span><br><span class="hljs-bullet">-</span> <span class="hljs-code">`ifconfig`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    ifconfig [选项]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-a`</span>：显示所有网络接口的信息。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    ifconfig -a
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示所有网络接口。">- `tcpdump`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    tcpdump [选项] [表达式]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-i &lt;网络接口&gt;`</span>：指定要监听的网络接口。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-c &lt;数据包数量&gt;`</span>：指定要抓取的数据包数量。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    tcpdump -i eth0 -c 100
-    <figure class="highlight plaintext"><figcaption><span>`eth0` 接口抓取 100 个数据包。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 在">- `netstat`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    netstat [选项]
-    <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">- 选项：<br>    - `-t`：显示 `TCP` 相关的连接。<br>    - `-u`：显示 `UDP` 相关的连接。<br>    - `-n`：以数字形式显示地址和端口号。<br>- 示例：<br></code></pre></td></tr></table></figure>
-    netstat -tun
-    <figure class="highlight plaintext"><figcaption><span>`TCP` 和 `UDP` 的连接，并以数字形式显示地址和端口。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示">- `ping`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    ping [选项] 目标主机
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-c &lt;数据包数量&gt;`</span>：指定发送的数据包数量。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-i &lt;时间间隔&gt;`</span>：指定发送数据包的时间间隔。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    ping -c 5 www.baidu.com
-    <figure class="highlight plaintext"><figcaption><span>`www.baidu.com` 发送 5 个数据包测试连通性。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 向">- `traceroute`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    traceroute 目标主机
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    traceroute www.baidu.com
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`route`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    route [操作] [参数]
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    route add default gw 192.168.1.1
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 添加默认网关。"><br>## 四、目录操作命令<br>- `pwd`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    pwd
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">    -</span> 示例：直接输入 <span class="hljs-code">`pwd`</span> 运行。<br><span class="hljs-bullet">-</span> <span class="hljs-code">`cd`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    cd [目录路径]
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    cd /home/user
-    <figure class="highlight plaintext"><figcaption><span>`/home/user` 目录。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 切换到">- `ls`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    ls [选项] [目录路径]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-l`</span>：以长格式显示列表，包括文件权限、所有者、大小和修改时间等。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-a`</span>：显示包括隐藏文件在内的所有文件。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-h`</span>：以人类可读的格式显示文件大小。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    ls -lah
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 以长格式显示所有文件，并以人类可读的格式显示文件大小。">- `mkdir`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    mkdir [选项] 目录路径
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-p`</span>：递归创建多级目录。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    mkdir -p dir1/dir2
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 创建多级目录。">- `cp`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    cp [选项] 源文件或目录 目标文件或目录
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-r`</span>：递归复制目录及其内容。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-p`</span>：保留文件的属性，如权限、所有者、修改时间等。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-f`</span>：强制覆盖已存在的目标文件。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    cp -r source_dir destination_dir
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 递归复制目录。">- `rm`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    rm [选项] 文件或目录
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-r`</span>：递归删除目录及其内容。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    rm -r dir1
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 递归删除目录。">- `mv`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    mv [选项] 源文件或目录 目标文件或目录
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    mv file1 file2
-    <figure class="highlight plaintext"><figcaption><span>`file1` 重命名为 `file2`。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 将">- `ln`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    ln [选项] 源文件 目标文件
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    ln -s file1 link1
-    <figure class="highlight plaintext"><figcaption><span>`link1` 指向 `file1`。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 创建符号链接"><br>## 五、文件内容操作命令<br>- `cat`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    cat [文件]
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    cat file.txt
-    <figure class="highlight plaintext"><figcaption><span>`file.txt` 的内容。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示">- `more`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    more [文件]
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    more file.txt
-    <figure class="highlight plaintext"><figcaption><span>`file.txt` 的内容。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 分页显示">- `less`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    less [文件]
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    less file.txt
-    <figure class="highlight plaintext"><figcaption><span>`file.txt` 的内容。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 分页显示">- `head`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    head [选项] [文件]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-n &lt;行数&gt;`</span>：指定显示的行数，如 <span class="hljs-code">`-n 10`</span> 显示前 10 行。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    head -n 20 file.txt
-    <figure class="highlight plaintext"><figcaption><span>20 行。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示文件的前">- `tail`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    tail [选项] [文件]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-n &lt;行数&gt;`</span>：指定显示的行数，如 <span class="hljs-code">`-n 10`</span> 显示最后 10 行。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-f`</span>：实时跟踪文件的更新并显示新增的内容。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    tail -n 15 file.txt
-    <figure class="highlight plaintext"><figcaption><span>15 行。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 显示文件的最后">- `grep`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    grep [选项] 模式 [文件]
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-i`</span>：忽略大小写。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-v`</span>：显示不包含匹配模式的行。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    grep -i &quot;hello&quot; file.txt
-    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 在文件中查找包含不区分大小写的“hello”的行。"><br>## 六、归档命令<br>- `tar`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    tar [选项] [归档文件名] [文件或目录]
-    <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">    - 选项：<br>        - `-c`：创建归档文件。<br>        - `-x`：解压缩归档文件。<br>        - `-v`：显示详细信息。<br>        - `-f &lt;归档文件名&gt;`：指定归档文件名。<br>        - `-z`：使用 `gzip` 压缩或解压缩。<br>    - 示例：<br>        - ```<br>          tar -cvf archive.tar file1 file2<br>          ``` 创建包含 `file1` 和 `file2` 的归档文件。<br>        - ```<br>          tar -xvf archive.tar<br>          ``` 解压缩归档文件。<br>        - ```<br>          tar -zcvf archive.tar.gz file1 file2<br>          ``` 使用 `gzip` 压缩创建归档文件。<br>        - ```<br>          tar -zxvf archive.tar.gz<br>          ``` 解压缩 `gzip` 压缩的归档文件。<br><br>## 七、用户和组账号命令<br>- `useradd`<br>    - 使用格式：<br></code></pre></td></tr></table></figure>
-    useradd [选项] 用户名
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-u &lt;UID&gt;`</span>：指定用户的 <span class="hljs-code">`UID`</span>。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-g &lt;组名&gt;`</span>：指定用户所属的主组。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-d &lt;家目录&gt;`</span>：指定用户的家目录。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    useradd -u 1001 -g users -d /home/newuser newuser
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`usermod`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    usermod [选项] 用户名
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-u &lt;新 UID&gt;`</span>：修改用户的 <span class="hljs-code">`UID`</span>。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-g &lt;新组名&gt;`</span>：修改用户所属的主组。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-l &lt;新用户名&gt;`</span>：修改用户名。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    usermod -u 1002 olduser
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`userdel`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    userdel [选项] 用户名
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-r`</span>：同时删除用户的家目录和邮件池。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    userdel -r user1
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`groupadd`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    groupadd [选项] 组名
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-g &lt;GID&gt;`</span>：指定组的 <span class="hljs-code">`GID`</span>。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    groupadd mygroup
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`groupmod`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    groupmod [选项] 组名
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-g &lt;新 GID&gt;`</span>：修改组的 <span class="hljs-code">`GID`</span>。<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-n &lt;新组名&gt;`</span>：修改组名。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    groupmod -g 1005 mygroup
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`groupdel`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    groupdel 组名
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>示例：<br></code></pre></td></tr></table></figure>
-    groupdel mygroup
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-section">## 八、文件目录权限命令</span><br><span class="hljs-bullet">-</span> <span class="hljs-code">`chmod`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    chmod [选项] 权限模式 文件或目录
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-R`</span>：递归修改目录及其子目录和文件的权限。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    chmod 755 file.txt
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> <span class="hljs-code">`chown`</span><br><span class="hljs-bullet">    -</span> 使用格式：<br></code></pre></td></tr></table></figure>
-    chown [选项] 所有者[:组] 文件或目录
-    <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> 选项：<br><span class="hljs-bullet">    -</span> <span class="hljs-code">`-R`</span>：递归修改目录及其子目录和文件的所有者和组。<br><span class="hljs-bullet">-</span> 示例：<br></code></pre></td></tr></table></figure>
-    chown user1:group1 file.txt
-    <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
-</code></pre>
+                <h1 id="Linux-常用命令"><a href="#Linux-常用命令" class="headerlink" title="Linux 常用命令"></a>Linux 常用命令</h1><h2 id="一、内存管理"><a href="#一、内存管理" class="headerlink" title="一、内存管理"></a>一、内存管理</h2><ul>
+<li><code>free</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">free</span><span class="hljs-meta"> [选项]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-h</code>：以人类可读的格式显示内存大小，如 <code>GB</code>、<code>MB</code> 等。</li>
+<li><code>-m</code>：以 <code>MB</code> 为单位显示内存使用情况。</li>
+<li><code>-s &lt;间隔秒数&gt;</code>：可以指定每隔几秒刷新一次显示。</li>
+</ul>
+</li>
+<li>示例：<br>  <code>free -h</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h2><ul>
+<li><code>ps</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ps</span><span class="hljs-meta"> [选项]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-ef</code>：显示所有进程的详细信息。</li>
+<li><code>-aux</code>：显示所有用户的进程信息。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ps -ef</span><br></code></pre></td></tr></table></figure>
+  显示系统中所有进程的详细信息。</li>
+</ul>
+</li>
+<li><code>top</code><ul>
+<li>使用格式：  <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coq"><span class="hljs-built_in">top</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：直接输入 <code>top</code> 运行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、网络管理"><a href="#三、网络管理" class="headerlink" title="三、网络管理"></a>三、网络管理</h2><ul>
+<li><code>ifconfig</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ifconfig</span><span class="hljs-meta"> [选项]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-a</code>：显示所有网络接口的信息。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">ifconfig -<span class="hljs-selector-tag">a</span><br></code></pre></td></tr></table></figure>
+  显示所有网络接口。</li>
+</ul>
+</li>
+<li><code>tcpdump</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">tcpdump <span class="hljs-selector-attr">[选项]</span> <span class="hljs-selector-attr">[表达式]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-i &lt;网络接口&gt;</code>：指定要监听的网络接口。</li>
+<li><code>-c &lt;数据包数量&gt;</code>：指定要抓取的数据包数量。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tcpdump</span> -i eth0 -c <span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
+  在 <code>eth0</code> 接口抓取 100 个数据包。</li>
+</ul>
+</li>
+<li><code>netstat</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">netstat</span><span class="hljs-meta"> [选项]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-t</code>：显示 <code>TCP</code> 相关的连接。</li>
+<li><code>-u</code>：显示 <code>UDP</code> 相关的连接。</li>
+<li><code>-n</code>：以数字形式显示地址和端口号。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">netstat -tun</span><br></code></pre></td></tr></table></figure>
+  显示 <code>TCP</code> 和 <code>UDP</code> 的连接，并以数字形式显示地址和端口。</li>
+</ul>
+</li>
+<li><code>ping</code><ul>
+<li>使用格式：  <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">ping</span> [选项] 目标主机<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-c &lt;数据包数量&gt;</code>：指定发送的数据包数量。</li>
+<li><code>-i &lt;时间间隔&gt;</code>：指定发送数据包的时间间隔。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ping</span> -c <span class="hljs-number">5</span> www.baidu.com<br></code></pre></td></tr></table></figure>
+  向 <code>www.baidu.com</code> 发送 5 个数据包测试连通性。</li>
+</ul>
+</li>
+<li><code>traceroute</code><ul>
+<li>使用格式：  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">traceroute</span> 目标主机<br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">traceroute</span> www.baidu.com<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>route</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">route <span class="hljs-selector-attr">[操作]</span> <span class="hljs-selector-attr">[参数]</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">route <span class="hljs-built_in">add</span><span class="hljs-built_in"> default </span>gw 192.168.1.1<br></code></pre></td></tr></table></figure>
+  添加默认网关。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、目录操作命令"><a href="#四、目录操作命令" class="headerlink" title="四、目录操作命令"></a>四、目录操作命令</h2><ul>
+<li><code>pwd</code><ul>
+<li>使用格式：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：直接输入 <code>pwd</code> 运行。</li>
+</ul>
+</li>
+<li><code>cd</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span><span class="hljs-meta"> [目录路径]</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <span class="hljs-regexp">/home/u</span>ser<br></code></pre></td></tr></table></figure>
+  切换到 <code>/home/user</code> 目录。</li>
+</ul>
+</li>
+<li><code>ls</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">ls <span class="hljs-selector-attr">[选项]</span> <span class="hljs-selector-attr">[目录路径]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-l</code>：以长格式显示列表，包括文件权限、所有者、大小和修改时间等。</li>
+<li><code>-a</code>：显示包括隐藏文件在内的所有文件。</li>
+<li><code>-h</code>：以人类可读的格式显示文件大小。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -lah<br></code></pre></td></tr></table></figure>
+  以长格式显示所有文件，并以人类可读的格式显示文件大小。</li>
+</ul>
+</li>
+<li><code>mkdir</code><ul>
+<li>使用格式：  <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">mkdir [选项] 目录路径<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-p</code>：递归创建多级目录。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p dir1/dir2<br></code></pre></td></tr></table></figure>
+  创建多级目录。</li>
+</ul>
+</li>
+<li><code>cp</code><ul>
+<li>使用格式：  <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-keyword">cp</span> [选项] 源文件或目录 目标文件或目录<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-r</code>：递归复制目录及其内容。</li>
+<li><code>-p</code>：保留文件的属性，如权限、所有者、修改时间等。</li>
+<li><code>-f</code>：强制覆盖已存在的目标文件。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-keyword">cp</span> -r source_dir destination_dir<br></code></pre></td></tr></table></figure>
+  递归复制目录。</li>
+</ul>
+</li>
+<li><code>rm</code><ul>
+<li>使用格式：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> [选项] 文件或目录<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-r</code>：递归删除目录及其内容。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -r dir1<br></code></pre></td></tr></table></figure>
+  递归删除目录。</li>
+</ul>
+</li>
+<li><code>mv</code><ul>
+<li>使用格式：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> [选项] 源文件或目录 目标文件或目录<br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> file1 file2<br></code></pre></td></tr></table></figure>
+  将 <code>file1</code> 重命名为 <code>file2</code>。</li>
+</ul>
+</li>
+<li><code>ln</code><ul>
+<li>使用格式：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> [选项] 源文件 目标文件<br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s file1 link1<br></code></pre></td></tr></table></figure>
+  创建符号链接 <code>link1</code> 指向 <code>file1</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、文件内容操作命令"><a href="#五、文件内容操作命令" class="headerlink" title="五、文件内容操作命令"></a>五、文件内容操作命令</h2><ul>
+<li><code>cat</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cat</span><span class="hljs-meta"> [文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">cat</span> <span class="hljs-keyword">file</span>.txt<br></code></pre></td></tr></table></figure>
+  显示 <code>file.txt</code> 的内容。</li>
+</ul>
+</li>
+<li><code>more</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">more</span><span class="hljs-meta"> [文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">more</span> <span class="hljs-keyword">file</span>.txt<br></code></pre></td></tr></table></figure>
+  分页显示 <code>file.txt</code> 的内容。</li>
+</ul>
+</li>
+<li><code>less</code><ul>
+<li>使用格式：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">less</span><span class="hljs-meta"> [文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">less</span> <span class="hljs-keyword">file</span>.txt<br></code></pre></td></tr></table></figure>
+  分页显示 <code>file.txt</code> 的内容。</li>
+</ul>
+</li>
+<li><code>head</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">head <span class="hljs-selector-attr">[选项]</span> <span class="hljs-selector-attr">[文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-n &lt;行数&gt;</code>：指定显示的行数，如 <code>-n 10</code> 显示前 10 行。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">head</span> -n <span class="hljs-number">20</span> file.txt<br></code></pre></td></tr></table></figure>
+  显示文件的前 20 行。</li>
+</ul>
+</li>
+<li><code>tail</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">tail <span class="hljs-selector-attr">[选项]</span> <span class="hljs-selector-attr">[文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-n &lt;行数&gt;</code>：指定显示的行数，如 <code>-n 10</code> 显示最后 10 行。</li>
+<li><code>-f</code>：实时跟踪文件的更新并显示新增的内容。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tail</span> -n <span class="hljs-number">15</span> file.txt<br></code></pre></td></tr></table></figure>
+  显示文件的最后 15 行。</li>
+</ul>
+</li>
+<li><code>grep</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">grep <span class="hljs-selector-attr">[选项]</span> 模式 <span class="hljs-selector-attr">[文件]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-i</code>：忽略大小写。</li>
+<li><code>-v</code>：显示不包含匹配模式的行。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">grep</span> -i <span class="hljs-string">&quot;hello&quot;</span> <span class="hljs-keyword">file</span>.txt<br></code></pre></td></tr></table></figure>
+  在文件中查找包含不区分大小写的“hello”的行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、归档命令"><a href="#六、归档命令" class="headerlink" title="六、归档命令"></a>六、归档命令</h2><ul>
+<li><code>tar</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">tar <span class="hljs-selector-attr">[选项]</span> <span class="hljs-selector-attr">[归档文件名]</span> <span class="hljs-selector-attr">[文件或目录]</span><br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-c</code>：创建归档文件。</li>
+<li><code>-x</code>：解压缩归档文件。</li>
+<li><code>-v</code>：显示详细信息。</li>
+<li><code>-f &lt;归档文件名&gt;</code>：指定归档文件名。</li>
+<li><code>-z</code>：使用 <code>gzip</code> 压缩或解压缩。</li>
+</ul>
+</li>
+<li>示例：<ul>
+<li><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">tar</span> -cvf archive.tar file1 file2<br></code></pre></td></tr></table></figure>
+创建包含 <code>file1</code> 和 <code>file2</code> 的归档文件。</li>
+<li><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">tar</span> -xvf archive.tar<br></code></pre></td></tr></table></figure>
+解压缩归档文件。</li>
+<li><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">tar -zcvf archive<span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span> file1 file2<br></code></pre></td></tr></table></figure>
+使用 <code>gzip</code> 压缩创建归档文件。</li>
+<li><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">tar</span> -zxvf archive.tar.gz<br></code></pre></td></tr></table></figure>
+解压缩 <code>gzip</code> 压缩的归档文件。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="七、用户和组账号命令"><a href="#七、用户和组账号命令" class="headerlink" title="七、用户和组账号命令"></a>七、用户和组账号命令</h2><ul>
+<li><code>useradd</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">useradd <span class="hljs-selector-attr">[选项]</span> 用户名<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-u &lt;UID&gt;</code>：指定用户的 <code>UID</code>。</li>
+<li><code>-g &lt;组名&gt;</code>：指定用户所属的主组。</li>
+<li><code>-d &lt;家目录&gt;</code>：指定用户的家目录。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">useradd -u <span class="hljs-number">1001</span> -g users -d /home/<span class="hljs-keyword">new</span><span class="hljs-type">user</span> <span class="hljs-keyword">new</span><span class="hljs-type">user</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>usermod</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">usermod <span class="hljs-selector-attr">[选项]</span> 用户名<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-u &lt;新 UID&gt;</code>：修改用户的 <code>UID</code>。</li>
+<li><code>-g &lt;新组名&gt;</code>：修改用户所属的主组。</li>
+<li><code>-l &lt;新用户名&gt;</code>：修改用户名。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">usermod</span> -u <span class="hljs-number">1002</span> olduser<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>userdel</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">userdel <span class="hljs-selector-attr">[选项]</span> 用户名<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-r</code>：同时删除用户的家目录和邮件池。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">userdel</span> -r user1<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>groupadd</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">groupadd <span class="hljs-selector-attr">[选项]</span> 组名<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-g &lt;GID&gt;</code>：指定组的 <code>GID</code>。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">groupadd mygroup</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>groupmod</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">groupmod <span class="hljs-selector-attr">[选项]</span> 组名<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-g &lt;新 GID&gt;</code>：修改组的 <code>GID</code>。</li>
+<li><code>-n &lt;新组名&gt;</code>：修改组名。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">groupmod</span> -g <span class="hljs-number">1005</span> mygroup<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>groupdel</code><ul>
+<li>使用格式：  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">groupdel</span> 组名<br></code></pre></td></tr></table></figure></li>
+<li>示例：  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">groupdel mygroup</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="八、文件目录权限命令"><a href="#八、文件目录权限命令" class="headerlink" title="八、文件目录权限命令"></a>八、文件目录权限命令</h2><ul>
+<li><code>chmod</code><ul>
+<li>使用格式：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> [选项] 权限模式 文件或目录<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-R</code>：递归修改目录及其子目录和文件的权限。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> <span class="hljs-number">755</span> file.txt<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>chown</code><ul>
+<li>使用格式：  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">chown <span class="hljs-selector-attr">[选项]</span> 所有者<span class="hljs-selector-attr">[:组]</span> 文件或目录<br></code></pre></td></tr></table></figure></li>
+<li>选项：<ul>
+<li><code>-R</code>：递归修改目录及其子目录和文件的所有者和组。</li>
+</ul>
+</li>
+<li>示例：  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">chown user1:group1 <span class="hljs-built_in">file</span>.txt<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
@@ -439,7 +628,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LinuxCmd</div>
+      <div>Linux 常用命令</div>
       <div>https://alcuinyang.github.io/2024/07/11/LinuxCmd/</div>
     </div>
     <div class="license-meta">
@@ -484,9 +673,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/12/databaseTut/" title="数据库相关知识培训">
+                      <a href="/2024/07/29/Networking/" title="计算机网络网络层笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库相关知识培训</span>
+                        <span class="hidden-mobile">计算机网络网络层笔记</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
