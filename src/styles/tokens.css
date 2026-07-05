@@ -1,0 +1,96 @@
+/* ============================================================
+   Research Station — design tokens
+   Warm wood-tone editorial palette, light + dark (espresso).
+   Extracted from the "Research Station" design direction (1b/1c).
+   ============================================================ */
+
+:root {
+  /* fonts — CJK faces sit in the fallback chain so mixed Latin/Chinese
+     runs resolve per-glyph without needing locale-conditional styles */
+  --font-serif: 'Newsreader', 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --font-cjk: 'Noto Sans SC', 'Newsreader', serif;
+
+  /* ---- light (default) ---- */
+  --page: #e3d7c3;          /* outer canvas */
+  --card: #fcf8ef;          /* card surface */
+  --ink: #2b241c;           /* primary text */
+  --ink-serif: #33291f;     /* serif body */
+  --muted: #8a7a64;         /* secondary text */
+  --muted-2: #7a6b57;
+  --faint: #a0917c;         /* tertiary / meta */
+  --faint-2: #b0a28c;
+  --whisper: #c3b49c;       /* faintest meta (timestamps) */
+
+  --line: #e7dac7;          /* hairline rules */
+  --line-2: #ede2d0;        /* softer hairline */
+  --line-3: #ede4d4;
+
+  --accent: #b06a43;        /* terracotta / rust */
+  --accent-deep: #8a4e2c;
+  --accent-ink: #7a6242;    /* text on light accent fill */
+
+  --accent-fill: #f6ead8;   /* soft accent chip bg */
+  --accent-fill-2: #f4e9d8;
+  --accent-border: #e1c9ae;
+  --chip-bg: #f1e9da;
+  --chip-ink: #8a7a64;
+
+  --nextup-bg: #f5ead9;
+  --nextup-border: #ead9c0;
+
+  --track: #eadfcd;         /* progress track */
+  --accent-contrast: #fbf6ec; /* text on solid accent fill */
+  --bar-2: #ead9c0;         /* gantt: next phase */
+  --bar-2-ink: #7a6242;
+  --bar-3: #efe3d1;         /* gantt: later phases */
+  --bar-3-ink: #8a7457;
+  --card-border: #e1d4c0;
+  --card-shadow: 0 1px 2px rgba(43, 36, 28, 0.04), 0 14px 40px -18px rgba(43, 36, 28, 0.22);
+
+  --masthead-caps: #b0a28c;
+  --serif-italic: #8a7a64;
+}
+
+:root[data-theme='dark'] {
+  /* ---- dark espresso / walnut ---- */
+  --page: #1b1510;
+  --card: #241d16;
+  --ink: #ede4d5;
+  --ink-serif: #e6dccb;
+  --muted: #9c8d77;
+  --muted-2: #9c8d77;
+  --faint: #7b6c58;
+  --faint-2: #7b6c58;
+  --whisper: #6a5c48;
+
+  --line: #3a2e22;
+  --line-2: #33281d;
+  --line-3: #33281d;
+
+  --accent: #cb8a5e;
+  --accent-deep: #b3714a;
+  --accent-ink: #f3e6d6;
+
+  --accent-fill: #362a1e;
+  --accent-fill-2: #30251b;
+  --accent-border: #4a3826;
+  --chip-bg: #2e241a;
+  --chip-ink: #b3a48d;
+
+  --nextup-bg: #30251b;
+  --nextup-border: #463728;
+
+  --track: #3a2e22;
+  --accent-contrast: #241d16; /* text on solid accent fill */
+  --bar-2: #4a3826;         /* gantt: next phase */
+  --bar-2-ink: #d8bd9c;
+  --bar-3: #33281d;         /* gantt: later phases */
+  --bar-3-ink: #9c8d77;
+  --card-border: #3a2e22;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 46px -20px rgba(0, 0, 0, 0.55);
+
+  --masthead-caps: #7b6c58;
+  --serif-italic: #9c8d77;
+}
