@@ -28,6 +28,9 @@ export const messages = {
         'New on arXiv across my research interests, sorted into clusters. Auto-updated daily — unread items sit at the top.',
       all: 'All clusters',
       new: '{n} new',
+      search: 'Search papers, abstracts, tags…',
+      noResults: 'No papers match your filters.',
+      clear: 'Clear filters',
     },
     notes: {
       title: 'The Garden',
@@ -39,6 +42,10 @@ export const messages = {
       linked: 'Linked',
       back: '← Back to the garden',
       missing: 'That note isn’t in the garden yet.',
+      search: 'Search notes, tags, ideas…',
+      noResults: 'Nothing matches — try a different search or tag.',
+      clear: 'Clear filters',
+      count: '{n} of {total}',
     },
     maturity: {
       seed: 'seed',
@@ -92,6 +99,9 @@ export const messages = {
         'arXiv 上与我研究方向相关的新文章，按主题聚类，每日自动更新——未读的排在最前。',
       all: '全部主题',
       new: '{n} 篇新',
+      search: '搜索标题、摘要、标签…',
+      noResults: '没有符合筛选条件的文章。',
+      clear: '清除筛选',
     },
     notes: {
       title: '知识花园',
@@ -103,6 +113,10 @@ export const messages = {
       linked: '相关',
       back: '← 返回花园',
       missing: '这则笔记还没长进花园里。',
+      search: '搜索笔记、标签、想法…',
+      noResults: '没有匹配的内容——换个关键词或标签试试。',
+      clear: '清除筛选',
+      count: '{n} / {total}',
     },
     maturity: {
       seed: '种子',

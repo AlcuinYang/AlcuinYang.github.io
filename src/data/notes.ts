@@ -167,3 +167,34 @@ export const notes: Note[] = [
 export function noteBySlug(slug: string): Note | undefined {
   return notes.find((n) => n.slug === slug)
 }
+
+/** every distinct tag across the garden, sorted */
+export const allNoteTags: string[] = [
+  ...new Set(notes.flatMap((n) => n.tags)),
+].sort()
+
+function localizedText(value: Localized): string {
+  return typeof value === 'string' ? value : `${value.en} ${value.zh}`
+}
+
+/**
+ * A lowercased haystack of everything searchable in a note — both languages,
+ * tags, breadcrumb, linked titles, and body prose (so search reaches inside
+ * a note, not just its card). Computed once per note and memoized.
+ */
+const haystacks = new WeakMap<Note, string>()
+export function noteSearchText(note: Note): string {
+  const cached = haystacks.get(note)
+  if (cached) return cached
+  const parts: string[] = [note.slug, ...note.tags]
+  parts.push(localizedText(note.title), localizedText(note.lede), localizedText(note.tended))
+  note.breadcrumb?.forEach((b) => parts.push(localizedText(b)))
+  note.linked?.forEach((l) => parts.push(localizedText(l)))
+  note.body?.forEach((b) => {
+    if ('text' in b) parts.push(localizedText(b.text))
+    if ('html' in b) parts.push(localizedText(b.html))
+  })
+  const text = parts.join(' ').toLowerCase()
+  haystacks.set(note, text)
+  return text
+}

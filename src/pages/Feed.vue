@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { feed, formatAge } from '@/data/feed'
+import { feed, formatAge, type FeedItem } from '@/data/feed'
 import { useLocale } from '@/composables/useLocale'
 
 const { t } = useI18n()
@@ -9,10 +9,43 @@ const { L, locale } = useLocale()
 
 // -1 = all clusters, otherwise the cluster index
 const active = ref(-1)
+const query = ref('')
+const activeTag = ref<string | null>(null)
 
+function itemText(item: FeedItem): string {
+  return `${item.id} ${item.title} ${item.suffix ?? ''} ${item.abstract.en} ${item.abstract.zh} ${item.tags.join(' ')}`.toLowerCase()
+}
+
+function itemMatches(item: FeedItem): boolean {
+  if (activeTag.value && !item.tags.includes(activeTag.value)) return false
+  const q = query.value.trim().toLowerCase()
+  return q === '' || itemText(item).includes(q)
+}
+
+// clusters filtered by the selected cluster chip, then by search + tag,
+// with empty clusters dropped
 const shown = computed(() =>
-  active.value === -1 ? feed : [feed[active.value]],
+  feed
+    .map((cluster, ci) => ({ cluster, ci }))
+    .filter(({ ci }) => active.value === -1 || ci === active.value)
+    .map(({ cluster, ci }) => ({ ...cluster, ci, items: cluster.items.filter(itemMatches) }))
+    .filter((cluster) => cluster.items.length > 0),
 )
+
+const total = computed(() => shown.value.reduce((sum, c) => sum + c.items.length, 0))
+const filtered = computed(
+  () => active.value !== -1 || activeTag.value !== null || query.value.trim() !== '',
+)
+
+function toggleTag(tag: string) {
+  activeTag.value = activeTag.value === tag ? null : tag
+}
+
+function clearFilters() {
+  active.value = -1
+  activeTag.value = null
+  query.value = ''
+}
 </script>
 
 <template>
@@ -21,6 +54,21 @@ const shown = computed(() =>
       <header class="feed__head">
         <h1 class="feed__title">{{ t('feed.title') }}</h1>
         <p class="feed__intro">{{ t('feed.intro') }}</p>
+
+        <div class="search">
+          <svg class="search__icon" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <line x1="10.8" y1="10.8" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          <input
+            v-model="query"
+            class="search__input"
+            type="search"
+            :placeholder="t('feed.search')"
+            :aria-label="t('feed.search')"
+          />
+        </div>
+
         <div class="chips">
           <button
             class="chip"
@@ -41,9 +89,16 @@ const shown = computed(() =>
             {{ L(cluster.short) }}
           </button>
         </div>
+
+        <div v-if="filtered" class="result">
+          <span class="result__count">{{ t('feed.new', { n: total }) }}</span>
+          <button class="result__clear" type="button" @click="clearFilters">{{ t('feed.clear') }}</button>
+        </div>
       </header>
 
-      <section v-for="(cluster, ci) in shown" :key="ci" class="cluster">
+      <p v-if="shown.length === 0" class="empty">{{ t('feed.noResults') }}</p>
+
+      <section v-for="cluster in shown" :key="cluster.ci" class="cluster">
         <div class="cluster__head">
           <span class="cluster__name">{{ L(cluster.name) }}</span>
           <span class="cluster__count">{{ t('feed.new', { n: cluster.items.length }) }}</span>
@@ -58,8 +113,16 @@ const shown = computed(() =>
               </h3>
               <p class="item__abstract">{{ L(item.abstract) }}</p>
               <div class="item__tags">
-                <span class="tag tag--cat">{{ item.tags[0] }}</span>
-                <span v-for="tg in item.tags.slice(1)" :key="tg" class="tag">{{ tg }}</span>
+                <button
+                  v-for="(tg, ti) in item.tags"
+                  :key="tg"
+                  class="tag"
+                  :class="{ 'tag--cat': ti === 0, 'tag--on': activeTag === tg }"
+                  type="button"
+                  @click="toggleTag(tg)"
+                >
+                  {{ tg }}
+                </button>
               </div>
             </div>
             <div class="item__age">{{ formatAge(item.age, locale) }}</div>
@@ -86,6 +149,43 @@ const shown = computed(() =>
   font: 400 14px/1.5 var(--font-sans);
   color: var(--muted);
 }
+.search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: transparent;
+  transition: border-color 0.18s ease;
+}
+.search:focus-within {
+  border-color: var(--accent-border);
+}
+.search__icon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--faint);
+}
+.search__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 9px 0;
+  font: 400 13.5px var(--font-sans);
+  color: var(--ink);
+}
+.search__input::placeholder {
+  color: var(--whisper);
+}
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -110,6 +210,36 @@ const shown = computed(() =>
   color: var(--accent);
   border-color: var(--accent-border);
   background: var(--accent-fill);
+}
+
+.result {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 14px;
+}
+.result__count {
+  font: 400 11px var(--font-mono);
+  color: var(--faint);
+}
+.result__clear {
+  font: 400 11px var(--font-mono);
+  color: var(--accent);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s ease;
+}
+.result__clear:hover {
+  border-bottom-color: var(--accent-border);
+}
+.empty {
+  margin: 0;
+  padding: 34px 40px;
+  font: 400 14px var(--font-sans);
+  color: var(--muted);
 }
 
 .cluster {
@@ -175,10 +305,22 @@ const shown = computed(() =>
   background: var(--chip-bg);
   padding: 3px 8px;
   border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.tag:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
 }
 .tag--cat {
   color: var(--accent);
   background: var(--accent-fill);
+}
+.tag--on {
+  color: var(--accent);
+  background: var(--accent-fill);
+  border-color: var(--accent-border);
 }
 .item__age {
   flex: none;
