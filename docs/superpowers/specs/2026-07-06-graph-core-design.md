@@ -14,6 +14,9 @@ The repo is a polished Vue 3 + Vite front-end with hand-authored static TS data 
 - Data format: **YAML source of truth + zod validation** (aligns with master spec §4 and the content-import template).
 - Scope: **graph spine + Graph page only** (ship small).
 - Framework: **stay on Vue 3 + Vite** (resolves master spec §10 ⚠️ Astro-vs-Hugo fork by a third path already taken).
+- **Write model (amends master spec §2/§5.3): dev-mode inline editor.** `nodes.yaml` stays the single source of truth. When running `npm run dev` locally, the Graph page lets you click a collected node to flip its **mastery** (`todo→learning→done`, stamp `completed_at`); a Vite dev-server middleware writes the change back to `nodes.yaml` on disk, which you then commit. This affordance exists **only** on localhost dev — the built public site is read-only. Zero backend, zero auth, zero hosting cost. Two kinds of write stay cleanly separated:
+  - **Mastery flips** (mechanical, no LLM) → dev inline editor, writes YAML directly.
+  - **Structural growth** (new nodes, notes, candidate generation — needs synthesis) → Claude Code session via the content-import template; the browser wishlist (§7.2) only exports a paste-able id list, never writes.
 
 ---
 
@@ -29,14 +32,16 @@ scripts/
 src/pages/
   Graph.vue             # route /graph — page shell, legend, hosts the island
 src/components/
-  GraphView.vue         # Cytoscape client island (mount in onMounted)
+  GraphView.vue         # Cytoscape client island (mount in onMounted); dev-mode mastery editing
   GraphLegend.vue       # state + domain key, wishlist export button
+plugins/
+  vite-plugin-graph-writer.ts   # dev-only middleware: POST /__graph/patch → rewrite nodes.yaml
 ```
 
 **New dependencies:**
 - `zod` — schema validation.
-- `js-yaml` — parse yaml inside `validate_graph.ts` (node context).
-- `@rollup/plugin-yaml` — let Vite `import nodes from './nodes.yaml'` at build time.
+- `yaml` (eemeli/yaml) — parse **and** comment-preserving write-back of `nodes.yaml`, in both `validate_graph.ts` and the dev writer middleware (Document API patches a single scalar without clobbering the section comments).
+- `@rollup/plugin-yaml` — let Vite `import nodes from './nodes.yaml'` at build time (app bundle).
 - `cytoscape`, `cytoscape-dagre`, `dagre` — layered DAG rendering.
 
 **Wiring:**
@@ -44,7 +49,7 @@ src/components/
 - `src/data/site.ts`: add `{ key: 'nav.graph', to: '/graph' }` to `nav`, placed immediately after `nav.dashboard` (the graph is the site's centerpiece view).
 - `src/i18n/messages.ts`: add `nav.graph` (en: "Graph", zh: "图谱") + graph-page strings (legend labels, tooltip labels, export button).
 - `package.json`: add `tsx` as a devDep; set `"build": "tsx scripts/validate_graph.ts && vue-tsc --noEmit && vite build"` and expose `"validate:graph": "tsx scripts/validate_graph.ts"`.
-- `vite.config.ts`: register `@rollup/plugin-yaml` in the Vite plugins array.
+- `vite.config.ts`: register `@rollup/plugin-yaml` **and** `graphWriter()` (from `plugins/vite-plugin-graph-writer.ts`) in the Vite plugins array. The graph-writer plugin only attaches its middleware inside `configureServer` (dev), so it is inert in `vite build`.
 
 ---
 
@@ -86,7 +91,7 @@ GraphNode = {
 
 ## 4. Validator — `scripts/validate_graph.ts`
 
-The master spec's CI gate. Parses `nodes.yaml` with `js-yaml`, then asserts:
+The master spec's CI gate. Parses `nodes.yaml` with the `yaml` package, then asserts:
 
 1. **Schema** — every node passes the zod schema (incl. superRefine).
 2. **Unique ids** — no duplicate `id`.
@@ -175,8 +180,8 @@ A few `candidate` nodes so the ghost styling is visible from day one. Per the §
 
 **Interactions:**
 - **Click a node → highlight its un-lit prereq chain** (`unlitPrereqChain`): fade everything else, emphasize ancestors not yet `done` — the "top-down补" entry point.
-- **Click a candidate → toggle wishlist** (§7).
-- **Hover → tooltip:** `completed_at` (if done) + linked note titles (stub: empty until notes carry node ids next round).
+- **Click a candidate → toggle wishlist** (§7.2).
+- **Hover → tooltip:** `completed_at` (if done) + linked note titles (stub: empty until notes carry node ids next round). **In dev only**, the tooltip/popover for a *collected* node also carries three mastery buttons (`todo` / `learning` / `done`) — see §7.1. Using a popover control keeps mastery editing from colliding with the single-click prereq-highlight gesture.
 
 **Rendering discipline:** `GraphView.vue` is a client island — Cytoscape needs the DOM, so instantiate in `onMounted` and destroy in `onUnmounted`. Vite is SPA (no SSR) so no hydration guard needed, but keep Cytoscape import dynamic to avoid bloating other routes' chunks. Colors read from CSS custom properties (via `getComputedStyle` on the container) so light/dark theme both work and stay in sync with `tokens.css`.
 
@@ -184,9 +189,22 @@ A few `candidate` nodes so the ghost styling is visible from day one. Per the §
 
 ---
 
-## 7. Wishlist (browser-side, non-authoritative — master spec §5.3)
+## 7. Write model (amends master spec §5.3)
 
-- localStorage key `rs:graph:wishlist` → `string[]` of candidate ids (stored as JSON, loaded into a reactive `Set`).
+Two writes, cleanly separated. Mastery flips are mechanical → edited in the dev browser, written to YAML. Structural growth needs an LLM → stays a Claude Code activity; the browser only exports a wishlist.
+
+### 7.1 Dev-mode inline mastery editor (authoritative, localhost only)
+
+- **Client:** `GraphView.vue` gates the editing UI on `import.meta.env.DEV`. In dev, a collected node's popover shows three mastery buttons. Choosing one:
+  - Optimistically updates the Cytoscape node style.
+  - `POST /__graph/patch` with `{ id, mastery }`. On `mastery === 'done'` the client also sends `completed_at` = today's date (browser `Date` is fine — this is dev-only client code, not the workflow sandbox); on leaving `done`, `completed_at` is cleared.
+- **Server:** `plugins/vite-plugin-graph-writer.ts` registers a `configureServer` middleware for `POST /__graph/patch`. It loads `src/data/graph/nodes.yaml` via the `yaml` Document API, finds the node by `id`, sets `mastery`/`completed_at` **surgically** (preserving section comments and key order), re-runs the same zod checks the validator uses, and writes the file back. Returns `400` on unknown id or schema violation (so a bad edit never lands).
+- **Production:** the middleware lives only in `configureServer`, and the client UI is `DEV`-gated, so the deployed public site is fully read-only. No backend, no auth, no hosting cost.
+- **Authority:** `nodes.yaml` on disk is the source of truth. The editor mutates that file; you review the diff and `git commit`. Nothing is persisted anywhere else.
+
+### 7.2 Wishlist (browser-side, non-authoritative — for structural growth)
+
+- localStorage key `rs:graph:wishlist` → `string[]` of candidate ids (JSON, loaded into a reactive `Set`).
 - Clicking a candidate toggles membership; wishlisted ghosts get a distinct marked style (e.g. accent dashed ring).
 - **"Export wishlist"** button → assembles a paste-able block for the next Claude Code session:
   ```
@@ -195,7 +213,7 @@ A few `candidate` nodes so the ghost styling is visible from day one. Per the §
   - consistency-models
   ```
   Copied to clipboard (with a visible fallback textarea).
-- **Git is authoritative; localStorage is scratch.** Nothing here writes to the repo; no runtime LLM call anywhere on the site.
+- **Git is authoritative; localStorage is scratch.** The wishlist never writes to the repo (collecting a candidate + generating neighbors needs synthesis → Claude Code). No runtime LLM call anywhere on the site.
 
 ---
 
@@ -210,8 +228,9 @@ A few `candidate` nodes so the ghost styling is visible from day one. Per the §
 ## 9. Testing / verification
 
 - `npm run validate:graph` passes on the seed data; deliberately introducing a cycle or a dangling prereq makes it exit non-zero (manual check during build).
-- `npm run build` (which now runs the validator + `vue-tsc` + `vite build`) succeeds.
-- Manual: `/graph` renders the seeded DAG; clicking `aesthetic-reward-head` highlights its un-lit ancestors (`reward-model`, `ava-dataset` chain); clicking a candidate toggles the wishlist marker; export produces the id list; theme toggle recolors nodes correctly.
+- `npm run build` (which now runs the validator + `vue-tsc` + `vite build`) succeeds, and the built site exposes **no** `/__graph/patch` route (dev-only middleware absent).
+- Manual (dev): `/graph` renders the seeded DAG; clicking `aesthetic-reward-head` highlights its un-lit ancestors (`reward-model`, `ava-dataset` chain); clicking a candidate toggles the wishlist marker; export produces the id list; theme toggle recolors nodes correctly.
+- Manual (dev editor): flipping a node's mastery in the popover rewrites `nodes.yaml` on disk (verify with `git diff`), preserves the section comments, stamps/clears `completed_at`, and the node restyles live; an edit that would violate the schema is rejected with a 400 and leaves the file untouched.
 
 ---
 
@@ -219,8 +238,9 @@ A few `candidate` nodes so the ghost styling is visible from day one. Per the §
 
 - **`schema.ts`** — owns the shape + validation. Depends on `zod`. Consumers import types + the schema object.
 - **`index.ts`** — owns loading + derivation + queries. Depends on `nodes.yaml`, `schema.ts`. Everyone reads the graph through its helpers, never re-parses.
-- **`validate_graph.ts`** — owns the CI gate. Depends on `js-yaml`, `schema.ts`. No coupling to Vue.
-- **`GraphView.vue`** — owns rendering + interaction. Depends on `index.ts` helpers + Cytoscape. Knows nothing about how nodes are stored.
+- **`validate_graph.ts`** — owns the CI gate. Depends on `yaml`, `schema.ts`. No coupling to Vue.
+- **`vite-plugin-graph-writer.ts`** — owns the dev-only YAML write-back. Depends on `yaml`, `schema.ts` (reuses the same zod checks). Pure Node/Vite, no Vue. Absent from production builds.
+- **`GraphView.vue`** — owns rendering + interaction (incl. dev mastery popover → `POST /__graph/patch`). Depends on `index.ts` helpers + Cytoscape. Knows nothing about how nodes are stored on disk.
 - **`GraphLegend.vue`** / wishlist — owns localStorage + export. Isolated from rendering internals (communicates via props/events).
 
 Each unit is independently understandable and swappable (e.g. swap Cytoscape for another renderer without touching the data layer).
