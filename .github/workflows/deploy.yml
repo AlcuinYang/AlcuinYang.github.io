@@ -1,8 +1,8 @@
-name: Deploy Research Station
+name: Deploy Personal Portal
 
 on:
   push:
-    branches: [master, main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -10,10 +10,10 @@ permissions:
   pages: write
   id-token: write
 
-# allow one concurrent deployment, don't cancel in-progress production deploys
+# One authoritative Pages workflow. A newer portal release supersedes an older queued release.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -33,6 +33,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_RESEARCH_URL: ${{ vars.VITE_RESEARCH_URL }}
+          VITE_TENNIS_URL: ${{ vars.VITE_TENNIS_URL }}
+          VITE_GITHUB_URL: ${{ vars.VITE_GITHUB_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

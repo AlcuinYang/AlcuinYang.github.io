@@ -1,9 +1,9 @@
 {
-  "name": "research-station",
+  "name": "alcuin-personal-portal",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Alcuin Yang — Research Station: a personal knowledge cockpit & digital garden for image aesthetic assessment (IAA) research.",
+  "description": "Alcuin Yang personal portal for research, tennis practice, and public code.",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -11,14 +11,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.38",
-    "vue-i18n": "^10.0.8",
-    "vue-router": "^4.4.5"
+    "vue": "^3.5.40"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.4",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.8",
-    "vue-tsc": "^2.1.6"
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "^5.9.3",
+    "vite": "^8.1.5",
+    "vue-tsc": "^3.3.8"
   }
 }
