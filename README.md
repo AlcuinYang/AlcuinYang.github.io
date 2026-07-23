@@ -38,5 +38,7 @@ npm run preview
 ## Release safety
 
 The previous Research Station production state is preserved by the remote tag
-`pre-portal-migration-2026-07-22`. Portal work is developed on `portal-development` until the
-independent Research Station URL is live and verified.
+`pre-portal-migration-2026-07-22`. The independent destinations are now:
+
+- Research Station: `https://alcuin-research.vercel.app`
+- Tennis OS: `https://alcuin-tennis-os.vercel.app`
