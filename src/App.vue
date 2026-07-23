@@ -18,7 +18,7 @@ const links = [
   <main id="main" class="shell">
     <section class="hero" aria-labelledby="hero-title">
       <p class="identity">Alcuin Yang</p>
-      <h1 id="hero-title">Make Alcuin<br />Great Again</h1>
+      <h1 id="hero-title">Make Alcuin <br />Great Again</h1>
       <p class="profile-line">
         <span>🎓 PhD Student @ BUPT</span>
         <span>🤖 CV | MLLM | AIGC</span>
@@ -27,11 +27,10 @@ const links = [
     </section>
 
     <nav class="destination-list" aria-label="Destinations">
-      <a v-for="link in links" :key="link.label" :href="link.href">
+      <a v-for="link in links" :key="link.label" :href="link.href" :aria-label="`Open ${link.label}`">
         <span class="destination-index">{{ link.index }}</span>
         <strong>{{ link.label }}</strong>
         <span class="destination-arrow" aria-hidden="true">↗</span>
-        <span class="sr-only">Open {{ link.label }}</span>
       </a>
     </nav>
   </main>
