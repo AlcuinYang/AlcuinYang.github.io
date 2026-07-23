@@ -7,7 +7,7 @@ independently deployed workspaces: Research Station, private Tennis OS, and GitH
 
 - Vue 3 + TypeScript + Vite
 - Static GitHub Pages deployment
-- Chinese-first bilingual copy, persisted locally
+- Minimal English identity copy
 - Semantic landmarks, keyboard focus, responsive layout, and reduced-motion support
 
 ## Destination configuration
